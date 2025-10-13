@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>highschool-demo</title>
+    
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>珺霧高校 - 官方主页</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 页面标记 */
+        .page-marker {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #1a237e;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        /* 头部样式 */
+        header {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .logo span {
+            font-size: 14px;
+            margin-left: 10px;
+            opacity: 0.8;
+        }
+        
+        .header-info {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+        }
+        
+        .header-info i {
+            margin-right: 5px;
+        }
+        
+        nav {
+            padding-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin: 0 15px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 8px 5px;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: #e3f2fd;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #e3f2fd;
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .student-portal {
+            background: #ff9800;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .student-portal:hover {
+            background: #f57c00;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .student-portal i {
+            margin-right: 8px;
+        }
+        
+        /* 横幅区域 */
+        .banner {
+            background: linear-gradient(rgba(26, 35, 126, 0.8), rgba(26, 35, 126, 0.8)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .banner h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .banner p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #ff9800;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: #f57c00;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* 搜索区域 */
+        .search-section {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 0 auto 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            max-width: 800px;
+            text-align: center;
+        }
+        
+        .search-section h2 {
+            color: #1a237e;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .search-box {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 14px 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        .search-box input:focus {
+            border-color: #1a237e;
+            box-shadow: 0 0 0 2px rgba(26, 35, 126, 0.2);
+        }
+        
+        .search-box button {
+            padding: 0 25px;
+            background: #1a237e;
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .search-box button:hover {
+            background: #283593;
+        }
+        
+        /* 主要内容区域 */
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .news-section, .events-section {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .section-title {
+            color: #1a237e;
+            font-size: 22px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e8eaf6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .section-title a {
+            font-size: 14px;
+            color: #5c6bc0;
+            text-decoration: none;
+        }
+        
+        .news-item, .event-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .news-item:last-child, .event-item:last-child {
+            border-bottom: none;
+        }
+        
+        .news-date, .event-date {
+            font-size: 14px;
+            color: #757575;
+            margin-bottom: 5px;
+        }
+        
+        .news-title, .event-title {
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .news-title a, .event-title a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .news-title a:hover, .event-title a:hover {
+            color: #1a237e;
+        }
+        
+        .news-summary, .event-location {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* 特色区域 */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 8px;
+            padding: 30px 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            color: #1a237e;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            color: #1a237e;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .feature-card p {
+            color: #666;
+            font-size: 15px;
+        }
+        
+        /* 底部样式 */
+        footer {
+            background: #1a237e;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: #ff9800;
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #e3f2fd;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 14px;
+        }
+        
+        .footer-links a:hover {
+            color: #ff9800;
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: #ff9800;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            color: #e3f2fd;
+        }
+        
+        /* 自动翻译弹窗 */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+        
+        .modal {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+            position: relative;
+            text-align: center;
+        }
+        
+        .modal-icon {
+            font-size: 50px;
+            color: #1a237e;
+            margin-bottom: 20px;
+        }
+        
+        .modal h3 {
+            color: #1a237e;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .modal p {
+            margin-bottom: 25px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .modal button {
+            background: #1a237e;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .modal button:hover {
+            background: #283593;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .header-info {
+                margin-top: 10px;
+                justify-content: center;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav li {
+                margin: 5px 10px;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-box {
+                flex-direction: column;
+            }
+            
+            .search-box input {
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+            
+            .search-box button {
+                border-radius: 4px;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 页面标记 -->
+    <div class="page-marker">01</div>
+
+    <!-- 自动翻译弹窗 -->
+    <div id="translationModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-icon">
+                <i class="fas fa-language"></i>
+            </div>
+            <h3>语言检测</h3>
+            <p>我们已检测到您的语言偏好，并自动将网站内容设置为中文。</p>
+            <p>如果您需要切换至其他语言，请点击页面底部的语言选择按钮。</p>
+            <button id="closeModal">确认并继续</button>
+        </div>
+    </div>
+
+    <!-- 头部 -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <h1>珺霧高校</h1>
+                    <span>追求卓越，培育未来</span>
+                </div>
+                <div class="header-info">
+                    <div><i class="fas fa-phone"></i> 078-123-4567</div>
+                    <div><i class="fas fa-envelope"></i> info@junwu-school.ac.jp</div>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li>学校首页</li>
+                    <li> 关于我们</li>
+                    <li>课程设置</li>
+                    <li>校园生活</li>
+                    <li>入学信息</li>
+                    <li>>国际交流</li>
+                    <li>联系我们</li>
+                </ul>
+                <a href=""class="student-portal">
+                    <i class="fas fa-user-graduate"></i> 本校学生入口
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 横幅 -->
+    <section class="banner">
+        <div class="container">
+            <h2>欢迎来到珺霧高校</h2>
+            <p>一所致力于学术卓越与全人教育的现代化学校，位于日本神户市。我们为学生提供优质的教育环境和丰富的学习体验。</p>
+            <a href="intro.html" class="btn">了解更多</a>
+        </div>
+    </section>
+
+    <!-- 搜索区域 -->
+    <section class="container">
+        <div class="search-section">
+            <h2>搜索学校信息</h2>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="输入关键词搜索学校信息...">
+                <button id="searchButton"><i class="fas fa-search"></i> 搜索</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 主要内容 -->
+    <section class="container">
+        <div class="main-content">
+            <div class="news-section">
+                <div class="section-title">
+                    学校新闻
+                    <a href="#">更多新闻 <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">2023年10月15日</div>
+                    <h3 class="news-title"><a href="#">珺霧高校学生在国际数学竞赛中荣获金奖</a></h3>
+                    <p class="news-summary">我校三年级学生山田太郎在刚刚结束的国际数学奥林匹克竞赛中表现优异，荣获个人金奖，为学校争得荣誉。</p>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">2023年10月10日</div>
+                    <h3 class="news-title"><a href="#">校园开放日将于本月底举行</a></h3>
+                    <p class="news-summary">为了让更多家长和学生了解我校教育理念和教学环境，我校将于10月28日举行校园开放日活动，欢迎预约参观。</p>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">2023年10月5日</div>
+                    <h3 class="news-title"><a href="#">与北京大学附属中学建立友好合作关系</a></h3>
+                    <p class="news-summary">我校与中国北京大学附属中学正式签署友好学校协议，未来将在师生交流、课程开发等方面开展深入合作。</p>
+                </div>
+            </div>
+            
+            <div class="events-section">
+                <div class="section-title">
+                    近期活动
+                    <a href="#">查看全部 <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="event-item">
+                    <div class="event-date">10月20日 14:00-16:00</div>
+                    <h3 class="event-title"><a href="#">家长教师座谈会</a></h3>
+                    <p class="event-location">学校礼堂</p>
+                </div>
+                <div class="event-item">
+                    <div class="event-date">10月25日 09:00-15:00</div>
+                    <h3 class="event-title"><a href="#">校园文化祭</a></h3>
+                    <p class="event-location">全校各场馆</p>
+                </div>
+                <div class="event-item">
+                    <div class="event-date">11月5日 10:00-12:00</div>
+                    <h3 class="event-title"><a href="#">职业规划讲座</a></h3>
+                    <p class="event-location">多媒体教室</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特色区域 -->
+    <section class="container">
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>优质教育</h3>
+                <p>我们提供全面的课程体系，注重学生个性化发展，培养具有国际视野的未来人才。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>优秀师资</h3>
+                <p>我们的教师团队拥有丰富的教学经验和专业背景，致力于为学生提供最好的教育。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-futbol"></i>
+                </div>
+                <h3>丰富活动</h3>
+                <p>学校提供多样化的社团活动和体育项目，促进学生全面发展与健康成长。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>关于我们</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">学校简介</a></li>
+                        <li><a href="#">校长致辞</a></li>
+                        <li><a href="#">学校历史</a></li>
+                        <li><a href="#">校园设施</a></li>
+                        <li><a href="#">荣誉奖项</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>课程设置</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">文科课程</a></li>
+                        <li><a href="#">理科课程</a></li>
+                        <li><a href="#">国际课程</a></li>
+                        <li><a href="#">特色课程</a></li>
+                        <li><a href="#">课外活动</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>入学信息</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">招生简章</a></li>
+                        <li><a href="#">入学考试</a></li>
+                        <li><a href="#">学费标准</a></li>
+                        <li><a href="#">奖学金</a></li>
+                        <li><a href="#">常见问题</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>联系我们</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 〒650-0000 兵庫県神戸市中央区</li>
+                        <li><i class="fas fa-phone"></i> 078-123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@junwu-school.ac.jp</li>
+                        <li><i class="fas fa-clock"></i> 周一至周五 8:30-17:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 珺霧高校 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 自动翻译提示弹窗
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('translationModal');
+            const closeButton = document.getElementById('closeModal');
+            
+            // 显示弹窗
+            modal.style.display = 'flex';
+            
+            // 关闭弹窗
+            closeButton.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            // 搜索功能
+            const searchButton = document.getElementById('searchButton');
+            const searchInput = document.getElementById('searchInput');
+            
+            searchButton.addEventListener('click', function() {
+                performSearch();
+            });
+            
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+            
+            function performSearch() {
+                const query = searchInput.value.trim();
+                if (query) {
+                    alert(`正在搜索: "${query}"\n\n搜索结果将显示在新页面中。`);
+                    // 在实际应用中，这里会执行搜索并跳转或显示结果
+                } else {
+                    alert('请输入搜索关键词');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+    
+  </body>
+  
+</html>
