@@ -439,19 +439,6 @@
             color: #e3f2fd;
         }
         
-        /* 自动翻译弹窗 */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-        }
         
         .modal {
             background: white;
@@ -568,18 +555,7 @@
     <!-- 页面标记 -->
     <div class="page-marker">01</div>
 
-    <!-- 自动翻译弹窗 -->
-    <div id="translationModal" class="modal-overlay">
-        <div class="modal">
-            <div class="modal-icon">
-                <i class="fas fa-language"></i>
-            </div>
-            <h3>语言检测</h3>
-            <p>我们已检测到您的语言偏好，并自动将网站内容设置为中文。</p>
-            <p>如果您需要切换至其他语言，请点击页面底部的语言选择按钮。</p>
-            <button id="closeModal">确认并继续</button>
-        </div>
-    </div>
+   
 
     <!-- 头部 -->
     <header>
@@ -758,10 +734,6 @@
     </footer>
 
     <script>
-        // 自动翻译提示弹窗
-        document.addEventListener('DOMContentLoaded', function() {
-            const modal = document.getElementById('translationModal');
-            const closeButton = document.getElementById('closeModal');
             
             // 显示弹窗
             modal.style.display = 'flex';

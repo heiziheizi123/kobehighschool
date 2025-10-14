@@ -3,625 +3,323 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>学校信息 - 珺霧高校</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>学生门户 - 珺雾高校</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            font-family: "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
         }
-
+        
         body {
-            background-color: #f8f9fa;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* 头部样式 */
-        header {
-            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
-            color: white;
-            padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo h1 {
-            font-size: 28px;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-
-        .logo span {
-            font-size: 14px;
-            margin-left: 10px;
-            opacity: 0.8;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav li {
-            margin: 0 15px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 500;
-            padding: 8px 5px;
-            transition: all 0.3s;
-        }
-
-        nav a:hover {
-            color: #e3f2fd;
-        }
-
-        /* 搜索区域 */
-        .search-section {
-            background: white;
-            border-radius: 8px;
-            padding: 30px;
-            margin: 30px auto;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            max-width: 800px;
-            text-align: center;
-        }
-
-        .search-section h2 {
-            color: #1a237e;
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
-
-        .search-box {
-            display: flex;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .search-box input {
-            flex: 1;
-            padding: 14px 20px;
-            border: 1px solid #ddd;
-            border-radius: 4px 0 0 4px;
-            font-size: 16px;
-            outline: none;
-        }
-
-        .search-box button {
-            padding: 0 25px;
-            background: #1a237e;
-            color: white;
-            border: none;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        /* 内容区域 */
-        .content-area {
-            background: white;
-            border-radius: 8px;
-            padding: 40px;
-            margin: 30px auto;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            min-height: 500px;
-        }
-
-        .content-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .content-header h2 {
-            color: #1a237e;
-            font-size: 32px;
-            margin-bottom: 15px;
-        }
-
-        .content-header p {
-            color: #666;
-            font-size: 18px;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .editable-section {
-            border: 2px dashed #ddd;
-            border-radius: 8px;
-            padding: 30px;
-            margin: 20px 0;
-            background: #fafafa;
-            min-height: 200px;
-        }
-
-        .editable-section h3 {
-            color: #1a237e;
-            margin-bottom: 15px;
-        }
-
-        .section-placeholder {
-            color: #999;
-            text-align: center;
-            padding: 40px;
-            font-style: italic;
-        }
-
-        /* 学校简介样式 */
-        .school-intro {
-            background: white;
-            border-radius: 8px;
-            padding: 40px;
-            margin: 30px auto;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .intro-header {
-            text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 2px solid #1a237e;
-            padding-bottom: 20px;
-        }
-
-        .intro-header h2 {
-            color: #1a237e;
-            font-size: 32px;
-            margin-bottom: 15px;
-        }
-
-        .intro-header p {
-            color: #666;
-            font-size: 18px;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .intro-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .intro-text {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .intro-text p {
-            margin-bottom: 20px;
-            font-size: 16px;
-            line-height: 1.8;
-        }
-
-        .intro-image {
-            flex: 1;
-            min-width: 300px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .placeholder-image {
-            background: #e3f2fd;
-            height: 300px;
+            background: linear-gradient(135deg, #4a6fa5 0%, #2c3e50 100%);
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #1a237e;
+            padding: 20px;
         }
-
-        .placeholder-image i {
-            font-size: 80px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
-        }
-
-        .feature-card {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 25px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-left: 4px solid #1a237e;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .feature-card i {
-            font-size: 36px;
-            color: #1a237e;
-            margin-bottom: 15px;
-        }
-
-        .feature-card h4 {
-            color: #1a237e;
-            margin-bottom: 10px;
-            font-size: 18px;
-        }
-
-        .stats-section {
-            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
-            color: white;
-            border-radius: 8px;
+        
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
             padding: 40px;
-            margin: 40px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .school-logo {
             text-align: center;
+            margin-bottom: 30px;
         }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
+        
+        .school-name {
+            font-size: 24px;
+            font-weight: 300;
+            color: #2c3e50;
+            margin-bottom: 5px;
         }
-
-        .stat-item h3 {
-            font-size: 36px;
+        
+        .school-subtitle {
+            font-size: 14px;
+            color: #5d6d7e;
+            font-weight: 300;
+        }
+        
+        .login-form {
+            margin-bottom: 25px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #34495e;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #d5dbdb;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #4a6fa5;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.1);
+        }
+        
+        .password-field {
+            position: relative;
+        }
+        
+        .show-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #4a6fa5;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #4a6fa5, #2c3e50);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .login-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 111, 165, 0.4);
+        }
+        
+        .login-button:active {
+            transform: translateY(0);
+        }
+        
+        .login-notice {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e5e9;
+        }
+        
+        .notice-text {
+            font-size: 13px;
+            color: #666;
             margin-bottom: 10px;
         }
-
-        .stat-item p {
-            font-size: 16px;
-            opacity: 0.9;
-        }
-
-        .mission-vision {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin: 40px 0;
-        }
-
-        .mission, .vision {
-            flex: 1;
-            min-width: 300px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 30px;
-            border-top: 4px solid #1a237e;
-        }
-
-        .mission h3, .vision h3 {
-            color: #1a237e;
-            margin-bottom: 15px;
-            font-size: 22px;
-        }
-
-        /* 底部样式 */
-        footer {
-            background: #1a237e;
-            color: white;
-            padding: 30px 0;
-            margin-top: 50px;
-            text-align: center;
-        }
-
-        .back-to-home {
-            display: inline-block;
-            background: #ff9800;
-            color: white;
-            padding: 10px 25px;
-            border-radius: 4px;
+        
+        .notice-link {
+            color: #4a6fa5;
             text-decoration: none;
-            margin-top: 15px;
-            transition: all 0.3s;
+            font-weight: bold;
+            font-size: 13px;
+            cursor: pointer;
+            transition: color 0.3s ease;
         }
-
-        .back-to-home:hover {
-            background: #f57c00;
+        
+        .notice-link:hover {
+            color: #2c3e50;
+            text-decoration: underline;
         }
-
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .header-top {
-                flex-direction: column;
-                text-align: center;
+        
+        .system-info {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 11px;
+            color: #999;
+        }
+        
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 13px;
+            border-left: 4px solid #dc3545;
+            display: none;
+        }
+        
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 13px;
+            border-left: 4px solid #28a745;
+            display: none;
+        }
+        
+        .hint-message {
+            background: #d1ecf1;
+            color: #0c5460;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 13px;
+            border-left: 4px solid #17a2b8;
+        }
+        
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 30px 25px;
             }
             
-            nav ul {
-                margin-top: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            nav li {
-                margin: 5px 10px;
-            }
-            
-            .search-box {
-                flex-direction: column;
-            }
-            
-            .search-box input {
-                border-radius: 4px;
-                margin-bottom: 10px;
-            }
-            
-            .search-box button {
-                border-radius: 4px;
-                padding: 12px;
-            }
-            
-            .intro-content {
-                flex-direction: column;
-            }
-            
-            .mission-vision {
-                flex-direction: column;
+            .school-name {
+                font-size: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- 头部 -->
-    <header>
-        <div class="container">
-            <div class="header-top">
-                <div class="logo">
-                    <h1>珺霧高校</h1>
-                    <span>学校信息中心</span>
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="index.html">返回主页</a></li>
-                        <li>信息分类</li>
-                        <li>资源下载</li>
-                        <li>帮助中心</li>
-                    </ul>
-                </nav>
-            </div>
+    <div class="login-container">
+        <div class="school-logo">
+            <h1 class="school-name">珺雾高校</h1>
+            <p class="school-subtitle">学生门户系统</p>
         </div>
-    </header>
-
-    <!-- 搜索区域 -->
-    <section class="container">
-        <div class="search-section">
-            <h2>搜索学校信息</h2>
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="输入关键词搜索学校相关信息...">
-                <button id="searchButton"><i class="fas fa-search"></i> 搜索</button>
-            </div>
+        
+        <div class="error-message" id="errorMessage">
+            登录失败：用户名或密码错误
         </div>
-    </section>
-
-    <!-- 学校简介 -->
-    <section class="container">
-        <div class="school-intro">
-            <div class="intro-header">
-                <h2>珺霧高校简介</h2>
-                <p>追求卓越，培养未来</p>
-            </div>
-            
-            <div class="intro-content">
-                <div class="intro-text">
-                    <p>珺霧高校成立于2025年4月，是一所历史悠久、文化底蕴深厚的全日制普通高中。学校坐落于风景秀丽的城市新区，占地面积200余亩，校园环境优美，设施先进。</p>
-                    <p>学校秉承"明德、博学、笃行、创新"的校训，立志培养国际型人才。多年来，学校形成了"严谨、求实、团结、进取"的校风，"敬业、爱生、严谨、创新"的教风和"勤学、善思、好问、笃行"的学风。</p>
-                    <p>学校现有教员160余人，在校学生3000余人。在多个国际赛事上获奖</p>
-                </div>
-                <div class="intro-image">
-                    <!-- 这里可以替换为实际的学校图片 -->
-                    <div class="placeholder-image">
-                        <i class="fas fa-school"></i>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <i class="fas fa-graduation-cap"></i>
-                    <h4>优质教育</h4>
-                    <p>提供全面的素质教育，注重学生个性化发展</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-flask"></i>
-                    <h4>先进设施</h4>
-                    <p>拥有现代化的实验室、图书馆和体育设施</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-users"></i>
-                    <h4>优秀师资</h4>
-                    <p>经验丰富的教师团队，关注每一位学生成长</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-award"></i>
-                    <h4>卓越成就</h4>
-                    <p>历年高考成绩优异，多次获得省级表彰</p>
-                </div>
-            </div>
-            
-            <div class="stats-section">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <h3>38+</h3>
-                        <p>年办学历史</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>160+</h3>
-                        <p>教职工人数</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>3000+</h3>
-                        <p>在校学生</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>95%+</h3>
-                        <p>大学進学率</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mission-vision">
-                <div class="mission">
-                    <h3><i class="fas fa-bullseye"></i> 办学使命</h3>
-                    <p>珺霧高校致力于为学生提供优质的教育资源，培养具有社会责任感、创新精神和实践能力的优秀人才。我们关注每一位学生的全面发展，尊重个性差异，激发潜能，为学生的终身发展奠定坚实基础。</p>
-                </div>
-                <div class="vision">
-                    <h3><i class="fas fa-eye"></i> 发展愿景</h3>
-                    <p>成为国内一流、国际知名的现代化中学，建设成为教育理念先进、师资力量雄厚、设施设备完善、教育质量卓越、办学特色鲜明的示范性高中，为国家培养更多优秀人才。</p>
-                </div>
-            </div>
+        
+        <div class="success-message" id="successMessage">
+            登录成功！正在跳转...
         </div>
-    </section>
-
-    <!-- 主要内容区域 -->
-    <section class="container">
-        <div class="content-area">
-            <div class="content-header">
-                <h2>学校信息中心</h2>
-                <p>在这里您可以添加和管理各类学校信息内容</p>
-            </div>
-            
-            <!-- 可编辑内容区域1 -->
-            <div class="editable-section">
-                <h3><i class="fas fa-info-circle"></i> 基本信息</h3>
-                <div class="section-placeholder">
-                    内容已删除或未公开
-                </div>
-            </div>
-            
-            <!-- 可编辑内容区域2 -->
-            <div class="editable-section">
-                <h3><i class="fas fa-book"></i> 学术信息</h3>
-                <div class="section-placeholder">
-                    内容已删除或未公开
-                </div>
-            </div>
-            
-            <!-- 可编辑内容区域3 -->
-            <div class="editable-section">
-                <h3><i class="fas fa-calendar"></i> 活动信息</h3>
-                <div class="section-placeholder">
-               内容已删除或未公开     
-                </div>
-            </div>
-            
-            <!-- 可编辑内容区域4 -->
-            <div class="editable-section">
-                <h3><i class="fas fa-newspaper"></i> 新闻公告</h3>
-                <div class="section-placeholder">
-                    2025年4月，两校合并成立珺霧高校，我们承前启后，整合优势资源，致力于打造一个融合、平等的卓越共学教育平台。
-                </div>
-            </div>
+        
+        <div class="hint-message">
+            提示：请使用您的个人身份编码作为密码<br>
+            示例：22kA15 (22届+男+A班+15号)
         </div>
-    </section>
-
-    <!-- 底部 -->
-    <footer>
-        <div class="container">
-            <p>珺霧高校信息中心 &copy; 2023</p>
-            <a href="index.html" class="back-to-home">
-                <i class="fas fa-home"></i> 返回学校主页
-            </a>
+        
+        <div class="login-form">
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <input type="text" id="username" class="form-control" value="admin" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">密码</label>
+                <div class="password-field">
+                    <input type="password" id="password" class="form-control" placeholder="请输入您的身份编码">
+                    <button type="button" class="show-password" onclick="togglePassword()">显示</button>
+                </div>
+            </div>
+            
+            <button class="login-button" onclick="attemptLogin()">登录</button>
         </div>
-    </footer>
+        
+        <div class="login-notice">
+            <p class="notice-text">首次登录或忘记密码？</p>
+            <a class="notice-link" onclick="showLoginGuide()"><strong>学生账户登录须知</strong></a>
+        </div>
+        
+        <div class="system-info">
+            <p>系统版本 2.4.1 | 最后更新 2024-03-28</p>
+        </div>
+    </div>
 
     <script>
-        // 搜索功能
-        document.getElementById('searchButton').addEventListener('click', function() {
-            const query = document.getElementById('searchInput').value.trim();
-            if (query) {
-                alert(`正在搜索: "${query}"\n\n搜索功能已准备就绪，可以添加实际搜索逻辑。`);
+        // 正确的密码
+        const CORRECT_PASSWORD = '18mD03';
+        
+        // 密码显示/隐藏切换
+        function togglePassword() {
+            const passwordField = document.getElementById('password');
+            const showButton = document.querySelector('.show-password');
+            
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                showButton.textContent = '隐藏';
             } else {
-                alert('请输入搜索关键词');
+                passwordField.type = 'password';
+                showButton.textContent = '显示';
             }
-        });
-
-        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+        }
+        
+        // 登录尝试
+        function attemptLogin() {
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
+            
+            // 清空消息
+            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+            
+            if (!password) {
+                errorMessage.textContent = '错误：请输入密码';
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
+            if (password === CORRECT_PASSWORD) {
+                // 登录成功
+                successMessage.style.display = 'block';
+                errorMessage.style.display = 'none';
+                
+                // 模拟跳转延迟
+                setTimeout(() => {
+                    alert('登录成功！欢迎访问学生门户。\n\n学生信息：\n- 姓名：高桥优月\n- 班级：3年D班\n- 学籍：18mD03\n- 社团：民俗学研究部');
+                    // 在实际应用中这里会跳转到学生门户页面
+                }, 1000);
+            } else {
+                // 登录失败
+                errorMessage.textContent = '登录失败：身份编码无效或格式错误';
+                errorMessage.style.display = 'block';
+            }
+        }
+        
+        // 显示登录指南
+        function showLoginGuide() {
+            alert('学生账户登录指南：\n\n' +
+                  '1. 用户名固定为：admin\n' +
+                  '2. 密码为您个人的身份编码\n' +
+                  '3. 身份编码格式：届数+性别码+班级+学号\n' +
+                  '   - 届数：入学年份后两位（如18）\n' +
+                  '   - 性别码：m(女) / k(男)\n' +
+                  '   - 班级：大写字母（如D）\n' +
+                  '   - 学号：两位数字（如03）\n\n' +
+                  '示例：22kA15 表示22届男A班15号学生\n\n' +
+                  '如需帮助，请联系系统管理员。');
+        }
+        
+        // 回车键登录
+        document.getElementById('password').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
-                document.getElementById('searchButton').click();
+                attemptLogin();
             }
         });
-
-        // 学校简介交互功能
-        document.addEventListener('DOMContentLoaded', function() {
-            // 为特色卡片添加点击效果
-            const featureCards = document.querySelectorAll('.feature-card');
-            featureCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    const title = this.querySelector('h4').textContent;
-                    alert(`您点击了: ${title}\n\n这里可以添加更多详细信息。`);
-                });
-            });
-            
-            // 为统计数据添加动画效果
-            const statItems = document.querySelectorAll('.stat-item h3');
-            statItems.forEach(stat => {
-                // 简单的数字动画效果
-                const originalText = stat.textContent;
-                stat.textContent = '0';
-                
-                let counter = 0;
-                const target = parseInt(originalText);
-                const increment = target / 50;
-                
-                const updateCounter = () => {
-                    if (counter < target) {
-                        counter += increment;
-                        stat.textContent = Math.ceil(counter) + (originalText.includes('+') ? '+' : '');
-                        setTimeout(updateCounter, 20);
-                    } else {
-                        stat.textContent = originalText;
-                    }
-                };
-                
-                // 当元素进入视口时触发动画
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            updateCounter();
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                });
-                
-                observer.observe(stat);
-            });
-            
-            // 可编辑区域的点击事件
-            const editableSections = document.querySelectorAll('.editable-section');
-            editableSections.forEach(section => {
-                section.addEventListener('click', function() {
-                    const title = this.querySelector('h3').textContent;
-                    const content = prompt(`请输入${title}的内容:`, '这里可以添加详细内容...');
-                    if (content) {
-                        this.querySelector('.section-placeholder').textContent = content;
-                        this.querySelector('.section-placeholder').style.fontStyle = 'normal';
-                        this.querySelector('.section-placeholder').style.color = '#333';
-                    }
-                });
-            });
+        
+        // 页面加载完成后的初始化
+        window.addEventListener('load', function() {
+            document.getElementById('password').focus();
         });
     </script>
 </body>
