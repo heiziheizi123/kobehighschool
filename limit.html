@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>limit-com</title>
+    
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>访问受限 - 珺雾高校</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+        }
+        
+        body {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .restricted-container {
+            background-color: #34495e;
+            border-radius: 15px;
+            padding: 50px 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            border: 1px solid #4a6fa5;
+        }
+        
+        .warning-icon {
+            font-size: 80px;
+            margin-bottom: 25px;
+            color: #e74c3c;
+        }
+        
+        .title {
+            font-size: 28px;
+            font-weight: 300;
+            margin-bottom: 15px;
+            color: #ecf0f1;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #bdc3c7;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        
+        .error-code {
+            background-color: #2c3e50;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            font-family: monospace;
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .message {
+            background-color: #2c3e50;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            text-align: left;
+            border-left: 4px solid #3498db;
+        }
+        
+        .message-title {
+            color: #3498db;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background-color: #4a6fa5;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #3a5a8a;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: #7f8c8d;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #6c7b7d;
+        }
+        
+        .system-info {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #4a6fa5;
+            font-size: 12px;
+            color: #95a5a6;
+        }
+        
+        .hint {
+            background-color: #2c3e50;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+            border: 1px dashed #4a6fa5;
+            font-size: 13px;
+        }
+        
+        .attempt-counter {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 480px) {
+            .restricted-container {
+                padding: 30px 25px;
+            }
+            
+            .title {
+                font-size: 24px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="restricted-container">
+        <div class="warning-icon">🚫</div>
+        
+        <h1 class="title">访问权限受限</h1>
+        <p class="subtitle">您没有查看此内容的必要权限</p>
+        
+        <div class="error-code">
+            错误代码: ACCES_DENIED_ERR-7432
+        </div>
+        
+        <div class="message">
+            <div class="message-title">系统提示</div>
+            <p>您正在尝试访问受限制的内容区域。这可能是因为：</p>
+            <ul style="margin: 10px 0 10px 20px;">
+                <li>您的账户权限等级不足</li>
+                <li>内容已被设置为私有或隐藏</li>
+                <li>需要特殊授权才能访问</li>
+                <li>内容正在维护或更新中</li>
+            </ul>
+        </div>
+        
+        <div class="hint">
+            <strong>提示：</strong> 
+            某些内容可能需要更高级别的账户权限或特殊访问代码。
+            请检查您是否使用了正确的凭证，或联系系统管理员获取帮助。
+        </div>
+        
+        <div class="attempt-counter">
+            访问尝试次数: 3 | 剩余尝试次数: 2
+        </div>
+        
+        <div class="action-buttons">
+            <button class="btn btn-primary" onclick="goBack()">返回上一页</button>
+            <button class="btn btn-secondary" onclick="contactAdmin()">联系管理员</button>
+        </div>
+        
+        <div class="system-info">
+            <p>珺雾高校信息系统 | 安全等级: 高级</p>
+            <p>时间戳: 2024-03-28 14:23:17 | 会话ID: SESS-8F3A2B1C</p>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            alert('正在返回安全页面...');
+            // 在实际应用中这里会执行返回操作
+        }
+        
+        function contactAdmin() {
+            alert('已发送帮助请求至系统管理员\n\n请联系: admin@junwu-school.edu.jp\n或致电: 078-XXX-XXXX');
+        }
+        
+        // 页面加载时的效果
+        window.addEventListener('load', function() {
+            const container = document.querySelector('.restricted-container');
+            container.style.opacity = '0';
+            container.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                container.style.transition = 'all 0.5s ease';
+                container.style.opacity = '1';
+                container.style.transform = 'translateY(0)';
+            }, 100);
+        });
+        
+        // 添加一些动态效果
+        document.querySelector('.warning-icon').addEventListener('mouseover', function() {
+            this.style.transform = 'scale(1.1)';
+            this.style.transition = 'transform 0.3s ease';
+        });
+        
+        document.querySelector('.warning-icon').addEventListener('mouseout', function() {
+            this.style.transform = 'scale(1)';
+        });
+    </script>
+</body>
+</html>
+    
+  </body>
+  
+</html>

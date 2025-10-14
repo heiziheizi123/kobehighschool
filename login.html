@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生门户 - 珺雾高校</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #4a6fa5 0%, #2c3e50 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .school-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .school-name {
+            font-size: 24px;
+            font-weight: 300;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .school-subtitle {
+            font-size: 14px;
+            color: #5d6d7e;
+            font-weight: 300;
+        }
+        
+        .login-form {
+            margin-bottom: 25px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #34495e;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #d5dbdb;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #4a6fa5;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.1);
+        }
+        
+        .password-field {
+            position: relative;
+        }
+        
+        .show-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #4a6fa5;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #4a6fa5, #2c3e50);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .login-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 111, 165, 0.4);
+        }
+        
+        .login-button:active {
+            transform: translateY(0);
+        }
+        
+        .login-notice {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e5e9;
+        }
+        
+        .notice-text {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .notice-link {
+            color: #4a6fa5;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 13px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .notice-link:hover {
+            color: #2c3e50;
+            text-decoration: underline;
+        }
+        
+        .system-info {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 11px;
+            color: #999;
+        }
+        
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 13px;
+            border-left: 4px solid #dc3545;
+            display: none;
+        }
+        
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 13px;
+            border-left: 4px solid #28a745;
+            display: none;
+        }
+        
+        .hint-message {
+            background: #d1ecf1;
+            color: #0c5460;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 13px;
+            border-left: 4px solid #17a2b8;
+        }
+        
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 30px 25px;
+            }
+            
+            .school-name {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="school-logo">
+            <h1 class="school-name">珺雾高校</h1>
+            <p class="school-subtitle">学生门户系统</p>
+        </div>
+        
+        <div class="error-message" id="errorMessage">
+            登录失败：用户名或密码错误
+        </div>
+        
+        <div class="success-message" id="successMessage">
+            登录成功！正在跳转...
+        </div>
+        
+        <div class="hint-message">
+            提示：请使用您的个人身份编码作为密码<br>
+            示例：22kA15 (22届+男+A班+15号)
+        </div>
+        
+        <div class="login-form">
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <input type="text" id="username" class="form-control" value="admin" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">密码</label>
+                <div class="password-field">
+                    <input type="password" id="password" class="form-control" placeholder="请输入您的身份编码">
+                    <button type="button" class="show-password" onclick="togglePassword()">显示</button>
+                </div>
+            </div>
+            
+            <button class="login-button" onclick="attemptLogin()">登录</button>
+        </div>
+        
+        <div class="login-notice">
+            <p class="notice-text">首次登录或忘记密码？</p>
+            <a class="notice-link" onclick="showLoginGuide()"><strong>学生账户登录须知</strong></a>
+        </div>
+        
+        <div class="system-info">
+            <p>系统版本 2.4.1 | 最后更新 2024-03-28</p>
+        </div>
+    </div>
+
+    <script>
+        // 正确的密码
+        const CORRECT_PASSWORD = '18mD03';
+        
+        // 密码显示/隐藏切换
+        function togglePassword() {
+            const passwordField = document.getElementById('password');
+            const showButton = document.querySelector('.show-password');
+            
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                showButton.textContent = '隐藏';
+            } else {
+                passwordField.type = 'password';
+                showButton.textContent = '显示';
+            }
+        }
+        
+        // 登录尝试
+        function attemptLogin() {
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
+            
+            // 清空消息
+            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+            
+            if (!password) {
+                errorMessage.textContent = '错误：请输入密码';
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
+            if (password === CORRECT_PASSWORD) {
+                // 登录成功
+                successMessage.style.display = 'block';
+                errorMessage.style.display = 'none';
+                
+                // 模拟跳转延迟
+                setTimeout(() => {
+                    alert('登录成功！欢迎访问学生门户。\n\n学生信息：\n- 姓名：高桥优月\n- 班级：3年D班\n- 学籍：18mD03\n- 社团：民俗学研究部');
+                    // 在实际应用中这里会跳转到学生门户页面
+                }, 1000);
+            } else {
+                // 登录失败
+                errorMessage.textContent = '登录失败：身份编码无效或格式错误';
+                errorMessage.style.display = 'block';
+            }
+        }
+        
+        // 显示登录指南
+        function showLoginGuide() {
+            alert('学生账户登录指南：\n\n' +
+                  '1. 用户名固定为：admin\n' +
+                  '2. 密码为您个人的身份编码\n' +
+                  '3. 身份编码格式：届数+性别码+班级+学号\n' +
+                  '   - 届数：入学年份后两位（如18）\n' +
+                  '   - 性别码：m(女) / k(男)\n' +
+                  '   - 班级：大写字母（如D）\n' +
+                  '   - 学号：两位数字（如03）\n\n' +
+                  '示例：22kA15 表示22届男A班15号学生\n\n' +
+                  '如需帮助，请联系系统管理员。');
+        }
+        
+        // 回车键登录
+        document.getElementById('password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                attemptLogin();
+            }
+        });
+        
+        // 页面加载完成后的初始化
+        window.addEventListener('load', function() {
+            document.getElementById('password').focus();
+        });
+    </script>
+</body>
+</html>
+    
+  </body>
+  
+</html>
