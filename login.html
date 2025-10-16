@@ -187,33 +187,6 @@
             border-left: 4px solid #17a2b8;
         }
         
-        .account-info {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-left: 4px solid #4a6fa5;
-        }
-        
-        .account-info h3 {
-            font-size: 14px;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-        
-        .account-info p {
-            font-size: 12px;
-            color: #5d6d7e;
-            margin-bottom: 5px;
-        }
-        
-        .account-info code {
-            background: #e9ecef;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: monospace;
-        }
-        
         @media (max-width: 480px) {
             .login-container {
                 padding: 30px 25px;
@@ -242,13 +215,8 @@
         
         <div class="hint-message">
             提示：请使用您的个人身份编码作为密码<br>
+            格式：届数+性别码+班级+学号<br>
             示例：22kA15 (22届+男+A班+15号)
-        </div>
-        
-        <div class="account-info">
-            <h3>测试账户信息</h3>
-            <p>学生1: 密码 <code>18mD03</code> → 跳转至 stuinfo1.html</p>
-            <p>学生2: 密码 <code>26mB13</code> → 跳转至 stuinfo2.html</p>
         </div>
         
         <div class="login-form">
@@ -279,12 +247,6 @@
     </div>
 
     <script>
-    // 学生账号和密码配置
-    const STUDENT_ACCOUNTS = [
-        { password: '18mD03', redirect: 'stuinfo1.html' },
-        { password: '26mB13', redirect: 'stuinfo2.html' }
-    ];
-    
     // 密码显示/隐藏切换
     function togglePassword() {
         const passwordField = document.getElementById('password');
@@ -315,40 +277,17 @@
             return;
         }
         
-        // 检查密码是否匹配任何学生账号
-        const matchedAccount = STUDENT_ACCOUNTS.find(account => account.password === password);
+        // 这里可以添加实际的登录验证逻辑
+        // 目前仅显示成功消息作为演示
+        successMessage.textContent = '登录成功！正在跳转...';
+        successMessage.style.display = 'block';
         
-        if (matchedAccount) {
-            // 登录成功，跳转到对应页面
-            successMessage.textContent = '登录成功！正在跳转...';
-            successMessage.style.display = 'block';
-            
-            setTimeout(() => {
-                const link = document.createElement('a');
-                link.href = matchedAccount.redirect;
-                link.style.display = 'none';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            }, 1000);
-        } else {
-            // 登录失败
-            errorMessage.textContent = '登录失败：身份编码无效或格式错误';
-            errorMessage.style.display = 'block';
-        }
-    }
-    
-    // 退出登录功能
-    function logout() {
-        if (confirm('确定要退出登录吗？')) {
-            // 创建并点击跳转链接
-            const link = document.createElement('a');
-            link.href = 'index.html';
-            link.style.display = 'none';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
+        // 模拟登录成功后的跳转
+        setTimeout(() => {
+            // 实际应用中这里应该跳转到学生信息页面
+            console.log('登录成功，密码为：' + password);
+            // window.location.href = 'student-dashboard.html';
+        }, 1000);
     }
     
     // 显示登录指南
@@ -378,4 +317,5 @@
     });
 </script>
 </body>
+</html>
 </html>
