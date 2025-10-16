@@ -247,6 +247,12 @@
     </div>
 
     <script>
+    // 学生账号和密码配置
+    const STUDENT_ACCOUNTS = [
+        { password: '18mD03', redirect: 'stuinfo1.html' },
+        { password: '26mB13', redirect: 'stuinfo2.html' }
+    ];
+    
     // 密码显示/隐藏切换
     function togglePassword() {
         const passwordField = document.getElementById('password');
@@ -259,6 +265,13 @@
             passwordField.type = 'password';
             showButton.textContent = '显示';
         }
+    }
+    
+    // 验证密码格式
+    function validatePasswordFormat(password) {
+        // 密码格式：两位数字(届数) + 一个字母(性别码) + 一个字母(班级) + 两位数字(学号)
+        const pattern = /^\d{2}[mk][A-Z]\d{2}$/;
+        return pattern.test(password);
     }
     
     // 登录尝试
@@ -277,17 +290,34 @@
             return;
         }
         
-        // 这里可以添加实际的登录验证逻辑
-        // 目前仅显示成功消息作为演示
-        successMessage.textContent = '登录成功！正在跳转...';
-        successMessage.style.display = 'block';
+        // 验证密码格式
+        if (!validatePasswordFormat(password)) {
+            errorMessage.textContent = '密码格式错误：请按照"届数+性别码+班级+学号"格式输入\n示例：22kA15 (22届+男+A班+15号)';
+            errorMessage.style.display = 'block';
+            return;
+        }
         
-        // 模拟登录成功后的跳转
-        setTimeout(() => {
-            // 实际应用中这里应该跳转到学生信息页面
-            console.log('登录成功，密码为：' + password);
-            // window.location.href = 'student-dashboard.html';
-        }, 1000);
+        // 检查密码是否匹配任何学生账号
+        const matchedAccount = STUDENT_ACCOUNTS.find(account => account.password === password);
+        
+        if (matchedAccount) {
+            // 登录成功，跳转到对应页面
+            successMessage.textContent = '登录成功！正在跳转...';
+            successMessage.style.display = 'block';
+            
+            setTimeout(() => {
+                const link = document.createElement('a');
+                link.href = matchedAccount.redirect;
+                link.style.display = 'none';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }, 1000);
+        } else {
+            // 登录失败
+            errorMessage.textContent = '登录失败：身份编码无效或不存在';
+            errorMessage.style.display = 'block';
+        }
     }
     
     // 显示登录指南
@@ -317,5 +347,4 @@
     });
 </script>
 </body>
-</html>
 </html>
