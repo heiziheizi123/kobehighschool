@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>两名高中生岸边失踪 - 神户新闻</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        .news-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #222222;
+            line-height: 1.3;
+        }
+        
+        .news-meta {
+            color: #666666;
+            font-size: 16px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        /* 内容样式 */
+        .news-content {
+            margin-bottom: 40px;
+        }
+        
+        .lead-paragraph {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: #444444;
+            line-height: 1.7;
+        }
+        
+        .news-text {
+            font-size: 17px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+        
+        .news-text p {
+            margin-bottom: 15px;
+        }
+        
+        .highlight-box {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 4px solid #d9534f;
+        }
+        
+        .highlight-box h3 {
+            color: #d9534f;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .evidence-list {
+            margin: 25px 0;
+            padding-left: 20px;
+        }
+        
+        .evidence-list li {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .quote {
+            font-style: italic;
+            color: #555555;
+            border-left: 3px solid #ddd;
+            padding-left: 15px;
+            margin: 20px 0;
+        }
+        
+        /* 结局按钮样式 */
+        .ending-button {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, #8B0000 0%, #660000 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 15px 20px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 40px 0;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(139, 0, 0, 0.3);
+        }
+        
+        .ending-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(139, 0, 0, 0.4);
+            background: linear-gradient(135deg, #9e0000 0%, #770000 100%);
+        }
+        
+        .ending-button i {
+            margin-right: 10px;
+        }
+        
+        /* 相关新闻 */
+        .related-news {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #eaeaea;
+        }
+        
+        .related-news h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #222222;
+        }
+        
+        .news-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .news-item {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.3s;
+        }
+        
+        .news-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .news-item h4 {
+            color: #222222;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .news-item p {
+            color: #666666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        /* 底部 */
+        footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #eaeaea;
+            text-align: center;
+            color: #666666;
+            font-size: 14px;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .news-title {
+                font-size: 26px;
+            }
+            
+            .news-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .news-text {
+                font-size: 16px;
+            }
+            
+            .ending-button {
+                font-size: 16px;
+                padding: 12px 15px;
+            }
+        }
+        
+        /* 自定义确认对话框样式 */
+        .confirmation-dialog {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .dialog-content {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        
+        .dialog-content h3 {
+            color: #8B0000;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .dialog-content p {
+            margin-bottom: 25px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .dialog-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .dialog-button {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .confirm-btn {
+            background-color: #8B0000;
+            color: white;
+        }
+        
+        .confirm-btn:hover {
+            background-color: #9e0000;
+        }
+        
+        .cancel-btn {
+            background-color: #e0e0e0;
+            color: #333;
+        }
+        
+        .cancel-btn:hover {
+            background-color: #d0d0d0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="news-title">两名高中生岸边离奇失踪，警方仅打捞到整齐叠放的衣物</h1>
+            <div class="news-meta">
+                <span><i class="fas fa-user-edit"></i> 记者：铃木海斗</span>
+                <span><i class="fas fa-clock"></i> 发布时间：2025年4月3日 14:20</span>
+                <span><i class="fas fa-tags"></i> 分类：社会新闻</span>
+            </div>
+        </header>
+        
+        <div class="news-content">
+            <p class="lead-paragraph">昨日傍晚，两名神户市中国籍高中的学生在明石海峡岸边离奇失踪。经过彻夜搜救，警方今早在岸边仅发现了他们整齐叠放的衣物和个人物品，两名学生至今下落不明。</p>
+            
+            <div class="news-text">
+                <p>3月25日下午5时许，中国籍高中生沈（シン)(16)和张（チョウ)(17)在明石海峡大桥附近的岸边失踪。据警方透露，两人当天放学后告知家人要去海边散步，但直至第三天晚上8点仍未回信，朋友随即报警。</p>
+                
+                <p>接到报警后，神户市警方立即组织搜救队伍，联合海岸警卫队展开彻夜搜寻。今天早上7点，搜救人员在岸边岩石后发现了两人的校服、鞋子和书包，这些物品被整齐地叠放在一起，仿佛是有意为之。</p>
+                
+                <p>神户市警署搜查一课课长中村健二在记者会上表示："我们发现衣物摆放得异常整齐，不像是匆忙脱下的样子。现场没有打斗痕迹，也没有发现遗书之类的物品。"</p>
+                
+                <div class="highlight-box">
+                    <h3><i class="fas fa-exclamation-triangle"></i> 关键证据</h3>
+                    <p>警方在现场发现的物品包括：</p>
+                    <ul class="evidence-list">
+                        <li>两套完整的神户市立高中校服，整齐叠放</li>
+                        <li>两双运动鞋，鞋带系好并排摆放</li>
+                        <li>两个书包，内部装有课本和文具</li>
+                        <li>两部手机，均处于关机状态</li>
+                        <li>钱包，内有少量现金和学生证</li>
+                    </ul>
+                </div>
+                
+                <p>据同学反映，张和沈是关系很好的朋友，平时性格开朗，学习成绩优秀，没有发现任何异常迹象。沈的班主任小林老师表示："他们春假前在学校表现完全正常，还讨论了周末的排球比赛。"</p>
+                
+                <div class="quote">
+                    "这太不寻常了，"参与搜救的潜水员田中一郎说，"我们在附近海域进行了仔细搜索，但没有发现任何痕迹。海水并不深，如果有意外发生，我们应该能找到些什么。"
+                </div>
+                
+                <p>当地渔民表示，最近该海域没有异常天气或强流，排除了被海浪卷走的可能性。有居民反映，最近几周在附近看到过一些可疑的宗教团体活动，但警方尚未证实这与失踪事件有关。</p>
+                
+                <p>截至发稿时，搜救工作仍在进行中。警方已扩大搜索范围，并呼吁任何在昨天傍晚看到这两名学生的市民提供线索。</p>
+                
+                <!-- 添加结局按钮 -->
+                <a href="face.html" class="ending-button" id="endingButton">
+                    <i class="fas fa-skull-crossbones"></i> 查看结局2:献祭结局
+                </a>
+            </div>
+        </div>
+        
+        <div class="related-news">
+            <h3><i class="fas fa-newspaper"></i> 相关新闻</h3>
+            <div class="news-list">
+                <div class="news-item">
+                    <h4>淡路岛海域安全措施将加强</h4>
+                    <p>2025年3月28日 - 近期多起事件促使地方政府重新评估海岸线安全措施。</p>
+                </div>
+                <div class="news-item">
+                    <h4>青少年心理健康引关注</h4>
+                    <p>2025年3月25日 - 专家呼吁加强对高中生心理状态的关注和支持。</p>
+                </div>
+                <div class="news-item">
+                    <h4>海镜神社维护工程延期</h4>
+                    <p>2025年3月22日 - 原定本月重新开放的海镜神社因故推迟开放时间。</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>神户新闻 &copy; 2025 - 转载请注明出处</p>
+        </footer>
+    </div>
+
+    <!-- 自定义确认对话框 -->
+    <div class="confirmation-dialog" id="confirmationDialog">
+        <div class="dialog-content">
+            <h3><i class="fas fa-exclamation-circle"></i> 确认查看献祭结局</h3>
+            <p>您即将查看故事的献祭结局。这个结局包含一些可能令人不安的内容。</p>
+            <p>您确定要继续吗？</p>
+            <div class="dialog-buttons">
+                <button class="dialog-button cancel-btn" id="cancelButton">取消</button>
+                <button class="dialog-button confirm-btn" id="confirmButton">确认查看</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 获取元素
+        const endingButton = document.getElementById('endingButton');
+        const confirmationDialog = document.getElementById('confirmationDialog');
+        const confirmButton = document.getElementById('confirmButton');
+        const cancelButton = document.getElementById('cancelButton');
+        
+        // 结局按钮点击事件
+        endingButton.addEventListener('click', function(e) {
+            e.preventDefault(); // 阻止默认跳转行为
+            confirmationDialog.style.display = 'flex'; // 显示确认对话框
+        });
+        
+        // 确认按钮点击事件
+        confirmButton.addEventListener('click', function() {
+            // 跳转到face.html页面
+            window.location.href = 'face.html';
+        });
+        
+        // 取消按钮点击事件
+        cancelButton.addEventListener('click', function() {
+            confirmationDialog.style.display = 'none'; // 隐藏确认对话框
+        });
+        
+        // 点击对话框外部区域也可以关闭对话框
+        confirmationDialog.addEventListener('click', function(e) {
+            if (e.target === confirmationDialog) {
+                confirmationDialog.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

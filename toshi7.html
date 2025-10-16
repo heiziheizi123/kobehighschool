@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>非永遠禁忌録</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000;
+            color: #ff0000;
+            font-family: 'MS Mincho', 'SimSun', serif;
+            line-height: 1.8;
+            padding: 20px;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(120, 0, 0, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(120, 0, 0, 0.1) 0%, transparent 20%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(80, 0, 0, 0.1) 2px,
+                    rgba(80, 0, 0, 0.1) 4px
+                );
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            position: relative;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #500000;
+            position: relative;
+        }
+        
+        .header::after {
+            content: "※";
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #000;
+            padding: 0 15px;
+            color: #500000;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            letter-spacing: 5px;
+        }
+        
+        .header p {
+            color: #800000;
+            font-size: 1.1rem;
+        }
+        
+        .content-section {
+            margin-bottom: 40px;
+            padding: 25px;
+            border: 1px solid #300000;
+            background: rgba(20, 0, 0, 0.3);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .content-section:hover {
+            border-color: #700000;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+        }
+        
+        .section-title {
+            color: #ff4444;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #400000;
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.3);
+        }
+        
+        .content-text {
+            color: #ff3333;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+        
+        .content-text p {
+            margin-bottom: 20px;
+            text-indent: 1em;
+        }
+        
+        .highlight {
+            color: #ff6666;
+            font-weight: bold;
+            text-shadow: 0 0 8px rgba(255, 100, 100, 0.5);
+            position: relative;
+        }
+        
+        .kana {
+            font-family: 'MS Gothic', monospace;
+            font-size: 0.95em;
+        }
+        
+        .blood-splash {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            opacity: 0.1;
+            background-image: 
+                radial-gradient(circle at 20% 30%, #ff0000 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, #ff0000 0%, transparent 50%);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #400000;
+            color: #600000;
+            font-size: 0.9rem;
+            position: relative;
+        }
+        
+        .footer::before {
+            content: "✧";
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #000;
+            padding: 0 15px;
+            color: #400000;
+        }
+        
+        .flicker {
+            animation: flicker 3s infinite alternate;
+        }
+        
+        @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                opacity: 1;
+            }
+            20%, 24%, 55% {
+                opacity: 0.7;
+            }
+        }
+        
+        .pulse {
+            animation: pulse 4s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+            }
+            100% {
+                text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+            }
+        }
+        
+        /* 照片框样式 */
+        .photo-frame {
+            margin: 40px auto;
+            padding: 15px;
+            border: 2px solid #500000;
+            background: rgba(30, 0, 0, 0.5);
+            max-width: 400px;
+            position: relative;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .photo-frame:hover {
+            border-color: #ff3333;
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
+        }
+        
+        .photo-frame::before, .photo-frame::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #700000;
+        }
+        
+        .photo-frame::before {
+            top: -5px;
+            left: -5px;
+            border-right: none;
+            border-bottom: none;
+        }
+        
+        .photo-frame::after {
+            bottom: -5px;
+            right: -5px;
+            border-left: none;
+            border-top: none;
+        }
+        
+        .photo-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: sepia(0.3) contrast(1.1);
+            border: 1px solid #300000;
+        }
+        
+        .photo-caption {
+            text-align: center;
+            margin-top: 10px;
+            color: #800000;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content-section {
+                padding: 15px;
+            }
+            
+            .photo-frame {
+                margin: 30px auto;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="blood-splash"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1 class="flicker">非永遠禁忌録</h1>
+            <p class="pulse">万物ハ流転スレドモ、常ナルモノナシ。然ルニ愚カナル者ドモ、血肉ヲ以テ時ノ川ニ抗ワントス...</p >
+        </div>
+        
+        <div class="content-section">
+            <div class="section-title">壱、神融ノ刑</div>
+            <div class="content-text">
+                <p>古記ニ曰ク：<span class="highlight">「永劫ヲ願う者ハ、其ノ身ヲ神ニ捧ゲヨ。二ツノ魂ガ融ケ合イ、一つトナル時、終ワリノ日マデ纏わり合ワン」</span></p >
+                <p>コレヲ<span class="kana">「カミトケ」</span>ノ術ト申ス。神ノ御心ニ背キ、強ク結バレシ二人ノ魂ヲ、無理ヤリニ一つニ融ケ合ワセル禁術ナリ。</p >
+                <p>術カカレバ、二人ノ身体ハ神ノ御業ニヨリ解ケ合イ、新タナル一ツノ生命ト化ス。</p >
+                <p>然レド、コレガ罰ノ始マリナリ。転生ノ輪廻ヲ経ル度、彼等ハ必ズ<span class="kana">「合い躰の嬰児」</span>トシテ生マレ落ツ。</p >
+            </div>
+        </div>
+        
+        <!-- 照片框 -->
+        <div class="photo-frame">
+            <img src="hime2.png" alt="禁忌の姫" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="photo-caption" style="display:none;">※画像は失われし禁忌の姫を描く</div>
+            <div class="photo-caption">図一、神融ノ刑を受けた姫君の肖像</div>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-title">弐、永劫ノ結末</div>
+            <div class="content-text">
+                <p>最も恐ロシキハ、此ノ呪いが世界ノ終末マデ解ケヌコトナリ。<span class="highlight">「呪ワレシ魂ハ、星ノ砕ケ、海ノ枯レル日マデ、離ルルコト叶ワズ」</span>ト定メラレタリ。</p >
+                <p>幾千ノ転生ヲ重ネ、幾万ノ年月ヲ経ヨウトモ、彼等ハ常ニ一ツニ縛ラレタママ。<span class="kana">或イハ戦場ノ屍</span>ト化シ、<span class="kana">或イハ病床ニ伏ス者</span>トナリ、<span class="kana">或イハ災害ニ飲マレル者</span>トナル。</p >
+                <p>最後ノ審判ノ日、天地が轟音ト共ニ崩レ落チ、星辰が空ヨリ墜チル其ノ時マデ、此ノ苦シミハ終ワラナイ。</p >
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-title">参、神慮ノ諭シ</div>
+            <div class="content-text">
+                <p>此ノ禁忌ハ、<span class="highlight">「永遠トハ別レナキコトニ非ズ、移り変わりコソ真実ナリ」</span>トいう天ノ道理ヲ悟ラシムル為ノ神ノ戒メナリ。</p >
+                <p>人ガ人ヲ愛スルハ良シ。然レド、其ノ愛が執着ニ変わり、自然ノ理ヲ歪メントスル時、神ノ怒りニ触ル。</p >
+                <p>流レ行く雲ヲ掴ミ止メ、咲キ散ル花ヲ永遠ニ咲カセントスルガ如キ、其レハ人間ノ傲慢ナリ。</p >
+                <p>サレバ賢者ハカク語リキ：<span class="highlight">「移ろいユクモノコソ美シ。一期一会ノ光景ヲ、潔ク愛デヨ」</span></p >
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>『禁術秘録・第七巻』ヨリ、著者不詳、海鏡神社奥院ニ一巻ノミ伝ワル</p >
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.highlight');
+            
+            setInterval(() => {
+                elements.forEach(el => {
+                    if (Math.random() > 0.7) {
+                        el.style.opacity = Math.random() * 0.5 + 0.5;
+                    }
+                });
+            }, 1000);
+            
+            document.addEventListener('mousemove', function(e) {
+                const splash = document.querySelector('.blood-splash');
+                const x = e.clientX / window.innerWidth;
+                const y = e.clientY / window.innerHeight;
+                
+                splash.style.background = `
+                    radial-gradient(circle at ${x * 100}% ${y * 100}%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at ${(1 - x) * 100}% ${(1 - y) * 100}%, rgba(255, 0, 0, 0.05) 0%, transparent 30%)
+                `;
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>news</title>
+    
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>海镜神社维护公告 - 神户新闻</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background: #ffffff;
+            color: #333333;
+            padding: 20px 0;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #222222;
+        }
+        
+        .logo span {
+            font-size: 14px;
+            margin-left: 12px;
+            color: #666666;
+            font-weight: 400;
+        }
+        
+        .date-info {
+            text-align: right;
+        }
+        
+        .date-info p {
+            font-size: 14px;
+            color: #666666;
+        }
+        
+        /* 导航栏 */
+        .navbar {
+            margin-top: 15px;
+        }
+        
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .navbar a {
+            color: #444444;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 8px 0;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .navbar a:hover {
+            color: #000000;
+        }
+        
+        .navbar a.active {
+            color: #000000;
+            font-weight: 600;
+        }
+        
+        .navbar a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #000000;
+        }
+        
+        /* 新闻内容样式 */
+        .news-article {
+            background: #ffffff;
+            margin: 40px auto;
+            border: 1px solid #f0f0f0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+        }
+        
+        .article-header {
+            padding: 40px 40px 30px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .article-header h1 {
+            color: #222222;
+            font-size: 38px;
+            margin-bottom: 20px;
+            line-height: 1.3;
+            font-weight: 700;
+        }
+        
+        .article-meta {
+            color: #666666;
+            font-size: 16px;
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .article-content {
+            padding: 40px;
+        }
+        
+        .main-news {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #444444;
+        }
+        
+        .main-news p {
+            margin-bottom: 20px;
+        }
+        
+        .highlight-box {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 40px 0;
+            border: 1px solid #eaeaea;
+        }
+        
+        .highlight-box h3 {
+            color: #222222;
+            margin-bottom: 15px;
+            font-size: 22px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .maintenance-details {
+            margin: 40px 0;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #222222;
+        }
+        
+        .maintenance-details h3 {
+            color: #222222;
+            margin-bottom: 20px;
+            font-size: 22px;
+            font-weight: 600;
+        }
+        
+        .details-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .detail-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .detail-item i {
+            color: #444444;
+            margin-top: 2px;
+            font-size: 18px;
+        }
+        
+        .detail-item strong {
+            color: #222222;
+            min-width: 120px;
+            font-weight: 600;
+        }
+        
+        .detail-item span {
+            color: #444444;
+        }
+        
+        .related-news {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid #f0f0f0;
+        }
+        
+        .related-news h3 {
+            color: #222222;
+            margin-bottom: 25px;
+            font-size: 24px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .news-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .news-item {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 25px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .news-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+        
+        .news-item h4 {
+            color: #222222;
+            margin-bottom: 12px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .news-item p {
+            color: #666666;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        /* 底部样式 */
+        footer {
+            background: #f8f9fa;
+            color: #444444;
+            padding: 50px 0 30px;
+            margin-top: 60px;
+            border-top: 1px solid #eaeaea;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #222222;
+            font-weight: 600;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #666666;
+            text-decoration: none;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        .footer-section a:hover {
+            color: #222222;
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            padding-top: 25px;
+            border-top: 1px solid #eaeaea;
+            font-size: 14px;
+            color: #888888;
+            text-align: center;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .date-info {
+                text-align: center;
+            }
+            
+            .navbar ul {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            
+            .article-header h1 {
+                font-size: 28px;
+            }
+            
+            .article-header, .article-content {
+                padding: 30px 20px;
+            }
+            
+            .main-news {
+                font-size: 16px;
+            }
+            
+            .detail-item {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .detail-item strong {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <h1>神户新闻</h1>
+                    <span>Kobe News</span>
+                </div>
+                <div class="date-info">
+                    <p>2025年3月27日 星期四</p>
+                    <p>农历二月廿八</p>
+                </div>
+            </div>
+            
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">社会新闻</a></li>
+                    <li><a href="#">政治</a></li>
+                    <li><a href="#">经济</a></li>
+                    <li><a href="#">文化</a></li>
+                    <li><a href="#">生活</a></li>
+                    <li><a href="#">体育</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 新闻内容 -->
+    <section class="container">
+        <div class="news-article">
+            <div class="article-header">
+                <h1>海镜神社将于2025年3月26日起进行维护，下次开放时间暂定</h1>
+                <div class="article-meta">
+                    <span><i class="fas fa-user-edit"></i> 记者：山田原上</span>
+                    <span><i class="fas fa-clock"></i> 发布时间：2025年3月25日 10:30</span>
+                    <span><i class="fas fa-tags"></i> 分类：社会新闻</span>
+                </div>
+            </div>
+            
+            <div class="article-content">
+                <div class="main-news">
+                    <p>位于淡路岛的海镜神社近日发布公告，宣布将于<strong>2025年3月26日（周三）</strong>起进行全面维护工程。此次维护旨在对神社建筑进行必要的修缮和保护，确保这一重要文化遗产的长期保存。</p>
+                    
+                    <p>海镜神社作为淡路岛地区重要的宗教文化遗产，每年吸引大量游客和信徒前来参拜。神社方面表示，维护期间将暂停对外开放，具体重新开放时间将另行通知。</p>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3><i class="fas fa-exclamation-circle"></i> 重要通知</h3>
+                    <p>海镜神社自<strong>2025年3月26日（周三）</strong>起暂停对外开放，进行设施维护工程。原定于春季举行的各类祭祀活动将延期举行，具体日期待定。请各位游客和信徒合理安排行程，给您带来的不便敬请谅解。</p>
+                </div>
+                
+                <div class="maintenance-details">
+                    <h3><i class="fas fa-info-circle"></i> 维护详情</h3>
+                    <div class="details-list">
+                        <div class="detail-item">
+                            <i class="fas fa-calendar-times"></i>
+                            <strong>维护开始时间：</strong>
+                            <span>2025年3月26日（周三）</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-calendar-check"></i>
+                            <strong>预计开放时间：</strong>
+                            <span>暂未确定，将另行通知</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-phone"></i>
+                            <strong>咨询联系方式：</strong>
+                            <span>海镜神社事务所 078-xxx-xxxx</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <strong>影响范围：</strong>
+                            <span>神社主体建筑及周边参拜区域</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="main-news">
+                    <p>神社负责人表示："此次维护工程是确保海镜神社这一重要文化遗产能够完好保存给后代的重要措施。我们理解这可能会给计划前来参拜的游客带来不便，但为了神社的长远考虑，这是必要的措施。"</p>
+                    
+                    <p>维护期间，神社周边区域也将进行部分交通管制。当地旅游局建议游客在计划前往淡路岛旅行时，提前了解相关情况，合理安排行程。</p>
+                    
+                    <p>有关海镜神社重新开放的最新信息，请关注神户新闻后续报道或直接联系淡路岛观光协会。</p>
+                </div>
+                
+                <div class="related-news">
+                    <h3><i class="fas fa-newspaper"></i> 相关新闻</h3>
+                    <div class="news-list">
+                        <div class="news-item">
+                            <h4>淡路岛春季旅游指南发布</h4>
+                            <p>2025年3月20日 - 淡路岛观光协会发布了最新春季旅游指南，包含景点推荐和交通信息。</p>
+                        </div>
+                        <div class="news-item">
+                            <h4>明石海峡大桥维护工程顺利完成</h4>
+                            <p>2025年3月15日 - 连接本州与淡路岛的明石海峡大桥已完成年度维护，恢复正常通行。</p>
+                        </div>
+                        <div class="news-item">
+                            <h4>民俗学部研究团队考察淡路岛文化</h4>
+                            <p>2025年3月10日 - 由沈心洁、张辰带领的民俗学部研究团队近日在淡路岛进行文化考察。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>关于我们</h3>
+                    <p>神户新闻是日本兵库县神户市的主要地方报纸，创刊于1945年。</p>
+                </div>
+                <div class="footer-section">
+                    <h3>联系方式</h3>
+                    <p>电话: 078-xxx-xxxx</p>
+                    <p>邮箱: info@kobenews.jp</p>
+                </div>
+                <div class="footer-section">
+                    <h3>快速链接</h3>
+                    <p><a href="#">首页</a></p>
+                    <p><a href="#">社会新闻</a></p>
+                    <p><a href="#">文化专栏</a></p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 神户新闻社 版权所有</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+    
+  </body>
+  
+</html>

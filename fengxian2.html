@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>沈心潔调查报告 - 平井進次郎研究室</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'MS Mincho', 'SimSun', serif;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            color: #cc3333;
+            line-height: 1.7;
+            padding: 20px;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(80, 0, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(80, 0, 0, 0.1) 0%, transparent 50%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #330000;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            color: #ff4444;
+            text-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+            letter-spacing: 3px;
+        }
+        
+        .header h2 {
+            font-size: 1.4rem;
+            color: #ff6666;
+            margin-bottom: 15px;
+            font-weight: normal;
+        }
+        
+        .breadcrumb {
+            color: #996666;
+            font-size: 1rem;
+            margin-top: 15px;
+        }
+        
+        .breadcrumb a {
+            color: #cc7777;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .image-section {
+            background: rgba(20, 0, 0, 0.5);
+            padding: 25px;
+            border: 1px solid #330000;
+            border-radius: 8px;
+            text-align: center;
+            height: fit-content;
+        }
+        
+        .profile-image {
+            width: 100%;
+            max-width: 400px;
+            height: 500px;
+            border: 3px solid #660000;
+            margin: 0 auto 20px;
+            background: linear-gradient(45deg, #330000, #660000);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff6666;
+            font-size: 1.5rem;
+            overflow: hidden;
+        }
+        
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .image-caption {
+            color: #cc7777;
+            font-size: 0.95rem;
+            font-style: italic;
+            margin-top: 10px;
+        }
+        
+        .research-content {
+            background: rgba(25, 0, 0, 0.5);
+            padding: 30px;
+            border: 1px solid #330000;
+            border-radius: 8px;
+        }
+        
+        .section-title {
+            color: #ff5555;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #330000;
+        }
+        
+        .research-text {
+            color: #cc6666;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        
+        .personal-info {
+            background: rgba(30, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        
+        .info-item {
+            margin-bottom: 10px;
+            display: flex;
+        }
+        
+        .info-label {
+            color: #ff7777;
+            width: 120px;
+            flex-shrink: 0;
+        }
+        
+        .info-value {
+            color: #cc8888;
+        }
+        
+        .timeline {
+            margin: 30px 0;
+        }
+        
+        .timeline-item {
+            margin-bottom: 25px;
+            padding-left: 20px;
+            border-left: 2px solid #660000;
+            position: relative;
+        }
+        
+        .timeline-date {
+            color: #ff7777;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-content {
+            color: #cc8888;
+        }
+        
+        .analysis-section {
+            background: rgba(40, 0, 0, 0.3);
+            padding: 25px;
+            border-radius: 6px;
+            margin: 30px 0;
+            border-left: 4px solid #990000;
+        }
+        
+        .analysis-title {
+            color: #ff6666;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+        
+        .nav-button {
+            background: rgba(60, 0, 0, 0.7);
+            color: #ff7777;
+            border: 2px solid #990000;
+            border-radius: 5px;
+            padding: 12px 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .nav-button:hover {
+            background: rgba(80, 0, 0, 0.8);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #330000;
+            color: #664444;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 968px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        .classification {
+            background: rgba(40, 0, 0, 0.7);
+            padding: 10px;
+            text-align: center;
+            border-radius: 4px;
+            margin: 20px 0;
+            color: #ff9999;
+            font-size: 0.9rem;
+            border: 1px solid rgba(150, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>沈心潔调查报告</h1>
+            <h2>対象者の背景調査と儀式前の状態分析</h2>
+            <div class="breadcrumb">
+                <a href=" ">平井進次郎研究室</a > &gt; 沈心潔调查报告
+            </div>
+        </div>
+        
+        <div class="classification">
+            保密级别：Lv.4 - 仅限相关研究人员访问 | 最终更新: 2024年3月28日
+        </div>
+        
+        <div class="content-wrapper">
+            <div class="image-section">
+                <div class="profile-image">
+                    <img src="futari.jpg" alt="沈心潔与张辰 - 研究资料照片" onerror="this.style.display='none'; this.parentNode.innerHTML='<div>图片加载失败<br>futari.jpg</div>';">
+                </div>
+                <div class="image-caption">
+                    图1: 沈心潔与张辰 - 最后一次被目击时的照片（摄于海镜神社参拜期间）
+                </div>
+                
+                <div class="personal-info">
+                    <div class="section-title">基本情報</div>
+                    <div class="info-item">
+                        <div class="info-label">姓名:</div>
+                        <div class="info-value">沈心潔 (Shěn Xīnjié)</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">国籍:</div>
+                        <div class="info-value">中国</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">年龄:</div>
+                        <div class="info-value">22岁（失踪时）</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">身份:</div>
+                        <div class="info-value">留学生</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">班级:</div>
+                        <div class="info-value">1B</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">研究兴趣:</div>
+                        <div class="info-value">日本民间信仰、祭祀仪式</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="research-content">
+                <div class="section-title">調査概要</div>
+                <div class="research-text">
+                    <p>本报告旨在详细记录研究对象沈心潔的个人背景、心理特征以及在参与海镜神社相关事件前的状态分析。通过对她的学术研究、个人日记以及与相关人员访谈的综合分析，试图理解她最终卷入"影饗"仪式的深层原因。</p >
+                </div>
+                
+                <div class="section-title">背景分析</div>
+                <div class="research-text">
+                    <p>沈心潔出生于中国江苏省无锡市，自幼对超自然现象和民间传说表现出浓厚兴趣。在高中期间前往日本留学，于2024年4月以留学生身份来到日本。</p >
+                    
+                    <p>根据其导师的描述，沈心潔是一位"极具天赋但过于执着"的研究者。她对海镜神社的研究始于一篇关于地方神社变迁的学期论文，但随着研究的深入，她逐渐被该神社独特的"影饗"传说所吸引。</p >
+                </div>
+                
+                <div class="timeline">
+                    <div class="section-title">时间线</div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023年4月</div>
+                        <div class="timeline-content">作为交换生抵达日本，开始在海镜神社进行田野调查</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023年6月</div>
+                        <div class="timeline-content">首次在研究中提到"影饗"概念，记录在个人研究笔记中</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023年8月</div>
+                        <div class="timeline-content">与张辰确立恋爱关系，两人开始共同研究海镜神社</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023年10月</div>
+                        <div class="timeline-content">在研究笔记中首次出现"永远在一起"的表述</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2024年2月</div>
+                        <div class="timeline-content">最后一次被目击于海镜神社，与张辰一同</div>
+                    </div>
+                </div>
+                
+                <div class="analysis-section">
+                    <div class="analysis-title">心理状态分析</div>
+                    <div class="research-text">
+                        <p>根据沈心潔的个人日记和研究笔记分析，她在事件发生前处于一种特殊的精神状态：</p >
+                        <ul style="color: #cc8888; margin-left: 20px; margin-top: 10px;">
+                            <li>对"永恒"概念表现出异常的执着</li>
+                            <li>将现实中的爱情关系与神话传说进行类比</li>
+                            <li>逐渐混淆学术研究与个人信仰的界限</li>
+                            <li>出现将神话仪式现实化的倾向</li>
+                        </ul>
+                        <p style="margin-top: 15px;">这种精神状态可能使她更容易接受并主动参与异常的宗教仪式，最终导致了悲剧性的结局。</p >
+                    </div>
+                </div>
+                
+                <div class="analysis-section">
+                    <div class="analysis-title">与张辰的关系分析</div>
+                    <div class="research-text">
+                        <p>沈心潔与张辰的关系具有明显的相互依存特征。两人不仅在生活中是情侣，在学术研究上也是紧密的合作伙伴。这种双重关系的强度可能加剧了他们对"永恒在一起"这一概念的执着。</p >
+                        
+                        <p>在沈心潔的日记中，多次出现将他们的关系与神话中"桥姬与舟守"进行类比的记录，这表明她已经开始将现实关系神话化，为后续的事件埋下了伏笔。</p >
+                    </div>
+                </div>
+                
+                <div class="section-title">结论</div>
+                <div class="research-text">
+                    <p>沈心潔的案例展示了一个典型的研究者被研究对象同化的过程。她对海镜神社和影饗传说的深入研究，结合个人情感需求，最终导致了她对超自然现象的过度认同和现实化尝试。</p >
+                    
+                    <p>这一案例提醒我们，在涉及超自然传说的学术研究中，保持理性的距离和批判性思维至关重要。研究者的人格特质、情感状态和个人信仰都可能影响其对研究对象的理解和互动方式。</p >
+                </div>
+            </div>
+        </div>
+        
+        <div class="nav-buttons">
+            <a href="hinohomepage.html" class="nav-button">返回研究室主页</a >
+            <a href="fengxian1.html" class="nav-button">查看影饗调查报告</a >
+        </div>
+        
+        <div class="footer">
+            <p>平井進次郎研究室 - 内部研究资料</p >
+            <p>© 2024 平井進次郎研究室 All rights reserved.</p >
+        </div>
+    </div>
+</body>

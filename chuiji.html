@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>垂迹曼荼罗 - 生命尊严启示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Noto Serif SC", "Source Han Serif SC", "Source Han Serif", serif;
+        }
+        
+        body {
+            background-color: #f8f4e9; /* 米黄色背景 */
+            color: #5a4c3a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background-image: radial-gradient(#e8dfca 1px, transparent 1px);
+            background-size: 20px 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            padding: 2rem;
+            background-color: rgba(255, 250, 240, 0.85);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(139, 107, 71, 0.1);
+            border: 1px solid #e8dfca;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #d4b78c, #a78a6d, #d4b78c);
+        }
+        
+        .mandala {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 2rem;
+            background: 
+                radial-gradient(circle at center, transparent 40%, #e8dfca 41%, #e8dfca 45%, transparent 46%),
+                repeating-conic-gradient(from 0deg, #d4b78c 0deg 10deg, transparent 10deg 20deg);
+            border-radius: 50%;
+            position: relative;
+            animation: rotate 60s linear infinite;
+        }
+        
+        .mandala::before, .mandala::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 1px solid #a78a6d;
+        }
+        
+        .mandala::before {
+            width: 120px;
+            height: 120px;
+        }
+        
+        .mandala::after {
+            width: 60px;
+            height: 60px;
+            background-color: #f8f4e9;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: #7d6b52;
+            font-weight: 500;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4b78c, transparent);
+        }
+        
+        .quote {
+            font-size: 1.2rem;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background-color: rgba(232, 223, 202, 0.3);
+            border-left: 3px solid #d4b78c;
+            border-radius: 0 8px 8px 0;
+            text-align: left;
+            position: relative;
+        }
+        
+        .quote::before {
+            content: "「";
+            font-size: 3rem;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            color: #d4b78c;
+            opacity: 0.5;
+        }
+        
+        .divination {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 4px 12px rgba(139, 107, 71, 0.08);
+            border: 1px dashed #d4b78c;
+        }
+        
+        .divination h2 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #7d6b52;
+            font-weight: 500;
+        }
+        
+        .reminders {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin: 2rem 0;
+        }
+        
+        .reminder-item {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 1.2rem;
+            border-radius: 8px;
+            text-align: left;
+            border-left: 3px solid #d4b78c;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .reminder-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(139, 107, 71, 0.1);
+        }
+        
+        .reminder-item h3 {
+            color: #7d6b52;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        .button-container {
+            margin-top: 2.5rem;
+        }
+        
+        .ending-button {
+            background: linear-gradient(to bottom, #d4b78c, #a78a6d);
+            color: #fff;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(167, 138, 109, 0.3);
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ending-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(167, 138, 109, 0.4);
+        }
+        
+        .ending-button:active {
+            transform: translateY(1px);
+        }
+        
+        .ending-button::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+        
+        .ending-button:focus:not(:active)::after {
+            animation: ripple 1s ease-out;
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(20, 20);
+                opacity: 0;
+            }
+        }
+        
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #a78a6d;
+            opacity: 0.7;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .quote {
+                font-size: 1.1rem;
+                padding: 1.2rem;
+            }
+            
+            .mandala {
+                width: 140px;
+                height: 140px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="mandala"></div>
+        
+        <h1>垂迹曼荼罗</h1>
+        
+        <div class="quote">
+            警戒的意义不在于惩罚，而在提示我们生命本有的尊严。当你打开此书，即位仪式已然成功——不是获得新的权能，而是忆起本自具足的庄严。
+        </div>
+        
+        <div class="divination">
+            <h2>卦象启示</h2>
+            <p>失去并不是你的错，而是生命在帮你轻轻拍去遮住眼睛的落叶。就像一棵树在秋天放手让叶子飘落，那不是树的失败，而是为了在冬天更好地积蓄力量。</p >
+        </div>
+        
+        <div class="reminders">
+            <div class="reminder-item">
+                <h3>关于「失去」</h3>
+                <p>你失去的关系/机会/物品，其实是为更契合你的人事物让路。就像整理房间时总要先清出空间，宇宙在帮你腾出位置。</p >
+            </div>
+            
+            <div class="reminder-item">
+                <h3>关于「警戒」</h3>
+                <p>那些让你警醒的讯号（身体的、情绪的、生活的），不是惩罚，而是你生命自带的保护系统在正常工作——就像火警铃声，它的意义不在于吵到你，而在于带你离开危险。</p >
+            </div>
+            
+            <div class="reminder-item">
+                <h3>关于「尊严」</h3>
+                <p>此刻请感受你的心跳——那从未需要你指挥却始终忠诚跳动的节奏，就是你最根本的尊严。无论经历什么，这个内在的韵律从未停止过它的庄严。</p >
+            </div>
+        </div>
+        
+        <div class="button-container">
+            <button class="ending-button" onclick="viewEnding()">查看结局 2</button>
+        </div>
+        
+        <div class="footer">
+            这份启示的有效期，直到你真正相信自己本自具足的那天
+        </div>
+    </div>
+
+    <script>
+        function viewEnding() {
+            // 在实际应用中，这里应该跳转到 endingzz.html
+            // 由于这是演示，我们使用模拟跳转
+            window.location.href ="endingzz.html";
+            
+            // 如果文件不存在，显示提示信息
+            setTimeout(function() {
+                if (window.location.href.indexOf("endingzz.html") > -1) {
+                    alert("跳转失败：endingzz.html 文件未找到。\n\n在实际应用中，此按钮将跳转到结局页面。");
+                    // 返回原页面
+                    window.history.back();
+                }
+            }, 500);
+        }
+        
+        // 添加页面加载动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.container > *');
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, 200 * index);
+            });
+        });
+    </script>
+</body>
+</html>

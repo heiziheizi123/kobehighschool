@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>结局 - 海镜神社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'MS Mincho', 'Yu Mincho', 'SimSun', serif;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            color: #cc3333;
+            line-height: 1.7;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(80, 0, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(80, 0, 0, 0.1) 0%, transparent 50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .page {
+            max-width: 900px;
+            background: rgba(20, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 10px;
+            border: 1px solid #330000;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.2);
+            margin-bottom: 30px;
+            display: none;
+        }
+        
+        .active {
+            display: block;
+        }
+        
+        .header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            color: #ff4444;
+            text-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #ff6666;
+            font-size: 1.2rem;
+        }
+        
+        .ending-content {
+            margin: 30px 0;
+            padding: 25px;
+            background: rgba(30, 0, 0, 0.5);
+            border-radius: 8px;
+            border: 1px solid #440000;
+        }
+        
+        .ending-content h2 {
+            color: #ff5555;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.8rem;
+            border-bottom: 1px solid #550000;
+            padding-bottom: 10px;
+        }
+        
+        .ending-content h3 {
+            color: #ff6666;
+            margin: 25px 0 15px;
+            font-size: 1.4rem;
+        }
+        
+        .ending-content p {
+            color: #cc6666;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .quote {
+            background: rgba(40, 0, 0, 0.6);
+            padding: 20px;
+            border-left: 4px solid #990000;
+            margin: 20px 0;
+            font-style: italic;
+            color: #dd7777;
+        }
+        
+        .scene-break {
+            text-align: center;
+            margin: 30px 0;
+            color: #996666;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+        }
+        
+        /* 神户新闻样式 */
+        .kobe-news {
+            background: white;
+            color: #333;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+        }
+        
+        .news-header {
+            text-align: center;
+            border-bottom: 2px solid #cc0000;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .news-title {
+            font-size: 1.8rem;
+            color: #cc0000;
+            margin-bottom: 10px;
+        }
+        
+        .news-date {
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        .news-content h3 {
+            color: #333;
+            margin: 20px 0 15px;
+            font-size: 1.3rem;
+        }
+        
+        .news-content p {
+            color: #444;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .news-footer {
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* 按钮样式 */
+        .button-container {
+            margin: 40px 0 20px;
+            text-align: center;
+        }
+        
+        .nav-button {
+            background: rgba(60, 0, 0, 0.7);
+            color: #ff7777;
+            border: 2px solid #990000;
+            border-radius: 5px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            margin: 0 10px;
+        }
+        
+        .nav-button:hover {
+            background: rgba(80, 0, 0, 0.8);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        .nav-button::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .nav-button:hover::after {
+            left: 100%;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            color: #664444;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- 结局页面 -->
+    <div class="page active" id="endingPage">
+        <div class="header">
+            <h1>海镜神社</h1>
+            <p>结局 - 影饗的真相</p>
+        </div>
+        
+        <div class="ending-content">
+            <h2>隐藏结局：永恒的缠绕</h2>
+            
+            <div class="scene-break">● 月睡之夜 ●</div>
+            
+            <p>在月睡之夜的最后时刻，平井进次郎站在镜之渊前，面对着被影饗吞噬的沈心洁与张辰的倒影。海面如墨，只有神社的灯笼在远处投下摇曳的血色光芒。</p>
+            
+            <p>"我明白了..."平井低声自语，手中的古卷轴在夜风中微微颤抖，"真正的仪式并非融合，而是分离——将影饗从海镜明神中彻底剥离。"</p>
+            
+            <div class="quote">
+                "以身饲水者，非为融合，而为净化。唯以纯净之魂为祭，方可斩断影之宴席。"
+                <br>—— 海镜古卷·终章
+            </div>
+            
+            <p>随着黎明第一缕光线的到来，平井做出了最终选择。他踏入冰冷的镜之渊，诵念着古老的净化咒文。海水如活物般缠绕着他的身体，抽取着他的生命力。</p>
+            
+            <div class="scene-break">● 神户新闻 ●</div>
+            
+            <div class="kobe-news">
+                <div class="news-header">
+                    <div class="news-title">神户新闻</div>
+                    <div class="news-date">20XX年4月15日 朝刊</div>
+                </div>
+                
+                <div class="news-content">
+                    <h3>淡路島で遺体発見 行方不明の中国人留学生2人</h3>
+                    
+                    <p>14日午前、淡路島北部の海岸で地元漁師により、男女2遺体が発見された。遺体は行方不明となっていた中国人留学生、沈心潔さん（22）と張辰さん（23）と確認された。</p>
+                    
+                    <p>警察の発表によると、遺体は強い腐敗が進んでおり、長期間海に漂流していたとみられる。死因は溺死と判断されたが、遺体には不可解な点が多数確認されている。</p>
+                    
+                    <h3>不可解な遺体の状態</h3>
+                    
+                    <p>関係者によると、2遺体は極めて不自然な状態で絡み合っており、単なる海流によるものではないという。専門家は「このような状態は前例がない」と困惑を隠せない。</p>
+                    
+                    <p>現場近くには「海鏡神社」と呼ばれる古い神社があり、地元では古くから不思議な伝説が語り継がれている。警察は事故の可能性が高いとしているが、一部では神社にまつわる因習との関連を疑う声もある。</p>
+                    
+                    <h3>平井教授も行方不明に</h3>
+                    
+                    <p>また、民俗学の権威である平井進次郎教授（45）が同日から行方不明となっている。平井教授は海鏡神社の研究を長年続けており、関係者は「単なる偶然ではないかもしれない」と懸念を表明している。</p>
+                </div>
+                
+                <div class="news-footer">
+                    続きは2面で
+                </div>
+            </div>
+            
+            <div class="scene-break">● 真実 ●</div>
+            
+            <p>影饗被永远封印，而平井的灵魂则化为了守护镜海的新桥姬舟守。しかし、沈心潔と張辰の肉体は既に神力の歪みで滅び、最も悲惨な形で波に打ち上げられた。</p>
+            
+            <p>彼らの遺体は極めて不自然に絡み合い、骨格レベルで説明のつかない強制的な連結が生じ、一部の肢体は既に分離不可能となっていた。</p>
+            
+            <p>これは神力の"成就"であり、軽率に"永遠"を誓ったことへの究極の罰であった。"永遠に一緒に"という誓いは、最も文字通りの、物理的な方法で実現された。</p>
+        </div>
+        
+        <div class="button-container">
+            <button class="nav-button" onclick="showPage('authorPage')">作者的话</button>
+        </div>
+        
+        <div class="footer">
+            <p>海镜神社档案 - 内部资料</p>
+        </div>
+    </div>
+    
+    <!-- 作者的话页面 -->
+    <div class="page" id="authorPage">
+        <div class="header">
+            <h1>作者的话</h1>
+        </div>
+        
+        <div class="ending-content">
+            <h2>创作背后的思考</h2>
+            
+            <p>《海镜神社》的故事源于我对日本民俗传说中"人造神"概念的思考。当人类试图创造神明来满足自身需求时，这种行为的后果往往是不可预测的。</p>
+            
+            <div class="quote">
+                感谢游玩！
+            </div>
+            
+            <h3>影饗的本质</h3>
+            
+            <p>影饗并非传统意义上的恶灵，而是人类欲望与恐惧的具象化。它反映了当我们轻率地许下"永远"的誓言时，可能面临的终极代价。</p>
+            
+            <p>沈心洁与张辰的结局既是对浪漫化"永恒"概念的解构，也是对超自然力量本质的探索——它不会以我们期望的方式实现愿望，而是以最字面、最物理的形式。</p>
+            
+            <h3>平井进次郎的选择</h3>
+            
+            <p>平井进次郎的选择则体现了牺牲与责任的主题。作为研究者，他最终不得不面对自己研究的后果，并以自己的灵魂为代价来纠正错误。</p>
+            
+            <p>この物語は知識の境界と代償を探求しようとしている——時には、多くを知ることが必ずしも良いとは限らず、真実を追い求めること自体が呪いとなる可能性がある。</p>
+            
+            <h3>感谢游玩！</h3>
+            
+            <p>觉得好玩可以关注作者小红书账号26769118449</p>
+            
+            <p>作者会带来更多续作和有趣的作品，本作品支持一切二创及repo！</p>
+        </div>
+        
+        <div class="button-container">
+            <button class="nav-button" onclick="showPage('endingPage')">返回结局</button>
+        </div>
+        
+        <div class="footer">
+            <p>感谢您体验《神户神隐》</p>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            // 隐藏所有页面
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // 显示目标页面
+            document.getElementById(pageId).classList.add('active');
+            
+            // 滚动到顶部
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>

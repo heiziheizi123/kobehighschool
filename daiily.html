@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>沈心洁日记</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', '微软雅黑', serif;
+        }
+        
+        body {
+            background-color: #fefefe;
+            color: #333333;
+            line-height: 1.7;
+            padding: 20px;
+            background-image: linear-gradient(to bottom, #fefefe, #fafafa);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            border-radius: 5px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .header h1 {
+            color: #8B7355;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+        }
+        
+        .header p {
+            color: #999;
+            font-size: 1rem;
+        }
+        
+        .diary-entry {
+            margin-bottom: 50px;
+            padding: 25px;
+            background-color: #fffaf0;
+            border-radius: 3px;
+            position: relative;
+        }
+        
+        .diary-date {
+            color: #8B7355;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+            border-left: 3px solid #8B7355;
+            padding-left: 10px;
+        }
+        
+        .diary-content {
+            color: #555;
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+        
+        .diary-content p {
+            margin-bottom: 15px;
+            text-indent: 2em;
+        }
+        
+        .highlight {
+            font-weight: bold;
+            background-color: #fff8dc;
+            padding: 0 2px;
+        }
+        
+        .cut-off {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #ddd;
+            color: #888;
+            font-style: italic;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #f0f0f0;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .diary-entry {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>沈心洁日记</h1>
+            <p>一个留学生的日常记录</p >
+        </div>
+        
+        <div class="diary-entry">
+            <div class="diary-date">3月14日 星期三</div>
+            <div class="diary-content">
+                <p>退休老教师平井老师今天为我们做了特别讲习，之前只在个人项目里听说过的人居然能在现实见到！图片上那座隐藏在树林深处的小神社有种说不出的神秘感。老师说这里供奉的是"映照真相之神"，真是浪漫的说法。</p >
+                <p>老师下课单独和我聊了下有关民俗的内容，他说读了我写的<span class="highlight">研究课题</span>很开心，夸我日语很好，他说我的观察力很敏锐，适合加入民俗学部。期待我能写出有关国内的有趣民俗，能被老师认可真的很开心，但心里总有一丝隐隐的不安...</p >
+            </div>
+        </div>
+        
+        <div class="diary-entry">
+            <div class="diary-date">3月15日 星期四 阴</div>
+            <div class="diary-content">
+                <p>昨晚睡得不好，做了奇怪的梦。在海边，水面倒映出的不是我的脸，而是...</p >
+                <p>今天放学后，平井老师单独找了我。他说发现了一些关于神社的重要资料，想让我今晚去民俗学部的资料室帮忙整理。虽然有点突然，但这是难得的学习机会。</p >
+                <p>晚上七点，资料室里只有我们两个人。老师给我看了一本古老的笔记，上面记载着神社的某种仪式。字迹很模糊，但我能辨认出"奉献"和"映照"这样的字眼。</p >
+            </div>
+        </div>
+        
+        <div class="diary-entry">
+            <div class="diary-date">3月22日 星期三 阴</div>
+            <div class="diary-content">
+                <p>妈妈又因为期中成绩的事情唠叨个不停。明明我已经很努力了，数学考砸一次怎么了？她根本不懂现在的课程有多难。</p >
+                <p>和张辰通了电话，他说周末打算去淡路岛拍照散心。听起来是个好主意，我也需要离开家冷静几天。虽然知道这样任性不太好，但我真的需要空间。</p >
+                <p>查了路线，去淡路岛会经过那个海镜神社。想起之前民俗学部调查时看到的那些古老符号，突然有点好奇。也许这次能静下心来好好看看。</p >
+            </div>
+        </div>
+        
+        <div class="diary-entry">
+            <div class="diary-date">3月25日 星期六 晴</div>
+            <div class="diary-content">
+                <p>一大早和张辰在车站会合了。他带了相机，说要拍下淡路岛的夕阳。坐在电车上，看着窗外掠过的风景，心情终于轻松了些。</p >
+                <p>没想到在海镜神社遇到了平井老师。他说是来做民俗调研的，真巧。老师说自己要先去神社后面的旧庙看看，说那里有些有些意思的...</p >
+                <div class="cut-off">日记在此处戛然而止</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>—— 日记结束 ——</p >
+        </div>
+    </div>
+</body>
+</html>

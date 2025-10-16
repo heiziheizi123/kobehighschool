@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>face2</title>
+    
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xuanxuan890 - Facebook</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            color: #1c1e21;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            padding-top: 20px;
+        }
+        
+        /* 左侧边栏 */
+        .left-sidebar {
+            width: 360px;
+            padding: 0 16px;
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+        
+        .profile-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+        
+        .cover-photo {
+            height: 120px;
+            background: linear-gradient(135deg, #4267B2 0%, #3b5998 100%);
+        }
+        
+        .profile-info {
+            padding: 16px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid white;
+            margin: -60px auto 10px;
+            background: #e9ebee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: #75777b;
+        }
+        
+        .profile-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .profile-bio {
+            color: #65676b;
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .shortcuts {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            padding: 16px;
+        }
+        
+        .shortcut-item {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+        
+        .shortcut-item:hover {
+            background: #f0f2f5;
+        }
+        
+        .shortcut-item i {
+            width: 36px;
+            height: 36px;
+            background: #e4e6eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            color: #1c1e21;
+        }
+        
+        /* 主内容区 */
+        .main-content {
+            flex: 1;
+            padding: 0 16px;
+        }
+        
+        .create-post {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .post-input {
+            display: flex;
+            align-items: center;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e4e6eb;
+        }
+        
+        .post-input .profile-pic {
+            width: 40px;
+            height: 40px;
+            margin: 0;
+            margin-right: 10px;
+            border: none;
+        }
+        
+        .post-input input {
+            flex: 1;
+            background: #f0f2f5;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 16px;
+            font-size: 15px;
+            color: #65676b;
+        }
+        
+        .post-actions {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 12px;
+        }
+        
+        .post-action {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            flex: 1;
+            justify-content: center;
+        }
+        
+        .post-action:hover {
+            background: #f0f2f5;
+        }
+        
+        .post-action i {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        
+        .live i { color: #f02849; }
+        .photo i { color: #45bd62; }
+        .feeling i { color: #f7b928; }
+        
+        /* 帖子 */
+        .post {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+        
+        .post-header {
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .post-header .profile-pic {
+            width: 40px;
+            height: 40px;
+            margin: 0;
+            margin-right: 10px;
+            border: none;
+        }
+        
+        .post-user {
+            flex: 1;
+        }
+        
+        .post-user-name {
+            font-weight: 600;
+            font-size: 15px;
+        }
+        
+        .post-time {
+            color: #65676b;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .post-time i {
+            margin-left: 4px;
+            font-size: 12px;
+        }
+        
+        .post-content {
+            padding: 0 16px 12px;
+        }
+        
+        .post-text {
+            margin-bottom: 10px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        .post-stats {
+            padding: 10px 16px;
+            border-top: 1px solid #e4e6eb;
+            border-bottom: 1px solid #e4e6eb;
+            display: flex;
+            justify-content: space-between;
+            color: #65676b;
+            font-size: 14px;
+        }
+        
+        .post-engagement {
+            display: flex;
+            padding: 4px 16px;
+        }
+        
+        .engagement-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 0;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #65676b;
+            font-size: 14px;
+        }
+        
+        .engagement-btn:hover {
+            background: #f0f2f5;
+        }
+        
+        .engagement-btn i {
+            margin-right: 6px;
+            font-size: 16px;
+        }
+        
+        /* 右侧边栏 */
+        .right-sidebar {
+            width: 360px;
+            padding: 0 16px;
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+        
+        .sponsored, .contacts {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .section-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #65676b;
+        }
+        
+        .contact {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+        
+        .contact:hover {
+            background: #f0f2f5;
+        }
+        
+        .contact-pic {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #e4e6eb;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #75777b;
+        }
+        
+        /* 顶部导航 */
+        .top-nav {
+            background: white;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            padding: 0 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            height: 56px;
+        }
+        
+        .logo {
+            color: #4267B2;
+            font-size: 28px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .search-bar {
+            flex: 1;
+            max-width: 240px;
+            margin-right: 10px;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            background: #f0f2f5;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 12px;
+            font-size: 15px;
+        }
+        
+        .nav-icons {
+            display: flex;
+            flex: 1;
+            justify-content: flex-end;
+        }
+        
+        .nav-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e4e6eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 8px;
+            cursor: pointer;
+        }
+        
+        .nav-icon:hover {
+            background: #d8dadf;
+        }
+        
+        .user-nav {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+            padding: 4px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        
+        .user-nav:hover {
+            background: #f0f2f5;
+        }
+        
+        .user-nav-pic {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #e4e6eb;
+            margin-right: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #75777b;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 900px) {
+            .left-sidebar, .right-sidebar {
+                display: none;
+            }
+            
+            .container {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <div class="top-nav">
+        <div class="nav-container">
+            <div class="logo">facebook</div>
+            <div class="search-bar">
+                <input type="text" placeholder="搜索 Facebook">
+            </div>
+            <div class="nav-icons">
+                <div class="nav-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="nav-icon">
+                    <i class="fas fa-tv"></i>
+                </div>
+                <div class="nav-icon">
+                    <i class="fas fa-store"></i>
+                </div>
+                <div class="nav-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="nav-icon">
+                    <i class="fas fa-bell"></i>
+                </div>
+            </div>
+            <div class="user-nav">
+                <div class="user-nav-pic">
+                    <i class="fas fa-user"></i>
+                </div>
+                <span>xuanxuan890</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- 左侧边栏 -->
+        <div class="left-sidebar">
+            <div class="profile-card">
+                <div class="cover-photo"></div>
+                <div class="profile-info">
+                    <div class="profile-pic">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="profile-name">xuanxuan890</div>
+                    <div class="profile-bio">在神户的留学生</div>
+                </div>
+            </div>
+            
+            <div class="shortcuts">
+                <div class="shortcut-item">
+                    <i class="fas fa-user-friends"></i>
+                    <span>朋友</span>
+                </div>
+                <div class="shortcut-item">
+                    <i class="fas fa-play-circle"></i>
+                    <span>视频</span>
+                </div>
+                <div class="shortcut-item">
+                    <i class="fas fa-bookmark"></i>
+                    <span>已保存</span>
+                </div>
+                <div class="shortcut-item">
+                    <i class="fas fa-flag"></i>
+                    <span>页面</span>
+                </div>
+                <div class="shortcut-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>活动</span>
+                </div>
+                <div class="shortcut-item">
+                    <i class="fas fa-history"></i>
+                    <span>动态回顾</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 主内容区 -->
+        <div class="main-content">
+            <div class="create-post">
+                <div class="post-input">
+                    <div class="profile-pic">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <input type="text" placeholder="xuanxuan890，你在想什么？">
+                </div>
+                <div class="post-actions">
+                    <div class="post-action live">
+                        <i class="fas fa-video"></i>
+                        <span>直播视频</span>
+                    </div>
+                    <div class="post-action photo">
+                        <i class="fas fa-images"></i>
+                        <span>照片/视频</span>
+                    </div>
+                    <div class="post-action feeling">
+                        <i class="fas fa-laugh-beam"></i>
+                        <span>感受/活动</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 帖子内容 -->
+            <div class="post">
+                <div class="post-header">
+                    <div class="profile-pic">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="post-user">
+                        <div class="post-user-name">xuanxuan890</div>
+                        <div class="post-time">
+                            4月2日 · <i class="fas fa-globe-asia"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <div class="post-text">
+                        <p>又来到海镜神社。</p>
+                        <br>
+                        <p>洁，我来日本留学了，就在神户。这件事，我好像一直没跟你说过。</p>
+                        <br>
+                        <p>时间过得好快，快得吓人。今年，是我来日本的第三年，也是失去你的第七年。我已经能很熟练地从学校换乘电车到淡路岛，知道哪班船人最少，哪家花店的白菊最新鲜，也知道神社哪个僻静的角落，能让我安静地待一会儿。</p>
+                        <br>
+                        <p>第一年，我在这里哭得直不起腰。第二年，心里堵得像压了块巨石。到了今年，我把花轻轻放在那棵系满良缘牌的古树下，心里竟然很平静。我甚至能想起你中学时在我上铺，半夜偷吃泡面被我发现的笑话。原来，再深刻的痛，真的会被时间磨平棱角。</p>
+                        <br>
+                        <p>我开始觉得，我是在好好地告别了。我交了新朋友，功课很忙，为就职焦头烂额。关于你的一切，连同这份每年例行的悼念，都被琐碎的日常挤到了记忆的角落，渐渐蒙尘。</p>
+                        <br>
+                        <p>我以为生活会这样继续下去。</p>
+                        <br>
+                        <p>直到我遇见了他。</p>
+                        <br>
+                        <p>当他牵起我的手，当我们一起在神社写下良缘牌，当他用和你当年一样认真的眼神，念出上面"永远在一起"的誓言时——</p>
+                        <br>
+                        <p>那一刻，神社的风铃清脆作响，所有被我刻意遗忘的细节，如同潮水般瞬间将我淹没。</p>
+                        <br>
+                        <p>洁，我想起来了。</p>
+                        <br>
+                        <p>你出发来这里的前一晚，在电话里对我说的，最后一句话，带着那样羞涩又坚定的笑意。</p>
+                        <br>
+                        <p>你说的，正是这一句。</p>
+                        <br>
+                        <p>原来，我从未真正忘记。我只是……一直在等你，用这种方式提醒我。</p>
+                    </div>
+                </div>
+                <div class="post-stats">
+                    <div>245个赞 · 78条评论 · 23次分享</div>
+                </div>
+                <div class="post-engagement">
+                    <div class="engagement-btn">
+                        <i class="far fa-thumbs-up"></i>
+                        <span>赞</span>
+                    </div>
+                    <div class="engagement-btn">
+                        <i class="far fa-comment"></i>
+                        <span>评论</span>
+                    </div>
+                    <div class="engagement-btn">
+                        <i class="fas fa-share"></i>
+                        <span>分享</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 右侧边栏 -->
+        <div class="right-sidebar">
+            <div class="sponsored">
+                <div class="section-title">赞助内容</div>
+                <!-- 赞助内容 -->
+            </div>
+            <div class="contacts">
+                <div class="section-title">联系人</div>
+                <div class="contact">
+                    <div class="contact-pic">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span>洁</span>
+                </div>
+                <div class="contact">
+                    <div class="contact-pic">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span>张辰</span>
+                </div>
+                <div class="contact">
+                    <div class="contact-pic">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span>沈心洁</span>
+                </div>
+                <div class="contact">
+                    <div class="contact-pic">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span>平井进次郎</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 简单的交互功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // 点赞按钮交互
+            const likeBtns = document.querySelectorAll('.engagement-btn');
+            likeBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (this.querySelector('i').classList.contains('far')) {
+                        this.querySelector('i').classList.replace('far', 'fas');
+                        this.style.color = '#1877f2';
+                    } else {
+                        this.querySelector('i').classList.replace('fas', 'far');
+                        this.style.color = '#65676b';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+    
+  </body>
+  
+</html>

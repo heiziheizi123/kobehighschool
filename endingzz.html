@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>寻找希望</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Noto Serif SC", "Source Han Serif SC", "Source Han Serif", serif;
+        }
+        
+        body {
+            background-color: #f8f4e9;
+            color: #5a4c3a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 700px;
+            width: 100%;
+            padding: 3rem;
+            background: rgba(255, 250, 240, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(139, 107, 71, 0.15);
+            border: 1px solid #e8dfca;
+            position: relative;
+        }
+        
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #d4b78c, #a78a6d, #d4b78c);
+        }
+        
+        .emotional-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            text-align: left;
+            padding: 2rem;
+            background: rgba(232, 223, 202, 0.2);
+            border-radius: 8px;
+            border-left: 4px solid #d4b78c;
+            position: relative;
+        }
+        
+        .tear-drop {
+            position: absolute;
+            width: 6px;
+            height: 12px;
+            background: rgba(90, 76, 58, 0.3);
+            border-radius: 50%;
+            animation: fall 3s ease-in infinite;
+            opacity: 0;
+        }
+        
+        @keyframes fall {
+            0% {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(120px);
+                opacity: 0;
+            }
+        }
+        
+        .quote {
+            font-style: italic;
+            color: #7d6b52;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            border-top: 1px dashed #d4b78c;
+            border-bottom: 1px dashed #d4b78c;
+            font-size: 1.1rem;
+        }
+        
+        .action-section {
+            margin-top: 3rem;
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+        }
+        
+        .report-button {
+            background: linear-gradient(to bottom, #d4b78c, #a78a6d);
+            color: white;
+            border: none;
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(167, 138, 109, 0.3);
+            letter-spacing: 1px;
+            margin-top: 1rem;
+        }
+        
+        .report-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(167, 138, 109, 0.4);
+            background: linear-gradient(to bottom, #dcc8a5, #b89a7a);
+        }
+        
+        .hope-message {
+            margin-top: 2rem;
+            font-size: 1.1rem;
+            color: #7d6b52;
+            opacity: 0.8;
+        }
+        
+        .fade-in {
+            animation: fadeIn 2s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 2rem;
+            }
+            
+            .emotional-text {
+                font-size: 1.1rem;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container fade-in">
+        <div class="emotional-text" id="emotionalText">
+            读完《垂迹曼荼罗论》的深意，一种难以名状的虚无感悄然漫上心头。泪水不受控制地滑落，在书页上晕开淡淡的水痕——难道我真的永远失去了小洁吗？<br><br>
+            心底残存的不甘让我重新燃起希望。我转向日本的互联网社区，用生涩的日语发出求助。让我感动的是，一位素未谋面的当地居民不仅耐心理解了我的处境，更主动为我联系了警方，让这场看似绝望的寻找出现了一丝转机。
+        </div>
+        
+        <div class="quote">
+          几天后，推送的新闻为我带来了一个不愿听到的结果
+        </div>
+        
+        <div class="action-section">
+            <h3>寻求官方帮助</h3>
+            <p>当地警方已经介入调查，点击下方按钮查看报案进展</p >
+            <button class="report-button" onclick="viewReport()">查看报案进展</button>
+            
+            <div class="hope-message">
+                每一次求助都是希望的延续，每一份善意都是黑暗中的光芒
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 创建泪滴效果
+        function createTearDrops() {
+            const textElement = document.getElementById('emotionalText');
+            const tearsCount = 8;
+            
+            for (let i = 0; i < tearsCount; i++) {
+                setTimeout(() => {
+                    const tear = document.createElement('div');
+                    tear.className = 'tear-drop';
+                    tear.style.left = Math.random() * 80 + 10 + '%';
+                    tear.style.animationDelay = Math.random() * 2 + 's';
+                    textElement.appendChild(tear);
+                    
+                    // 3秒后移除泪滴元素
+                    setTimeout(() => {
+                        if (tear.parentNode) {
+                            tear.parentNode.removeChild(tear);
+                        }
+                    }, 3000);
+                }, i * 800);
+            }
+        }
+        
+        function viewReport() {
+            // 在实际应用中，这里应该跳转到 report.html
+            window.location.href = "report.html";
+            
+            // 如果文件不存在，显示提示信息
+            setTimeout(function() {
+                if (window.location.href.indexOf("report.html") > -1) {
+                    alert("跳转失败：report.html 文件未找到。\n\n在实际应用中，此按钮将跳转到报案进展页面。");
+                    window.history.back();
+                }
+            }, 500);
+        }
+        
+        // 页面加载后启动泪滴效果
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(createTearDrops, 1000);
+            // 每10秒重新创建泪滴
+            setInterval(createTearDrops, 10000);
+        });
+    </script>
+</body>
+</html>

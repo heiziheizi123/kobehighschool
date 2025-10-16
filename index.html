@@ -1,15 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
-
-  <head>
-    <meta charset="UTF-8">
-    <title>highschool-demo</title>
-    
-
-  </head>
-    
-  <body>
-  <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -439,52 +428,6 @@
             color: #e3f2fd;
         }
         
-        
-        .modal {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            max-width: 500px;
-            width: 90%;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
-            position: relative;
-            text-align: center;
-        }
-        
-        .modal-icon {
-            font-size: 50px;
-            color: #1a237e;
-            margin-bottom: 20px;
-        }
-        
-        .modal h3 {
-            color: #1a237e;
-            margin-bottom: 15px;
-            font-size: 22px;
-        }
-        
-        .modal p {
-            margin-bottom: 25px;
-            color: #666;
-            line-height: 1.6;
-        }
-        
-        .modal button {
-            background: #1a237e;
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s;
-            font-weight: 500;
-        }
-        
-        .modal button:hover {
-            background: #283593;
-        }
-        
         /* 响应式设计 */
         @media (max-width: 992px) {
             .features {
@@ -554,8 +497,6 @@
 <body>
     <!-- 页面标记 -->
     <div class="page-marker">01</div>
-
-   
 
     <!-- 头部 -->
     <header>
@@ -734,43 +675,29 @@
     </footer>
 
     <script>
-            
-            // 显示弹窗
-            modal.style.display = 'flex';
-            
-            // 关闭弹窗
-            closeButton.addEventListener('click', function() {
-                modal.style.display = 'none';
-            });
-            
-            // 搜索功能
-            const searchButton = document.getElementById('searchButton');
-            const searchInput = document.getElementById('searchInput');
-            
-            searchButton.addEventListener('click', function() {
+        // 搜索功能
+        const searchButton = document.getElementById('searchButton');
+        const searchInput = document.getElementById('searchInput');
+
+        searchButton.addEventListener('click', function() {
+            performSearch();
+        });
+
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
                 performSearch();
-            });
-            
-            searchInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    performSearch();
-                }
-            });
-            
-            function performSearch() {
-                const query = searchInput.value.trim();
-                if (query) {
-                    alert(`正在搜索: "${query}"\n\n搜索结果将显示在新页面中。`);
-                    // 在实际应用中，这里会执行搜索并跳转或显示结果
-                } else {
-                    alert('请输入搜索关键词');
-                }
             }
         });
+
+        function performSearch() {
+            const query = searchInput.value.trim();
+            if (query) {
+                // 跳转到搜索结果页面
+                window.location.href = 'search-results.html?q=' + encodeURIComponent(query);
+            } else {
+                alert('请输入搜索关键词');
+            }
+        }
     </script>
 </body>
-</html>
-    
-  </body>
-  
 </html>

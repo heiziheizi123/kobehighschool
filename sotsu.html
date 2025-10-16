@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校友访谈 - 高桥优月 - 珺雾高校</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333333;
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #4a6fa5 100%);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .school-name {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+        
+        .title {
+            font-size: 28px;
+            margin: 15px 0;
+            font-weight: 300;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+        
+        .profile-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4a6fa5 0%, #2c3e50 100%);
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+        }
+        
+        .profile-name {
+            font-size: 22px;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .profile-tag {
+            color: #4a6fa5;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .profile-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .info-item {
+            text-align: left;
+            padding: 8px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            font-size: 13px;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            color: #4a6fa5;
+            display: block;
+            margin-bottom: 2px;
+        }
+        
+        .interview-content {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+        
+        .interview-question {
+            color: #2c3e50;
+            font-weight: bold;
+            margin: 20px 0 12px;
+            padding-left: 12px;
+            border-left: 3px solid #4a6fa5;
+            font-size: 16px;
+        }
+        
+        .interview-answer {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 3px solid #4a6fa5;
+            font-size: 14px;
+        }
+        
+        .hint-box {
+            background-color: #f0f7ff;
+            border: 1px solid #4a6fa5;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 13px;
+        }
+        
+        .hint-title {
+            color: #2c3e50;
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .back-button {
+            display: inline-block;
+            background-color: #4a6fa5;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .back-button:hover {
+            background-color: #3a5a8a;
+            transform: translateY(-2px);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #888;
+            font-size: 12px;
+        }
+        
+        .quote {
+            font-style: italic;
+            color: #555;
+            padding: 12px;
+            background-color: #f9f9f9;
+            border-radius: 6px;
+            margin: 12px 0;
+            border-left: 3px solid #4a6fa5;
+            font-size: 13px;
+        }
+        
+        @media (max-width: 600px) {
+            .profile-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="school-name">珺雾高校校友会</div>
+            <h1 class="title">校友访谈：高桥优月</h1>
+            <div class="subtitle">2018届毕业生 · 前民俗学研究部部长</div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="profile-card">
+            <div class="avatar">高</div>
+            <h2 class="profile-name">高桥 优月</h2>
+            <div class="profile-tag">民俗文化研究者 · 弓道爱好者</div>
+            
+            <div class="profile-info">
+                <div class="info-item">
+                    <span class="info-label">毕业年份</span>
+                    <span>2018届</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">原属学校</span>
+                    <span>珺武女子高等学校</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">班级</span>
+                    <span>3年D班</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">学号</span>
+                    <span>03号</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="interview-content">
+            <div class="interview-question">Q: 请简单介绍一下您在珺雾高校的学习经历</div>
+            <div class="interview-answer">
+                "我在珺武女子高等学校度过了充实的三年时光，最大的热情都投入到了民俗学研究部和弓道部的活动中。我的祖母是神户本地的民俗学者，从小我就对传统文化和民间传说有着浓厚的兴趣。"
+            </div>
+            
+            <div class="interview-question">Q: 作为民俗学研究部部长，您最难忘的研究经历是什么？</div>
+            <div class="interview-answer">
+                "最难忘的是我们对淡路岛地区传说的研究。我们团队在海镜神社发现了一些珍贵文献，记录了当地关于文化禁忌和传统信仰的独特理解。"
+            </div>
+            
+            <div class="hint-box">
+                <div class="hint-title">💡 给学弟学妹的提示</div>
+                <p>学校的档案系统需要用到个人身份信息来登录访问，建议大家记住自己的学籍编码格式。</p >
+                <p>比如我的学号是<strong>03</strong>，这在很多系统里都是重要的身份标识。</p >
+            </div>
+            
+            <div class="interview-question">Q: 听说您对学校的档案系统很熟悉？</div>
+            <div class="interview-answer">
+                "是的，作为研究部部长，我经常需要查阅历史资料。学校的系统采用统一的身份验证方式，每个人的学籍信息都很重要。"
+            </div>
+            
+            <div class="quote">
+                "学校的档案系统中保存着很多珍贵的历史资料，值得大家去探索发现。"
+            </div>
+            
+            <div class="interview-question">Q: 最后，请给现在的学生们一些建议</div>
+            <div class="interview-answer">
+                "珍惜在学校的每一天，勇敢追求自己真正感兴趣的事物。无论是学术研究还是社团活动，投入的热情最终都会成为宝贵的财富。"
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 20px;">
+            <button class="back-button" onclick="goToHomePage()">返回主页</button>
+        </div>
+        
+        <div class="footer">
+            <p>珺雾高校校友会 © 2024 版权所有</p >
+            <p>访谈时间：2024年3月28日</p >
+        </div>
+    </div>
+
+    <script>
+        function goToHomePage() {
+            window.location.href = 'index.html';
+        }
+        
+        // 为提示框添加交互效果
+        document.querySelector('.hint-box').addEventListener('click', function() {
+            this.style.transform = 'scale(1.02)';
+            this.style.transition = 'transform 0.3s ease';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 300);
+        });
+        
+        // 页面加载动画
+        window.addEventListener('load', function() {
+            const elements = document.querySelectorAll('.profile-card, .interview-content');
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    el.style.transition = 'all 0.6s ease';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+    </script>
+</body>
+</html>

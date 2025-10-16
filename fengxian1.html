@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>海镜神社 - 影饗传说</title>
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #0a0a14;
+            color: #e0e0e0;
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(28, 28, 60, 0.3) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(40, 40, 80, 0.3) 0%, transparent 20%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background: linear-gradient(to bottom, rgba(10, 15, 35, 0.9), rgba(10, 15, 35, 0.7));
+            padding: 30px 0;
+            border-bottom: 1px solid rgba(80, 100, 150, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23405096" stroke-width="0.5" opacity="0.3"/></svg>');
+            z-index: -1;
+        }
+        
+        .site-title {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .site-title h1 {
+            font-size: 2.8rem;
+            color: #c0c8e0;
+            text-shadow: 0 0 10px rgba(100, 120, 200, 0.5);
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+        }
+        
+        .site-title p {
+            font-size: 1.2rem;
+            color: #a0a8c0;
+            font-style: italic;
+        }
+        
+        /* 导航样式 */
+        nav {
+            background-color: rgba(15, 20, 40, 0.8);
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 15px;
+        }
+        
+        nav li {
+            margin: 0 15px;
+        }
+        
+        nav a {
+            color: #b0b8d0;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background-color: rgba(80, 100, 180, 0.3);
+            color: #e0e8ff;
+        }
+        
+        /* 主要内容区域 */
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .content-section {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(15, 20, 40, 0.6);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(80, 100, 150, 0.2);
+        }
+        
+        .content-section h2 {
+            color: #a0b0e0;
+            border-bottom: 1px solid rgba(100, 120, 200, 0.3);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .content-section h3 {
+            color: #b0c0f0;
+            margin: 20px 0 10px;
+            font-size: 1.4rem;
+        }
+        
+        .content-section p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .highlight {
+            background: rgba(40, 50, 100, 0.3);
+            padding: 15px;
+            border-left: 3px solid #6078c0;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        /* 图片展示区域 */
+        .image-display {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(15, 20, 40, 0.6);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(80, 100, 150, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            border: 1px dashed rgba(100, 120, 200, 0.5);
+            color: #8090c0;
+        }
+        
+        .image-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .image-caption {
+            text-align: center;
+            color: #a0a8c0;
+            font-style: italic;
+            margin-top: 10px;
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background: linear-gradient(to top, rgba(10, 15, 35, 0.9), rgba(10, 15, 35, 0.7));
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid rgba(80, 100, 150, 0.3);
+            margin-top: 50px;
+        }
+        
+        footer p {
+            color: #8090b0;
+            margin-bottom: 10px;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 5px 0;
+            }
+            
+            .site-title h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="site-title">
+                <h1>海镜神社</h1>
+                <p>～ 影饗传说与禁忌之秘 ～</p >
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href=" ">影饗起源</a ></li>
+                <li><a href="#ritual">献祭仪式</a ></li>
+                <li><a href="#secrets">隐藏真相</a ></li>
+                <li><a href="#taboo">神社禁忌</a ></li>
+            </ul>
+        </nav>
+        
+        <div class="main-content">
+            <div class="content-section">
+                <h2 id="origin">影饗（かげあえ）縁起</h2>
+                <p>昔、海辺の村は、幾度も嵐と荒波に呑まれ、舟は沈み、橋は折れ、里人はそのたびに「神の怒り」と恐れた。村の長は、災いを鎮めるために一計を案じ、人工の神——「海鏡明神（うみかがみみょうじん）」を造り上げた。</p >
+                
+                <p>海の底より引き上げた古鏡を神体とし、橋姫と舟守の巫女により祈祷と供物を絶やさぬことで"神格"を植え付けた。人が作った神は、人が与える供物によって存在し続けたのである。</p >
+                
+                <div class="highlight">
+                    <h3>饥饿与变质</h3>
+                    <p>岁月流逝，桥朽舟废，供养断绝。本是空壳的"镜神"，因长久的饥饿与人们残留的欲念，在夜海深处，凝成漆黑的宴席。</p >
+                    <p>镜中倒影裂开，孕出影饗（かげあえ）。它并非从神诞生，而是从人造神的空洞与贪欲中生出的"影之主"。影饗寄居于镜神之内，静静等待献祭的再临。</p >
+                </div>
+                
+                <h3 id="ritual">人祭之夜</h3>
+                <p>此后，村中开始出现"神谕"与"启示"。但那并非海镜明神之言，而是影饗的低语。</p >
+                
+                <p>它唤起巫女的幻觉，使她们在夜半抓人献祭；它命人将"影"沉入海中，以为能换来丰收与平安。桥姬与舟守所献之人，皆被其影拖入水底的宴席，成为影饗的供品。</p >
+                
+                <p>自此以后，凡月黑风高之夜，若有渔灯映入海面，便会出现一张无声的宴席，在那里，受害者的影正静静起舞，眼神空洞。</p >
+            </div>
+            
+            <div class="image-display">
+                <div class="image-placeholder">
+                    <!-- 这里将显示本地图片 jianli.html -->
+                    <i>🖼️</i>
+                    <p>图片加载区域</p >
+                    <p>请确保 jianli.html 图片文件在同一目录</p >
+                </div>
+                <p class="image-caption">海镜神社古图 - 镜之渊祭祀场景复原</p >
+                
+                <div class="content-section">
+                    <h2 id="secrets">隐藏真相</h2>
+                    <h3>影饗的本质</h3>
+                    <p>• 影饗并非天生之神，而是人类造神的副产物，是"神格"失去供养后产生的欲与饥的具现。</p >
+                    <p>• 它以镜神的名义行恶，令世人误以为"海镜明神吞人"，实则是自己在镜的背面饕餮人影。</p >
+                    <p>• 它可借巫女之身显形，也可附着在神体的倒影中诱惑人。</p >
+                    <p>• 影饗吞噬的不是血肉，而是"存在的痕迹"——因此献祭之人常常"被村里遗忘"。</p >
+                    
+                    <h3 id="taboo">封印与禁忌</h3>
+                    <p>后世渔村中，流传着三条禁忌：</p >
+                    <p>1. 无月之夜不得照海中之镜。</p >
+                    <p>2. 桥上祭祀不得空缺三年，否则镜神将再度"开宴"。</p >
+                    <p>3. 若见宴席倒影，须于黎明前击碎神镜、焚化供桌，并连呼本名三次。</p >
+                    
+                    <div class="highlight">
+                        <p>据说，只要海镜仍在，影饗便不会彻底消失。它不是被驱逐的神，而是无法消灭的"饥饿"本身。</p >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>海镜神社社务所 - 异变对策课 封</p >
+            <p>※ 本档案内容涉及禁忌知识，未经许可严禁传播 ※</p >
+        </div>
+    </footer>
+</body>
+</html>

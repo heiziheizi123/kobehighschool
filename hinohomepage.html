@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>平井進次郎 - 個人研究室</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'MS Mincho', 'SimSun', serif;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            color: #cc3333;
+            line-height: 1.7;
+            padding: 20px;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(80, 0, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(80, 0, 0, 0.1) 0%, transparent 50%);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #330000;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            color: #ff4444;
+            text-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+            letter-spacing: 3px;
+        }
+        
+        .header h2 {
+            font-size: 1.4rem;
+            color: #ff6666;
+            margin-bottom: 15px;
+            font-weight: normal;
+        }
+        
+        .welcome-message {
+            color: #996666;
+            font-size: 1.1rem;
+            margin-top: 20px;
+        }
+        
+        .profile-section {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .profile-card {
+            background: rgba(20, 0, 0, 0.5);
+            padding: 25px;
+            border: 1px solid #330000;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #660000;
+            margin: 0 auto 20px;
+            background: linear-gradient(45deg, #330000, #660000);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff6666;
+            font-size: 3rem;
+        }
+        
+        .profile-info h3 {
+            color: #ff5555;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .profile-info p {
+            color: #cc7777;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .research-content {
+            background: rgba(25, 0, 0, 0.5);
+            padding: 30px;
+            border: 1px solid #330000;
+            border-radius: 8px;
+        }
+        
+        .section-title {
+            color: #ff5555;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #330000;
+        }
+        
+        .research-text {
+            color: #cc6666;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        
+        .nav-links {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .nav-card {
+            background: rgba(30, 0, 0, 0.5);
+            padding: 25px;
+            border: 1px solid #330000;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .nav-card:hover {
+            border-color: #cc3333;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .nav-icon {
+            font-size: 3rem;
+            color: #ff6666;
+            margin-bottom: 15px;
+        }
+        
+        .nav-title {
+            color: #ff5555;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .nav-description {
+            color: #cc7777;
+            font-size: 0.95rem;
+        }
+        
+        .recent-activity {
+            margin-top: 50px;
+        }
+        
+        .activity-list {
+            list-style: none;
+        }
+        
+        .activity-item {
+            background: rgba(20, 0, 0, 0.3);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 3px solid #660000;
+            color: #cc7777;
+        }
+        
+        .activity-date {
+            color: #996666;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .ending-button-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .ending-button {
+            background: rgba(60, 0, 0, 0.7);
+            color: #ff7777;
+            border: 2px solid #990000;
+            border-radius: 5px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ending-button:hover {
+            background: rgba(80, 0, 0, 0.8);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        .ending-button::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .ending-button:hover::after {
+            left: 100%;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #330000;
+            color: #664444;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .profile-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>平井進次郎</h1>
+            <h2>民俗学研究室 - 個人ページ</h2>
+            <div class="welcome-message">認証済み - 研究資料閲覧可能</div>
+        </div>
+        
+        <div class="profile-section">
+            <div class="profile-card">
+                <div class="profile-image">平</div>
+                <div class="profile-info">
+                    <h3>プロフィール</h3>
+                    <p><strong>所属：</strong>民俗学部</p >
+                    <p><strong>役職：</strong>教授・研究室顧問</p >
+                    <p><strong>専門：</strong>日本民俗学・祭祀研究</p >
+                    <p><strong>研究テーマ：</strong>海鏡信仰と融噬儀礼</p >
+                </div>
+            </div>
+            
+            <div class="research-content">
+                <div class="section-title">現在の研究</div>
+                <div class="research-text">
+                    <p>現在、海鏡神社に伝わる「融噬」儀礼に関する文献調査を進めています。この禁忌の儀式は、二つの魂を一つに融合させる古来からの秘儀であり、その歴史的意義と民俗学的価値を解明することが本研究の目的です。</p >
+                    <p>特に「橋姫舟守」と呼ばれる存在の生成過程と、儀式中断時の影響について重点的に調査中です。関連資料として、以下の二つの研究ファイルを公開しています。</p >
+                </div>
+                
+                <div class="nav-links">
+                    <div class="nav-card" onclick="window.location.href='fengxian2.html'">
+                        <div class="nav-icon">📋</div>
+                        <div class="nav-title">沈心潔調査報告</div>
+                        <div class="nav-description">対象者の背景調査と儀式前の状態分析</div>
+                    </div>
+                    
+                    <div class="nav-card" onclick="window.location.href='fengxian1.html'">
+                        <div class="nav-icon">📜</div>
+                        <div class="nav-title">影饗調査報告</div>
+                        <div class="nav-description">影饗現象の分析と儀礼中断事例の影響調査</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="recent-activity">
+            <div class="section-title">最近の活動</div>
+            <ul class="activity-list">
+                <li class="activity-item">
+                    <div class="activity-date">2024年3月25日</div>
+                    <div>海鏡神社での現地調査を実施</div>
+                </li>
+                <li class="activity-item">
+                    <div class="activity-date">2024年3月20日</div>
+                    <div>民俗学部特別講習「俳句と神託の解読法」を開催</div>
+                </li>
+                <li class="activity-item">
+                    <div class="activity-date">2024年3月15日</div>
+                    <div>沈心潔調査報告のデジタル化を完了</div>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="ending-button-container">
+            <button class="ending-button" onclick="viewEnding()">确认已经全部结束了吗？</button>
+        </div>
+        
+        <div class="footer">
+            <p>民俗学研究室 - 内部利用限定</p >
+            <p>© 2024 平井進次郎研究室 All rights reserved.</p >
+        </div>
+    </div>
+
+   <script>
+    function viewEnding() {
+        // 跳转到指定的结局页面
+        window.location.href = "ending345434.html";
+    }
+</script>
+</body>
+</html>

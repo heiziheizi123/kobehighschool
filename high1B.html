@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高一B班 - 班级相册</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: white;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #1a237e;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header-content p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 0 1rem;
+        }
+        
+        .intro h2 {
+            color: #1a237e;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+        
+        .intro p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .photo-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .photo-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 500px;
+            transition: transform 0.3s ease;
+        }
+        
+        .photo-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .photo-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 3px solid #1a237e;
+        }
+        
+        .photo-info {
+            padding: 1.5rem;
+        }
+        
+        .photo-info h3 {
+            color: #1a237e;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .photo-info p {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        
+        .student-id {
+            display: inline-block;
+            background: #1a237e;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .back-button {
+            display: block;
+            width: 200px;
+            margin: 2rem auto;
+            padding: 12px 25px;
+            background-color: #ff9800;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .back-button:hover {
+            background-color: #f57c00;
+        }
+        
+        footer {
+            background-color: #1a237e;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        .student-list {
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid #1a237e;
+        }
+        
+        .student-list h3 {
+            color: #1a237e;
+            margin-bottom: 1rem;
+        }
+        
+        .student-list ul {
+            list-style-type: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.5rem;
+        }
+        
+        .student-list li {
+            padding: 0.5rem;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        @media (max-width: 768px) {
+            .photo-gallery {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .photo-card {
+                max-width: 100%;
+            }
+            
+            .header-content h1 {
+                font-size: 2rem;
+            }
+            
+            .student-list ul {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>高一B班</h1>
+            <p>青春记忆 · 美好时光</p >
+        </div>
+    </header>
+    
+    <div class="container">
+        <section class="intro">
+            <h2>班级相册</h2>
+            <p>这里记录了高一B班同学们的美好瞬间。从13号沈心洁到19号日本女生，每一位同学都是我们班级不可或缺的一部分。</p >
+        </section>
+        
+        <div class="student-list">
+            <h3>13号至19号同学名单</h3>
+            <ul>
+                <li>13号：沈心洁</li>
+                <li>14号：田中优子</li>
+                <li>15号：佐藤健太</li>
+                <li>16号：铃木美嘉</li>
+                <li>17号：高桥直人</li>
+                <li>18号：渡边真理</li>
+                <li>19号：山田美咲</li>
+            </ul>
+        </div>
+        
+        <section class="photo-gallery">
+            <div class="photo-card">
+                <img src="high1.jpg" alt="班级合影">
+                <div class="photo-info">
+                    <span class="student-id">13-19号同学合影</span>
+                    <h3>班级大家庭</h3>
+                    <p>这张照片记录了从13号沈心洁到19号日本女生（山田美咲）的珍贵瞬间。同学们笑容灿烂，展现了青春的活力与班级的团结。</p >
+                    <p>拍摄时间：2023年10月15日 | 地点：学校操场</p >
+                </div>
+            </div>
+            
+            <div class="photo-card">
+                <img src="high2.jpg" alt="沈心洁单人照">
+                <div class="photo-info">
+                    <span class="student-id">13号 沈心洁</span>
+                    <h3>沈心洁同学</h3>
+                    <p>13号：沈心洁</p >
+                </div>
+            </div>
+        </section>
+        
+        <button class="back-button" onclick="window.location.href='index.html'">返回主页</button>
+    </div>
+    
+    <footer>
+        <p>© 2023 高一B班 班级网页 | 设计：班级网页制作小组</p >
+    </footer>
+</body>
+</html>

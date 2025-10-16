@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生门户 - 珺雾高校</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .school-name {
+            font-size: 24px;
+            font-weight: 300;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #4a6fa5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .logout-btn {
+            background: none;
+            border: 1px solid rgba(255,255,255,0.5);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .logout-btn:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .main-content {
+            padding: 30px 0;
+        }
+        
+        .welcome-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-left: 4px solid #4a6fa5;
+        }
+        
+        .welcome-title {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 25px;
+        }
+        
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+        
+        .card-title {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eaecef;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-title i {
+            margin-right: 10px;
+            color: #4a6fa5;
+        }
+        
+        .notice-item {
+            padding: 15px;
+            border-left: 3px solid #e74c3c;
+            background-color: #fdf2f2;
+            margin-bottom: 15px;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .notice-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #c0392b;
+        }
+        
+        .research-item {
+            padding: 15px;
+            border-left: 3px solid #3498db;
+            background-color: #f0f8ff;
+            margin-bottom: 15px;
+            border-radius: 0 4px 4px 0;
+            transition: all 0.3s;
+        }
+        
+        .research-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .research-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #2980b9;
+        }
+        
+        .research-link {
+            color: #2980b9;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 10px;
+            border: 1px solid #2980b9;
+            border-radius: 4px;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+        
+        .research-link:hover {
+            background-color: #2980b9;
+            color: white;
+        }
+        
+        .discount-card {
+            background-color: #e8f5e9;
+            border: 1px solid #c8e6c9;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .discount-title {
+            color: #2e7d32;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .discount-title i {
+            margin-right: 10px;
+        }
+        
+        .brochure {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .brochure-img {
+            width: 100%;
+            height: 150px;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #757575;
+            font-size: 14px;
+        }
+        
+        .brochure-content {
+            padding: 15px;
+        }
+        
+        .brochure-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .quick-links {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .quick-link {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .quick-link:hover {
+            background-color: #e9ecef;
+            transform: translateY(-2px);
+        }
+        
+        .link-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #4a6fa5;
+        }
+        
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        .date {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .tag {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80%;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="school-name">珺雾高校 - 学生门户</h1>
+                <div class="user-info">
+                    <div class="avatar">高</div>
+                    <div>
+                        <div>高桥优月</div>
+                        <div class="date">3年D班 | 最后登录: 2024-03-28</div>
+                    </div>
+                    <button class="logout-btn" id="logoutBtn">退出登录</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="main-content">
+            <div class="welcome-section">
+                <h2 class="welcome-title">欢迎回来，高桥同学！</h2>
+                <p>今天是2024年3月29日，请查看以下重要通知。</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="left-column">
+                    <div class="card">
+                        <h3 class="card-title"><i>📢</i> 学校内部通知</h3>
+                        
+                        <div class="notice-item">
+                            <div class="notice-title">春假期间防溺水安全提醒 <span class="tag">重要</span></div>
+                            <p>随着春假临近，学校提醒全体同学注意水上安全：</p>
+                            <ul style="margin: 10px 0 10px 20px;">
+                                <li>严禁独自前往河流、湖泊、海边游泳</li>
+                                <li>参加水上活动务必有成人陪同</li>
+                                <li>注意天气变化，避免在恶劣天气下水</li>
+                                <li>学习基本的水上自救知识</li>
+                                <li>如遇紧急情况，立即拨打紧急电话</li>
+                            </ul>
+                                  <div style="margin-top: 20px; padding: 15px; background-color: #fff3cd; border-left: 4px solid #ffc107; border-radius: 4px;">
+            <strong>📢 神户周边通知：</strong>
+            <p style="margin: 8px 0;">淡路岛景区因维护工作暂时关闭，重新开放时间另行通知。</p >
+            <a href="news1.html" style="color: #0066cc; text-decoration: none; font-weight: bold;">
+                查看详细新闻公告 →
+            </a >
+        </div>
+        
+                            <p>请同学们务必重视自身安全，度过一个平安愉快的春假。</p>
+                            <div class="date">发布时间: 2024-03-18</div>
+                        </div>
+                        
+                        <div class="notice-item" style="border-left-color: #f39c12; background-color: #fef9e7;">
+                            <div class="notice-title" style="color: #e67e22;">春假时间安排</div>
+                            <p>春假时间：3月20日至4月7日，4月8日正式开学。</p>
+                            <p>请同学们合理安排假期时间，注意按时返校。</p>
+                            <div class="date">发布时间: 2024-03-20</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title"><i>🔬</i> 民俗学部最新研究成果</h3>
+                        
+                        <div class="research-item">
+                            <div class="research-title">淡路岛地区"神隐"传说考据新发现</div>
+                            <p>民俗学部近期在淡路岛地区进行田野调查时，发现了关于"神隐"现象的新文献资料。这些资料记录了当地关于"境界"和"异界"的传统信仰，为理解该地区独特的文化现象提供了新的视角。</p>
+                            <p>研究团队在海镜神社附近发现了记载相关仪式的古老文献，目前正在进行进一步的分析研究。</p>
+                            <a href="minsoku.html" class="research-link" onclick="showResearchDetail('神隐传说')">查看详细研究报告</a>
+                            <div class="date">更新时间: 2024-03-27</div>
+                        </div>
+                        
+                        <div class="research-item" style="border-left-color: #9b59b6; background-color: #f5eef8;">
+                            <div class="research-title" style="color: #8e44ad;">明石海峡大桥民间传说整理完成</div>
+                            <p>民俗学部已完成对明石海峡大桥相关民间传说的系统性整理工作。收录了包括"桥上的幽灵"、"指引之灯"在内的多个当地传说，并对其文化背景进行了深入分析。</p>
+                            <p>完整研究报告预计将于四月中旬发布。</p>
+                            <div class="date">更新时间: 2024-03-22</div>
+                        </div>
+                        
+                        <div class="research-item" style="border-left-color: #e67e22; background-color: #fef5e7;">
+                            <div class="research-title" style="color: #d35400;">海镜神社历史与仪式研究</div>
+                            <p>对海镜神社的建立历史、供奉神祇以及传统仪式进行了全面的文献调查和实地考察。研究发现该神社在当地的信仰体系中占据重要地位。</p>
+                            <p>特别关注了神社中关于"缘结"与"禁忌"的相关记载。</p>
+                            <div class="date">更新时间: 2024-03-18</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="right-column">
+                    <div class="discount-card">
+                        <div class="discount-title"><i>🎫</i> 淡路岛学生优惠活动</div>
+                        <p>春假期间，淡路岛多个景点面向学生推出半价优惠：</p>
+                        <ul style="margin: 10px 0 10px 20px;">
+                            <li>淡路岛梦舞台 - 学生票5折</li>
+                            <li>鸣门漩涡观览船 - 学生特价</li>
+                            <li>海镜神社参观 - 免费开放</li>
+                            <li>淡路农场公园 - 学生团体优惠</li>
+                        </ul>
+                        <p>凭学生证即可享受优惠，详情请咨询各景点售票处。</p>
+                        <div class="date">活动时间: 2024-03-30 至 2024-04-07</div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title"><i>📖</i> 旅游宣传册</h3>
+                        
+                        <div class="brochure">
+                            <div class="brochure-img">淡路岛旅游指南封面</div>
+                            <div class="brochure-content">
+                                <div class="brochure-title">淡路岛春假旅行指南</div>
+                                <p>收录淡路岛必访景点、美食推荐和交通信息，助你规划完美春假旅程。</p>
+                                <button class="logout-btn" style="color: #2c3e50; border-color: #2c3e50; margin-top: 10px;">下载PDF版本</button>
+                            </div>
+                        </div>
+                        
+                        <div class="brochure">
+                            <div class="brochure-img">神户周边文化遗产地图</div>
+                            <div class="brochure-content">
+                                <div class="brochure-title">神户·淡路文化遗产地图</div>
+                                <p>详细标注神户和淡路地区的重要文化遗产和历史遗迹，适合文化探索之旅。</p>
+                                <button class="logout-btn" style="color: #2c3e50; border-color: #2c3e50; margin-top: 10px;">下载PDF版本</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title"><i>⚡</i> 快速链接</h3>
+                        <div class="quick-links">
+                            <div class="quick-link">
+                                <div class="link-icon">📚</div>
+                                <div>课程表</div>
+                            </div>
+                            <div class="quick-link">
+                                <div class="link-icon">📝</div>
+                                <div>作业提交</div>
+                            </div>
+                            <div class="quick-link">
+                                <div class="link-icon">🏫</div>
+                                <div>校园地图</div>
+                            </div>
+                            <div class="quick-link">
+                                <div class="link-icon">👥</div>
+                                <div>社团活动</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="container">
+            <p>珺雾高校学生门户系统 © 2024 版权所有</p>
+            <p>系统版本 2.4.1 | 最后更新 2024-03-28</p>
+        </div>
+    </div>
+
+    <!-- 模态框 -->
+    <div class="modal" id="researchModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // 退出登录功能
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            if(confirm('确定要退出登录吗？')) {
+                // 使用a标签跳转回首页
+                const link = document.createElement('a');
+                link.href = 'index.html';
+                link.style.display = 'none';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        });
+        
+        // 快速链接点击事件
+        document.querySelectorAll('.quick-link').forEach(link => {
+            link.addEventListener('click', function() {
+                const linkName = this.querySelector('div:last-child').textContent;
+                alert(`即将跳转到${linkName}页面（功能开发中）`);
+            });
+        });
+        
+        // 显示研究详情
+        function showResearchDetail(researchType) {
+            const modal = document.getElementById('researchModal');
+            const modalContent = document.getElementById('modalContent');
+            
+            let content = '';
+            
+            if (researchType === '神隐传说') {
+                content = `
+                    <h2>淡路岛地区"神隐"传说考据新发现</h2>
+                    <div class="date">研究报告 | 民俗学研究部</div>
+                    <p>本研究基于在淡路岛地区进行的田野调查，发现了关于"神隐"现象的新文献资料。</p>
+                    
+                    <h3>主要发现：</h3>
+                    <ul>
+                        <li>在海镜神社附近发现了记载"境界仪式"的古老文献</li>
+                        <li>记录了当地关于"异界"入口的传统信仰</li>
+                        <li>发现了与"神隐"相关的季节性仪式记载</li>
+                        <li>确认了多个传说中的"神隐"发生地点</li>
+                    </ul>
+                    
+                    <h3>研究方法：</h3>
+                    <p>采用文献分析与实地考察相结合的方法，对当地长老进行访谈，并对相关地点进行实地勘察。</p>
+                    
+                    <h3>后续研究计划：</h3>
+                    <p>计划在春假期间进行更深入的田野调查，重点关注海镜神社的春季仪式。</p>
+                `;
+            } else if (researchType === '大桥传说') {
+                content = `
+                    <h2>明石海峡大桥民间传说整理</h2>
+                    <div class="date">研究报告 | 民俗学研究部</div>
+                    <p>已完成对明石海峡大桥相关民间传说的系统性整理工作。</p>
+                    
+                    <h3>已收录传说列表：</h3>
+                    <ul>
+                        <li><strong>桥上的幽灵</strong> - 关于建设期间事故的传说</li>
+                        <li><strong>指引之灯</strong> - 关于灯塔与导航的民间故事</li>
+                        <li><strong>海神的祝福</strong> - 与当地海神信仰相关的传说</li>
+                        <li><strong>缘结之桥</strong> - 关于情侣在大桥上的浪漫传说</li>
+                    </ul>
+                    
+                    <h3>文化意义分析：</h3>
+                    <p>这些传说反映了当地居民对这座现代工程奇迹的文化接纳过程，将现代技术与传统信仰相结合。</p>
+                `;
+            } else if (researchType === '海镜神社') {
+                content = `
+                    <h2>海镜神社历史与仪式研究</h2>
+                    <div class="date">研究笔记 | 民俗学研究部</div>
+                    <p>对海镜神社的建立历史、供奉神祇以及传统仪式进行了全面的研究。</p>
+                    
+                    <h3>主要发现：</h3>
+                    <ul>
+                        <li>神社建立于江户时代初期，已有400余年历史</li>
+                        <li>主要供奉海神和缘结神</li>
+                        <li>发现了独特的"镜面仪式"记载</li>
+                        <li>确认了春季和秋季的重要祭祀活动</li>
+                    </ul>
+                    
+                    <h3>关于"缘结"与"禁忌"：</h3>
+                    <p>研究发现神社中关于"缘结"的仪式与当地婚姻习俗密切相关，同时存在着特定的禁忌，如特定日期不能参拜等。</p>
+                    
+                    <h3>后续研究方向：</h3>
+                    <p>计划深入研究神社仪式与当地社会结构的关系。</p>
+                `;
+            }
+            
+            modalContent.innerHTML = content;
+            modal.style.display = 'flex';
+        }
+        
+        // 关闭模态框
+        function closeModal() {
+            document.getElementById('researchModal').style.display = 'none';
+        }
+        
+        // 点击模态框外部关闭
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('researchModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
