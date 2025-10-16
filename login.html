@@ -1,15 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
-
-  <head>
-    <meta charset="UTF-8">
-    <title>login</title>
-    
-
-  </head>
-    
-  <body>
-  <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -226,6 +215,7 @@
         
         <div class="hint-message">
             提示：请使用您的个人身份编码作为密码<br>
+            格式：届数+性别码+班级+学号<br>
             示例：22kA15 (22届+男+A班+15号)
         </div>
         
@@ -257,85 +247,75 @@
     </div>
 
     <script>
-        // 正确的密码
-        const CORRECT_PASSWORD = '18mD03';
+    // 密码显示/隐藏切换
+    function togglePassword() {
+        const passwordField = document.getElementById('password');
+        const showButton = document.querySelector('.show-password');
         
-        // 密码显示/隐藏切换
-        function togglePassword() {
-            const passwordField = document.getElementById('password');
-            const showButton = document.querySelector('.show-password');
-            
-            if (passwordField.type === 'password') {
-                passwordField.type = 'text';
-                showButton.textContent = '隐藏';
-            } else {
-                passwordField.type = 'password';
-                showButton.textContent = '显示';
-            }
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            showButton.textContent = '隐藏';
+        } else {
+            passwordField.type = 'password';
+            showButton.textContent = '显示';
+        }
+    }
+    
+    // 登录尝试
+    function attemptLogin() {
+        const password = document.getElementById('password').value;
+        const errorMessage = document.getElementById('errorMessage');
+        const successMessage = document.getElementById('successMessage');
+        
+        // 清空消息
+        errorMessage.style.display = 'none';
+        successMessage.style.display = 'none';
+        
+        if (!password) {
+            errorMessage.textContent = '错误：请输入密码';
+            errorMessage.style.display = 'block';
+            return;
         }
         
-        // 登录尝试
-        function attemptLogin() {
-            const password = document.getElementById('password').value;
-            const errorMessage = document.getElementById('errorMessage');
-            const successMessage = document.getElementById('successMessage');
-            
-            // 清空消息
-            errorMessage.style.display = 'none';
-            successMessage.style.display = 'none';
-            
-            if (!password) {
-                errorMessage.textContent = '错误：请输入密码';
-                errorMessage.style.display = 'block';
-                return;
-            }
-            
-            if (password === CORRECT_PASSWORD) {
-                // 登录成功
-                successMessage.style.display = 'block';
-                errorMessage.style.display = 'none';
-                
-                // 模拟跳转延迟
-                setTimeout(() => {
-                    alert('登录成功！欢迎访问学生门户。\n\n学生信息：\n- 姓名：高桥优月\n- 班级：3年D班\n- 学籍：18mD03\n- 社团：民俗学研究部');
-                    // 在实际应用中这里会跳转到学生门户页面
-                }, 1000);
-            } else {
-                // 登录失败
-                errorMessage.textContent = '登录失败：身份编码无效或格式错误';
-                errorMessage.style.display = 'block';
-            }
+        // 这里可以添加实际的登录验证逻辑
+        // 目前仅显示成功消息作为演示
+        successMessage.textContent = '登录成功！正在跳转...';
+        successMessage.style.display = 'block';
+        
+        // 模拟登录成功后的跳转
+        setTimeout(() => {
+            // 实际应用中这里应该跳转到学生信息页面
+            console.log('登录成功，密码为：' + password);
+            // window.location.href = 'student-dashboard.html';
+        }, 1000);
+    }
+    
+    // 显示登录指南
+    function showLoginGuide() {
+        alert('学生账户登录指南：\n\n' +
+              '1. 用户名固定为：admin\n' +
+              '2. 密码为您个人的身份编码\n' +
+              '3. 身份编码格式：届数+性别码+班级+学号\n' +
+              '   - 届数：入学年份后两位（如18）\n' +
+              '   - 性别码：m(女) / k(男)\n' +
+              '   - 班级：大写字母（如D）\n' +
+              '   - 学号：两位数字（如03）\n\n' +
+              '示例：22kA15 表示22届男A班15号学生\n\n' +
+              '如需帮助，请联系系统管理员。');
+    }
+    
+    // 回车键登录
+    document.getElementById('password').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            attemptLogin();
         }
-        
-        // 显示登录指南
-        function showLoginGuide() {
-            alert('学生账户登录指南：\n\n' +
-                  '1. 用户名固定为：admin\n' +
-                  '2. 密码为您个人的身份编码\n' +
-                  '3. 身份编码格式：届数+性别码+班级+学号\n' +
-                  '   - 届数：入学年份后两位（如18）\n' +
-                  '   - 性别码：m(女) / k(男)\n' +
-                  '   - 班级：大写字母（如D）\n' +
-                  '   - 学号：两位数字（如03）\n\n' +
-                  '示例：22kA15 表示22届男A班15号学生\n\n' +
-                  '如需帮助，请联系系统管理员。');
-        }
-        
-        // 回车键登录
-        document.getElementById('password').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                attemptLogin();
-            }
-        });
-        
-        // 页面加载完成后的初始化
-        window.addEventListener('load', function() {
-            document.getElementById('password').focus();
-        });
-    </script>
+    });
+    
+    // 页面加载完成后的初始化
+    window.addEventListener('load', function() {
+        document.getElementById('password').focus();
+    });
+</script>
 </body>
 </html>
-    
-  </body>
-  
 </html>
