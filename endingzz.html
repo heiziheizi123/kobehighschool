@@ -160,7 +160,7 @@
         
         <div class="action-section">
             <h3>寻求官方帮助</h3>
-            <p>当地警方已经介入调查，点击下方按钮查看报案进展</p >
+            <p>当地警方已经介入调查，点击下方按钮查看报案进展</p>
             <button class="report-button" onclick="viewReport()">查看报案进展</button>
             
             <div class="hope-message">
@@ -194,16 +194,8 @@
         }
         
         function viewReport() {
-            // 在实际应用中，这里应该跳转到 report.html
+            // 直接跳转到报告页面
             window.location.href = "report.html";
-            
-            // 如果文件不存在，显示提示信息
-            setTimeout(function() {
-                if (window.location.href.indexOf("report.html") > -1) {
-                    alert("跳转失败：report.html 文件未找到。\n\n在实际应用中，此按钮将跳转到报案进展页面。");
-                    window.history.back();
-                }
-            }, 500);
         }
         
         // 页面加载后启动泪滴效果

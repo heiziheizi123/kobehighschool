@@ -160,17 +160,37 @@
             align-items: center;
         }
         
-        .image-placeholder {
+        .image-container {
             width: 100%;
             height: 300px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(100, 120, 200, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .image-container:hover img {
+            transform: scale(1.05);
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
             background: linear-gradient(135deg, #1a1a2e, #16213e);
             border-radius: 8px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            margin-bottom: 20px;
-            border: 1px dashed rgba(100, 120, 200, 0.5);
             color: #8090c0;
         }
         
@@ -226,7 +246,7 @@
         <div class="container">
             <div class="site-title">
                 <h1>海镜神社</h1>
-                <p>～ 影饗传说与禁忌之秘 ～</p >
+                <p>～ 影饗传说与禁忌之秘 ～</p>
             </div>
         </div>
     </header>
@@ -234,59 +254,62 @@
     <div class="container">
         <nav>
             <ul>
-                <li><a href=" ">影饗起源</a ></li>
-                <li><a href="#ritual">献祭仪式</a ></li>
-                <li><a href="#secrets">隐藏真相</a ></li>
-                <li><a href="#taboo">神社禁忌</a ></li>
+                <li>影饗起源</li>
+                <li>献祭仪式</li>
+                <li>>隐藏真相</li>
+                <li>神社禁忌</li>
             </ul>
         </nav>
         
         <div class="main-content">
             <div class="content-section">
                 <h2 id="origin">影饗（かげあえ）縁起</h2>
-                <p>昔、海辺の村は、幾度も嵐と荒波に呑まれ、舟は沈み、橋は折れ、里人はそのたびに「神の怒り」と恐れた。村の長は、災いを鎮めるために一計を案じ、人工の神——「海鏡明神（うみかがみみょうじん）」を造り上げた。</p >
+                <p>昔、海辺の村は、幾度も嵐と荒波に呑まれ、舟は沈み、橋は折れ、里人はそのたびに「神の怒り」と恐れた。村の長は、災いを鎮めるために一計を案じ、人工の神——「海鏡明神（うみかがみみょうじん）」を造り上げた。</p>
                 
-                <p>海の底より引き上げた古鏡を神体とし、橋姫と舟守の巫女により祈祷と供物を絶やさぬことで"神格"を植え付けた。人が作った神は、人が与える供物によって存在し続けたのである。</p >
+                <p>海の底より引き上げた古鏡を神体とし、橋姫と舟守の巫女により祈祷と供物を絶やさぬことで"神格"を植え付けた。人が作った神は、人が与える供物によって存在し続けたのである。</p>
                 
                 <div class="highlight">
                     <h3>饥饿与变质</h3>
-                    <p>岁月流逝，桥朽舟废，供养断绝。本是空壳的"镜神"，因长久的饥饿与人们残留的欲念，在夜海深处，凝成漆黑的宴席。</p >
-                    <p>镜中倒影裂开，孕出影饗（かげあえ）。它并非从神诞生，而是从人造神的空洞与贪欲中生出的"影之主"。影饗寄居于镜神之内，静静等待献祭的再临。</p >
+                    <p>岁月流逝，桥朽舟废，供养断绝。本是空壳的"镜神"，因长久的饥饿与人们残留的欲念，在夜海深处，凝成漆黑的宴席。</p>
+                    <p>镜中倒影裂开，孕出影饗（かげあえ）。它并非从神诞生，而是从人造神的空洞与贪欲中生出的"影之主"。影饗寄居于镜神之内，静静等待献祭的再临。</p>
                 </div>
                 
                 <h3 id="ritual">人祭之夜</h3>
-                <p>此后，村中开始出现"神谕"与"启示"。但那并非海镜明神之言，而是影饗的低语。</p >
+                <p>此后，村中开始出现"神谕"与"启示"。但那并非海镜明神之言，而是影饗的低语。</p>
                 
-                <p>它唤起巫女的幻觉，使她们在夜半抓人献祭；它命人将"影"沉入海中，以为能换来丰收与平安。桥姬与舟守所献之人，皆被其影拖入水底的宴席，成为影饗的供品。</p >
+                <p>它唤起巫女的幻觉，使她们在夜半抓人献祭；它命人将"影"沉入海中，以为能换来丰收与平安。桥姬与舟守所献之人，皆被其影拖入水底的宴席，成为影饗的供品。</p>
                 
-                <p>自此以后，凡月黑风高之夜，若有渔灯映入海面，便会出现一张无声的宴席，在那里，受害者的影正静静起舞，眼神空洞。</p >
+                <p>自此以后，凡月黑风高之夜，若有渔灯映入海面，便会出现一张无声的宴席，在那里，受害者的影正静静起舞，眼神空洞。</p>
             </div>
             
             <div class="image-display">
-                <div class="image-placeholder">
-                    <!-- 这里将显示本地图片 jianli.html -->
-                    <i>🖼️</i>
-                    <p>图片加载区域</p >
-                    <p>请确保 jianli.html 图片文件在同一目录</p >
+                <div class="image-container">
+                    <!-- 修改为 jianli.jpg 图片链接 -->
+                    <img src="jianli.jpg" alt="海镜神社古图 - 镜之渊祭祀场景复原" onerror="this.style.display='none'; document.getElementById('placeholder').style.display='flex';">
+                    <div id="placeholder" class="image-placeholder" style="display: none;">
+                        <i>🖼️</i>
+                        <p>图片加载失败</p>
+                        <p>请确保 jianli.jpg 图片文件在同一目录</p>
+                    </div>
                 </div>
-                <p class="image-caption">海镜神社古图 - 镜之渊祭祀场景复原</p >
+                <p class="image-caption">海镜神社古图 - 镜之渊祭祀场景复原</p>
                 
                 <div class="content-section">
                     <h2 id="secrets">隐藏真相</h2>
                     <h3>影饗的本质</h3>
-                    <p>• 影饗并非天生之神，而是人类造神的副产物，是"神格"失去供养后产生的欲与饥的具现。</p >
-                    <p>• 它以镜神的名义行恶，令世人误以为"海镜明神吞人"，实则是自己在镜的背面饕餮人影。</p >
-                    <p>• 它可借巫女之身显形，也可附着在神体的倒影中诱惑人。</p >
-                    <p>• 影饗吞噬的不是血肉，而是"存在的痕迹"——因此献祭之人常常"被村里遗忘"。</p >
+                    <p>• 影饗并非天生之神，而是人类造神的副产物，是"神格"失去供养后产生的欲与饥的具现。</p>
+                    <p>• 它以镜神的名义行恶，令世人误以为"海镜明神吞人"，实则是自己在镜的背面饕餮人影。</p>
+                    <p>• 它可借巫女之身显形，也可附着在神体的倒影中诱惑人。</p>
+                    <p>• 影饗吞噬的不是血肉，而是"存在的痕迹"——因此献祭之人常常"被村里遗忘"。</p>
                     
                     <h3 id="taboo">封印与禁忌</h3>
-                    <p>后世渔村中，流传着三条禁忌：</p >
-                    <p>1. 无月之夜不得照海中之镜。</p >
-                    <p>2. 桥上祭祀不得空缺三年，否则镜神将再度"开宴"。</p >
-                    <p>3. 若见宴席倒影，须于黎明前击碎神镜、焚化供桌，并连呼本名三次。</p >
+                    <p>后世渔村中，流传着三条禁忌：</p>
+                    <p>1. 无月之夜不得照海中之镜。</p>
+                    <p>2. 桥上祭祀不得空缺三年，否则镜神将再度"开宴"。</p>
+                    <p>3. 若见宴席倒影，须于黎明前击碎神镜、焚化供桌，并连呼本名三次。</p>
                     
                     <div class="highlight">
-                        <p>据说，只要海镜仍在，影饗便不会彻底消失。它不是被驱逐的神，而是无法消灭的"饥饿"本身。</p >
+                        <p>据说，只要海镜仍在，影饗便不会彻底消失。它不是被驱逐的神，而是无法消灭的"饥饿"本身。</p>
                     </div>
                 </div>
             </div>
@@ -295,8 +318,8 @@
     
     <footer>
         <div class="container">
-            <p>海镜神社社务所 - 异变对策课 封</p >
-            <p>※ 本档案内容涉及禁忌知识，未经许可严禁传播 ※</p >
+            <p>海镜神社社务所 - 异变对策课 封</p>
+            <p>※ 本档案内容涉及禁忌知识，未经许可严禁传播 ※</p>
         </div>
     </footer>
 </body>
