@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>平井进次郎 - 人物介绍</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: #333333;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* 头部样式 */
+        .profile-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .profile-header::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #8B7355, #2c3e50);
+        }
+        
+        .profile-name {
+            font-size: 42px;
+            font-weight: 300;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .profile-subtitle {
+            font-size: 18px;
+            color: #7f8c8d;
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            display: inline-block;
+            padding: 0 15px;
+        }
+        
+        .profile-subtitle::before, .profile-subtitle::after {
+            content: "•";
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #8B7355;
+        }
+        
+        .profile-subtitle::before {
+            left: 0;
+        }
+        
+        .profile-subtitle::after {
+            right: 0;
+        }
+        
+        /* 内容区域 */
+        .profile-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .profile-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 450px;
+            border-radius: 10px;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            background-image: url('hirai1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        /* 备用样式 - 如果图片加载失败时显示 */
+        .image-placeholder::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(145deg, #f0f0f0, #e0e0e0);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #95a5a6;
+            z-index: -1; /* 默认隐藏，如果图片加载成功则不显示 */
+        }
+        
+        .image-placeholder:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+        
+        .image-caption {
+            text-align: center;
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-top: 15px;
+            font-style: italic;
+        }
+        
+        .profile-text {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #8B7355, #2c3e50);
+        }
+        
+        .section-content {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #444444;
+        }
+        
+        .section-content p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        
+        .quote {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-left: 4px solid #8B7355;
+            padding: 25px;
+            margin: 30px 0;
+            font-style: italic;
+            color: #555555;
+            font-size: 17px;
+            line-height: 1.7;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        
+        .quote::before {
+    content: "\201C";  /* 左双引号的Unicode编码 */
+    font-size: 60px;
+    color: #8B7355;
+    opacity: 0.2;
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    font-family: Georgia, serif;
+}
+        
+        .quote-author {
+            text-align: right;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #777777;
+            font-weight: 500;
+        }
+        
+        /* 核心信息 */
+        .key-info {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .info-title {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .info-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #8B7355, transparent);
+        }
+        
+        .info-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .info-item {
+            display: flex;
+            margin-bottom: 10px;
+            padding: 8px 0;
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
+        }
+        
+        .info-label {
+            font-weight: 600;
+            min-width: 120px;
+            color: #8B7355;
+        }
+        
+        .info-value {
+            color: #333333;
+        }
+        
+        /* 底部 */
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            color: #95a5a6;
+            font-size: 14px;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .profile-name {
+                font-size: 32px;
+            }
+            
+            .profile-content {
+                flex-direction: column;
+            }
+            
+            .image-placeholder {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-header">
+            <h1 class="profile-name">平井进次郎</h1>
+            <p class="profile-subtitle">海镜神社守护者 · 前珺武女子高校国文教师</p>
+        </div>
+        
+        <div class="profile-content">
+            <div class="profile-image">
+                <div class="image-placeholder" id="portrait">
+                    <!-- 图片通过CSS背景方式设置 -->
+                </div>
+                <p class="image-caption">海镜神社的守护者，一个与世俗格格不入的"异界"守门人</p>
+            </div>
+            
+            <div class="profile-text">
+                <div class="section">
+                    <h2 class="section-title">迷雾中的守护者</h2>
+                    <div class="section-content">
+                        <p>在偏远的海镜村，关于前珺武女子高校国文教师平井进次郎的传闻，如同终年笼罩海岸线的薄雾，模糊而持久。他并非典型的出家人，那身素净的僧袍之下，似乎仍裹着辞职当日那份无人理解的决绝。村民们对他既敬畏又疏远，只知道这位沉默的学者在守护海镜神社古老仪式的过程中，逐渐成为了一个与世俗格格不入的"异界"守门人。</p>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">从教坛到神坛：选择的岔路</h2>
+                    <div class="section-content">
+                        <p>平井进次郎曾是一名备受学生爱戴的教师，直到某个台风将至的黄昏，他毫无征兆地递交了辞呈，切断了与过去的一切联系。他来到被迷雾与松林环绕的海镜神社，剃度出家，成为了这里唯一的守护者。外人视此为一种精神上的逃亡，但村中的老人却会在私下低语，说他并非"选择"了这里，而是回应了某种更深沉的、来自神社本身的呼唤。</p>
+                    </div>
+                </div>
+                
+                <div class="quote">
+                    "凝视深渊的代价，是成为深渊的坐标。有些门扉，叩响即是进入。"
+                    <div class="quote-author">—— 平井进次郎</div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">核心箴言：窥探的代价</h2>
+                    <div class="section-content">
+                        <p>他极少与外人交谈，但偶尔会对那些因好奇而试图探寻神社秘密的访客，用一种混合着怜悯与警告的平静语气说道："凝视深渊的代价，是成为深渊的坐标。有些门扉，叩响即是进入。"</p>
+                        <p>这句箴言，如同神社境内那些潮湿的碑文，字面清晰却意义幽深。它似乎在告诫世人：过度探寻表象之下的真相，可能会让你自身成为更大黑暗的锚点；而某些边界一旦尝试跨越，便再无回头的可能，因为"询问"这个动作本身，就已经构成了答案的一部分。</p>
+                    </div>
+                </div>
+                
+                <div class="key-info">
+                    <h3 class="info-title">核心信息</h3>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <span class="info-label">身份：</span>
+                            <span class="info-value">海镜神社守护者</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">前职：</span>
+                            <span class="info-value">珺武女子高校国文教师</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">称号：</span>
+                            <span class="info-value">异界守门人</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">所在地：</span>
+                            <span class="info-value">海镜村海镜神社</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">核心箴言：</span>
+                            <span class="info-value">"凝视深渊的代价，是成为深渊的坐标"</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">特征：</span>
+                            <span class="info-value">沉默、神秘、与世隔绝</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>平井进次郎人物档案 &copy; 2025</p>
+        </footer>
+    </div>
+
+    <script>
+        // 图片加载错误处理
+        document.addEventListener('DOMContentLoaded', function() {
+            const portrait = document.getElementById('portrait');
+            const img = new Image();
+            img.src = 'hirai1.jpg';
+            
+            img.onload = function() {
+                console.log('图片加载成功');
+                // 图片加载成功，不需要做任何操作
+            };
+            
+            img.onerror = function() {
+                console.log('图片加载失败，显示备用内容');
+                // 图片加载失败，显示备用内容
+                portrait.innerHTML = '<i class="fas fa-user-secret"></i><p>平井进次郎肖像</p>';
+                portrait.style.backgroundImage = 'none';
+                portrait.style.display = 'flex';
+                portrait.style.flexDirection = 'column';
+                portrait.style.alignItems = 'center';
+                portrait.style.justifyContent = 'center';
+                portrait.style.color = '#95a5a6';
+                
+                // 添加图标样式
+                const icon = portrait.querySelector('i');
+                if (icon) {
+                    icon.style.fontSize = '80px';
+                    icon.style.marginBottom = '20px';
+                    icon.style.color = '#8B7355';
+                }
+            };
+        });
+    </script>
+</body>
+</html>

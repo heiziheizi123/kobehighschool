@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>職員専用ポータル - [学校名]高校</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 全局样式：黑色背景，白色文字 */
+        body {
+            background-color: #000000;
+            color: #FFFFFF;
+            font-family: 'メイリオ', Meiryo, 'Hiragino Kaku Gothic ProN', '游ゴシック', YuGothic, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* 头部导航栏：靛蓝色 */
+        header {
+            background-color: #4B0082; /* Indigo 靛蓝色 */
+            color: #FFFFFF;
+            padding: 15px 40px;
+            font-size: 24px;
+            font-weight: bold;
+            border-bottom: 3px solid #000000;
+        }
+
+        /* 主体内容区域 */
+        .container {
+            padding: 20px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #ADD8E6; /* 浅蓝色标题，与深色背景对比 */
+            border-bottom: 1px solid #333333;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+
+        /* 新闻列表样式 */
+        .news-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .news-item {
+            padding: 8px 0;
+            border-bottom: 1px dashed #333333;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+
+        /* 删除状态的新闻 */
+        .deleted {
+            color: #666666; /* 灰色，表示不可用 */
+            text-decoration: line-through;
+            cursor: default;
+        }
+        
+        /* 可点击的新闻链接 */
+        .clickable a {
+            color: #FFD700; /* 亮黄色或金色，突出重要性 */
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .clickable a:hover {
+            text-decoration: underline;
+        }
+        
+        .date {
+            width: 150px;
+            flex-shrink: 0;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <header>
+        職員専用ポータルサイト (Staff Only Portal)
+    </header>
+
+    <div class="container">
+        
+        <h2>📅 過去の連絡事項・ニュース (過去ログ)</h2>
+
+        <ul class="news-list">
+            <li class="news-item deleted">
+                <span class="date">2024.08.19</span>
+                <span>【削除済】夏季休暇中の施設点検完了報告</span>
+            </li>
+            <li class="news-item deleted">
+                <span class="date">2024.07.05</span>
+                <span>【削除済】生徒指導部定例会議資料</span>
+            </li>
+            <li class="news-item deleted">
+                <span class="date">2024.06.12</span>
+                <span>【削除済】体育祭後の備品整理について</span>
+            </li>
+
+            <li class="news-item clickable">
+                <span class="date">2024.05.28</span>
+                <a href="message.html">【重要】新しいセキュリティポリシーに関する確認事項</a>
+            </li>
+
+            <li class="news-item deleted">
+                <span class="date">2024.05.01</span>
+                <span>【削除済】GW中の緊急連絡体制について</span>
+            </li>
+            <li class="news-item deleted">
+                <span class="date">2024.04.15</span>
+                <span>【削除済】新入生オリエンテーションの手順書</span>
+            </li>
+            <li class="news-item deleted">
+                <span class="date">2024.03.01</span>
+                <span>【削除済】卒業式典の進行表</span>
+            </li>
+        </ul>
+        
+    </div>
+
+</body>
+</html>

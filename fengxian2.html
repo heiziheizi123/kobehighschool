@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>沈心潔调查报告 - 平井進次郎研究室</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'MS Mincho', 'SimSun', serif;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            color: #cc3333;
+            line-height: 1.7;
+            padding: 20px;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(80, 0, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(80, 0, 0, 0.1) 0%, transparent 50%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #330000;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            color: #ff4444;
+            text-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+            letter-spacing: 3px;
+        }
+        
+        .header h2 {
+            font-size: 1.4rem;
+            color: #ff6666;
+            margin-bottom: 15px;
+            font-weight: normal;
+        }
+        
+        .breadcrumb {
+            color: #996666;
+            font-size: 1rem;
+            margin-top: 15px;
+        }
+        
+        .breadcrumb a {
+            color: #cc7777;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .image-section {
+            background: rgba(20, 0, 0, 0.5);
+            padding: 25px;
+            border: 1px solid #330000;
+            border-radius: 8px;
+            text-align: center;
+            height: fit-content;
+        }
+        
+        .profile-image {
+            width: 100%;
+            max-width: 400px;
+            height: 500px;
+            border: 3px solid #660000;
+            margin: 0 auto 20px;
+            background: linear-gradient(45deg, #330000, #660000);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff6666;
+            font-size: 1.5rem;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .profile-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .image-caption {
+            color: #cc7777;
+            font-size: 0.95rem;
+            font-style: italic;
+            margin-top: 10px;
+        }
+        
+        .research-content {
+            background: rgba(25, 0, 0, 0.5);
+            padding: 30px;
+            border: 1px solid #330000;
+            border-radius: 8px;
+        }
+        
+        .section-title {
+            color: #ff5555;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #330000;
+        }
+        
+        .research-text {
+            color: #cc6666;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        
+        .personal-info {
+            background: rgba(30, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        
+        .info-item {
+            margin-bottom: 10px;
+            display: flex;
+        }
+        
+        .info-label {
+            color: #ff7777;
+            width: 120px;
+            flex-shrink: 0;
+        }
+        
+        .info-value {
+            color: #cc8888;
+        }
+        
+        .timeline {
+            margin: 30px 0;
+        }
+        
+        .timeline-item {
+            margin-bottom: 25px;
+            padding-left: 20px;
+            border-left: 2px solid #660000;
+            position: relative;
+        }
+        
+        .timeline-date {
+            color: #ff7777;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-content {
+            color: #cc8888;
+        }
+        
+        .analysis-section {
+            background: rgba(40, 0, 0, 0.3);
+            padding: 25px;
+            border-radius: 6px;
+            margin: 30px 0;
+            border-left: 4px solid #990000;
+        }
+        
+        .analysis-title {
+            color: #ff6666;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+        
+        .nav-button {
+            background: rgba(60, 0, 0, 0.7);
+            color: #ff7777;
+            border: 2px solid #990000;
+            border-radius: 5px;
+            padding: 12px 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .nav-button:hover {
+            background: rgba(80, 0, 0, 0.8);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #330000;
+            color: #664444;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 968px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        .classification {
+            background: rgba(40, 0, 0, 0.7);
+            padding: 10px;
+            text-align: center;
+            border-radius: 4px;
+            margin: 20px 0;
+            color: #ff9999;
+            font-size: 0.9rem;
+            border: 1px solid rgba(150, 0, 0, 0.5);
+        }
+        
+        .tab-container {
+            margin: 30px 0;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #330000;
+            margin-bottom: 20px;
+        }
+        
+        .tab {
+            padding: 12px 25px;
+            background: rgba(40, 0, 0, 0.5);
+            color: #cc7777;
+            cursor: pointer;
+            border: 1px solid transparent;
+            border-bottom: none;
+            margin-right: 5px;
+            border-radius: 5px 5px 0 0;
+            transition: all 0.3s ease;
+        }
+        
+        .tab.active {
+            background: rgba(60, 0, 0, 0.7);
+            color: #ff7777;
+            border-color: #660000;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .warning {
+            color: #ff5555;
+            font-weight: bold;
+            border-left: 3px solid #ff5555;
+            padding-left: 15px;
+            margin: 15px 0;
+        }
+        
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                45deg,
+                rgba(100, 0, 0, 0.2) 0%,
+                transparent 50%,
+                rgba(100, 0, 0, 0.2) 100%
+            );
+            pointer-events: none;
+        }
+        
+        .restricted-access {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: #ff6666;
+            padding: 10px 20px;
+            border: 2px solid #660000;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            text-align: center;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>沈心潔调查报告</h1>
+            <h2>対象者の背景調査と儀式前の状態分析</h2>
+            <div class="breadcrumb">
+                <a href=" ">平井進次郎研究室</a > &gt; 沈心潔调查报告
+            </div>
+        </div>
+        
+        <div class="classification">
+            保密级别：Lv.4 - 仅限相关研究人员访问 | 最终更新: 2024年3月28日
+        </div>
+        
+        <div class="tab-container">
+            <div class="tabs">
+                <div class="tab active" data-tab="shenxinjie">沈心潔报告</div>
+                <div class="tab" data-tab="minlianru">闵莲如报告</div>
+            </div>
+            
+            <!-- 沈心潔报告内容 -->
+            <div class="tab-content active" id="shenxinjie-content">
+                <div class="content-wrapper">
+                    <div class="image-section">
+                        <div class="profile-image">
+                            <img src="futari.jpg" alt="沈心潔与张辰 - 研究资料照片" onerror="this.style.display='none'; this.parentNode.innerHTML='<div>图片加载失败<br>futari.jpg</div>';">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="image-caption">
+                            图1: 沈心潔与张辰 - 最后一次被目击时的照片（摄于海镜神社参拜期间）
+                        </div>
+                        
+                        <div class="personal-info">
+                            <div class="section-title">基本情報</div>
+                            <div class="info-item">
+                                <div class="info-label">姓名:</div>
+                                <div class="info-value">沈心潔 (Shěn Xīnjié)</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">国籍:</div>
+                                <div class="info-value">中国</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">年龄:</div>
+                                <div class="info-value">16（失踪时）</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">身份:</div>
+                                <div class="info-value">留学生</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">班级:</div>
+                                <div class="info-value">1B</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">研究兴趣:</div>
+                                <div class="info-value">日本民间信仰、祭祀仪式</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="research-content">
+                        <div class="section-title">調査概要</div>
+                        <div class="research-text">
+                            <p>本报告旨在详细记录研究对象沈心潔的个人背景、心理特征以及在参与海镜神社相关事件前的状态分析。通过对她的学术研究、个人日记以及与相关人员访谈的综合分析，试图理解她最终卷入"影饗"仪式的深层原因。</p >
+                        </div>
+                        
+                        <div class="section-title">背景分析</div>
+                        <div class="research-text">
+                            <p>沈心潔出生于中国江苏省无锡市，自幼对超自然现象和民间传说表现出浓厚兴趣。在高中期间前往日本留学，于2024年4月以留学生身份来到日本。</p >
+                            
+                            <p>根据其导师的描述，沈心潔是一位"极具天赋但过于执着"的研究者。她对海镜神社的研究始于一篇关于地方神社变迁的学期论文，但随着研究的深入，她逐渐被该神社独特的"影饗"传说所吸引。</p >
+                        </div>
+                        
+                        <div class="timeline">
+                            <div class="section-title">时间线</div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">2024年4月</div>
+                                <div class="timeline-content">作为留学生抵达日本，开始在海镜神社进行田野调查</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">2024年6月</div>
+                                <div class="timeline-content">首次在研究中提到"影饗"概念，记录在个人研究笔记中</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">2024年8月</div>
+                                <div class="timeline-content">与张辰确立恋爱关系</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">2025年1月</div>
+                                <div class="timeline-content">在研究笔记中首次出现"永远在一起"的表述</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">2025年3月</div>
+                                <div class="timeline-content">最后一次被目击于海镜神社，与张辰一同</div>
+                            </div>
+                        </div>
+                        
+                        <div class="analysis-section">
+                            <div class="analysis-title">心理状态分析</div>
+                            <div class="research-text">
+                                <p>根据沈心潔的个人日记和研究笔记分析，她在事件发生前处于一种特殊的精神状态：</p >
+                                <ul style="color: #cc8888; margin-left: 20px; margin-top: 10px;">
+                                    <li>对"永恒"概念表现出异常的执着</li>
+                                    <li>将现实中的爱情关系与神话传说进行类比</li>
+                                    <li>逐渐混淆学术研究与个人信仰的界限</li>
+                                    <li>出现将神话仪式现实化的倾向</li>
+                                </ul>
+                                <p style="margin-top: 15px;">这种精神状态可能使她更容易接受并主动参与异常的宗教仪式，最终导致了悲剧性的结局。</p >
+                            </div>
+                        </div>
+                        
+                        <div class="analysis-section">
+                            <div class="analysis-title">与张辰的关系分析</div>
+                            <div class="research-text">
+                                <p>沈心潔与张辰的关系具有明显的相互依存特征。两人不仅在生活中是情侣，在学术研究上也是紧密的合作伙伴。这种双重关系的强度可能加剧了他们对"永恒在一起"这一概念的执着。</p >
+                                
+                                <p>在沈心潔的日记中，多次出现将他们的关系与神话中"桥姬与舟守"进行类比的记录，这表明她已经开始将现实关系神话化，为后续的事件埋下了伏笔。</p >
+                            </div>
+                        </div>
+                        
+                        <div class="section-title">结论</div>
+                        <div class="research-text">
+                            <p>沈心潔的案例展示了一个典型的研究者被研究对象同化的过程。她对海镜神社和影饗传说的深入研究，结合个人情感需求，最终导致了她对超自然现象的过度认同和现实化尝试。</p >
+                            
+                            <p>这一案例提醒我们，在涉及超自然传说的学术研究中，保持理性的距离和批判性思维至关重要。研究者的人格特质、情感状态和个人信仰都可能影响其对研究对象的理解和互动方式。</p >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 闵莲如报告内容 -->
+            <div class="tab-content" id="minlianru-content">
+                <div class="content-wrapper">
+                    <div class="image-section">
+                        <div class="profile-image">
+                            <img src="minlianru.jpg" alt="闵莲如 - 心理咨询师证件照" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\"restricted-access\">访问受限<br>minlianru.jpg</div><div class=\"image-overlay\"></div>';">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="image-caption">
+                            图2: 闵莲如 - 心理咨询师证件照（摄于2022年，事故前）
+                        </div>
+                        
+                        <div class="personal-info">
+                            <div class="section-title">基本情報</div>
+                            <div class="info-item">
+                                <div class="info-label">姓名:</div>
+                                <div class="info-value">闵莲如 (Mǐn Liánrú)</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">国籍:</div>
+                                <div class="info-value">中国</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">出生年份:</div>
+                                <div class="info-value">1998年</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">年龄:</div>
+                                <div class="info-value">26岁（截至2024年）</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">职业:</div>
+                                <div class="info-value">前心理咨询师</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">状态:</div>
+                                <div class="info-value">高危观察对象</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="research-content">
+                        <div class="section-title">調査概要</div>
+                        <div class="research-text">
+                            <p>本报告记录研究对象闵莲如的个人背景、心理创伤以及复仇动机的演变过程。通过对她的生活经历、心理评估以及与相关人员访谈的综合分析，揭示其如何从一名心理咨询师转变为具有强烈复仇倾向的高危个体。</p >
+                        </div>
+                        
+                        <div class="section-title">背景分析</div>
+                        <div class="research-text">
+                            <p>闵莲如出生于中国浙江省杭州市，童年时期家庭环境复杂。父亲闵建国在她12岁时因商业纠纷入狱，母亲随后改嫁并移民国外，闵莲如被留在国内由祖父母抚养。</p >
+                            
+                            <p>2016年考入北京师范大学心理学专业，表现出色。2020年毕业后在一家心理咨询中心工作，专门处理青少年心理问题。2022年，她的生活发生了转折性变化。</p >
+                        </div>
+                        
+                        <div class="timeline">
+                            <div class="section-title">时间线</div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">1998年</div>
+                                <div class="timeline-content">出生于杭州，家庭条件优越</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">2010年</div>
+                                <div class="timeline-content">父亲因商业欺诈入狱，家庭破裂</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">2016年</div>
+                                <div class="timeline-content">考入北京师范大学心理学专业</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">2020年</div>
+                                <div class="timeline-content">开始在一家心理咨询中心工作</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">2022年</div>
+                                <div class="timeline-content">遭遇严重医疗事故，导致终身不孕</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">2023年</div>
+                                <div class="timeline-content">医疗诉讼失败，开始表现出明显的心理变化</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">2024年</div>
+                                <div class="timeline-content">辞职并开始频繁访问海镜神社</div>
+                            </div>
+                        </div>
+                        
+                        <div class="analysis-section">
+                            <div class="analysis-title">心理创伤分析</div>
+                            <div class="research-text">
+                                <p>闵莲如的心理创伤主要来源于三个关键事件：</p >
+                                <ul style="color: #cc8888; margin-left: 20px; margin-top: 10px;">
+                                    <li>童年时期的家庭破裂和被母亲遗弃</li>
+                                    <li>2022年的医疗事故导致永久性生育能力丧失</li>
+                                    <li>医疗诉讼失败带来的司法不公感</li>
+                                </ul>
+                                <p style="margin-top: 15px;">这些创伤事件叠加，导致她形成了强烈的受害者和不公正感，进而发展为复仇心理。</p >
+                            </div>
+                        </div>
+                        
+                        <div class="analysis-section">
+                            <div class="analysis-title">复仇心理演变</div>
+                            <div class="research-text">
+                                <p>根据闵莲如的日记和心理咨询记录，她的复仇心理经历了明显的演变过程：</p >
+                                
+                                <p><strong>第一阶段（2022年末）:</strong> 针对具体医疗责任人的愤怒和报复欲望。</p >
+                                
+                                <p><strong>第二阶段（2023年中）:</strong> 愤怒扩展至整个医疗系统和司法体系，认为它们互相包庇。</p >
+                                
+                                <p><strong>第三阶段（2024年初）:</strong> 复仇目标进一步泛化，开始对"所有幸福的人"产生敌意，特别是那些她认为"轻易获得她永远无法拥有的东西"的人。</p >
+                                
+                                <p class="warning">注意：闵莲如近期开始研究海镜神社的"影饗"仪式，并表现出将其用作复仇工具的倾向。</p >
+                            </div>
+                        </div>
+                        
+                        <div class="analysis-section">
+                            <div class="analysis-title">与沈心潔案件的潜在关联</div>
+                            <div class="research-text">
+                                <p>调查发现闵莲如与沈心潔案件存在以下潜在关联：</p >
+                                <ul style="color: #cc8888; margin-left: 20px; margin-top: 10px;">
+                                    <li>两人均曾深入研究海镜神社的传说和仪式</li>
+                                    <li>闵莲如在沈心潔失踪前一个月曾与她有过接触</li>
+                                    <li>在闵莲如的住所发现了与沈心潔研究相关的笔记副本</li>
+                                    <li>闵莲如的日记中提到对"年轻无知情侣"的轻蔑态度</li>
+                                </ul>
+                                <p style="margin-top: 15px;">这些线索表明闵莲如可能对沈心潔案件有某种程度的了解或参与。</p >
+                            </div>
+                        </div>
+                        
+                        <div class="section-title">结论与风险评估</div>
+                        <div class="research-text">
+                            <p>闵莲如是一个具有高度复杂心理创伤和强烈复仇动机的个体。她的专业心理学背景使其能够更有效地隐藏真实意图，同时可能利用专业知识操纵他人。</p >
+                            
+                            <p class="warning">风险评估：极高。闵莲如已表现出将超自然力量用于个人复仇的明确倾向，且具有实施复杂计划的能力。建议将其列为重点监控对象，防止其进一步卷入危险仪式或对他人造成伤害。</p >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="nav-buttons">
+            <a href="hinohomepage.html" class="nav-button">返回研究室主页</a >
+            <a href="fengxian1.html" class="nav-button">查看影饗调查报告</a >
+        </div>
+        
+        <div class="footer">
+            <p>平井進次郎研究室 - 内部研究资料</p >
+            <p>© 2025 平井進次郎研究室 All rights reserved.</p >
+        </div>
+    </div>
+
+    <script>
+        // 标签切换功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // 移除所有标签和内容的active类
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // 为当前点击的标签和对应内容添加active类
+                    tab.classList.add('active');
+                    const tabId = tab.getAttribute('data-tab') + '-content';
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

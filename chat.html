@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线聊天室 - 学校论坛</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .back-button {
+            padding: 10px 20px;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .back-button:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .chat-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 20px;
+        }
+        
+        .chat-header {
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+            margin-bottom: 20px;
+        }
+        
+        .chat-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .chat-subtitle {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .messages-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            background-color: #fafafa;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .message {
+            padding: 12px 15px;
+            border-radius: 12px;
+            max-width: 70%;
+            position: relative;
+            word-wrap: break-word;
+        }
+        
+        .message.received {
+            background-color: #f0f0f0;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+        
+        .message.sent {
+            background-color: #ffebee;
+            border: 1px solid #ffcdd2;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+        
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        .message-sender {
+            font-weight: bold;
+        }
+        
+        .message-time {
+            color: #999;
+            font-size: 12px;
+        }
+        
+        .message-content {
+            word-wrap: break-word;
+        }
+        
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .option-button {
+            padding: 10px 15px;
+            background-color: #f8f8f8;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s;
+        }
+        
+        .option-button:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .input-container {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .message-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            resize: none;
+            height: 60px;
+        }
+        
+        .send-button {
+            padding: 12px 25px;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .send-button:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .user-status {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #52c41a;
+        }
+        
+        .online-count {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .system-message {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            font-style: italic;
+            margin: 10px 0;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 300px;
+            width: 90%;
+        }
+        
+        .modal-button {
+            margin-top: 15px;
+            padding: 8px 16px;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">学校论坛</div>
+        <a href=" " class="back-button">返回论坛</a >
+    </header>
+    
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="chat-title">在线聊天室</div>
+            <div class="chat-subtitle">与校友们实时交流</div>
+        </div>
+        
+        <div class="user-status">
+            <div class="status-indicator">
+                <div class="status-dot"></div>
+                <span>在线</span>
+            </div>
+            <div class="online-count" id="onlineCount">当前在线: 2人</div>
+        </div>
+        
+        <div class="messages-container" id="messagesContainer">
+            <!-- 消息将通过JavaScript动态生成 -->
+        </div>
+        
+        <div class="input-container">
+            <textarea class="message-input" id="messageInput" placeholder="输入消息..."></textarea>
+            <button class="send-button" onclick="sendMessage()">发送</button>
+        </div>
+    </div>
+
+    <div class="modal" id="userLeftModal">
+        <div class="modal-content">
+            <p>在校生已下线</p >
+            <p>在线人数变为1</p >
+            <button class="modal-button" onclick="closeModal()">确定</button>
+        </div>
+    </div>
+
+    <script>
+        // 聊天状态
+        let chatState = 0;
+        let onlineUsers = 2;
+        
+        // 初始化聊天
+        function initChat() {
+            const messagesContainer = document.getElementById('messagesContainer');
+            
+            // 添加初始消息
+            addMessage('在校生', '高桥学姐！你今天怎么忽然上论坛了？', 'received', '10:30');
+            
+            // 添加选项
+            addOptions([
+                '我今天刚好闲下来',
+                '学校的帖子有什么问题？'
+            ]);
+            
+            // 滚动到底部
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+        
+        // 添加消息到聊天窗口
+        function addMessage(sender, content, type, time = null) {
+            const messagesContainer = document.getElementById('messagesContainer');
+            
+            if (!time) {
+                const now = new Date();
+                time = `${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}`;
+            }
+            
+            const messageElement = document.createElement('div');
+            messageElement.className = `message ${type}`;
+            messageElement.innerHTML = `
+                <div class="message-header">
+                    <span class="message-sender">${sender}</span>
+                    <span class="message-time">${time}</span>
+                </div>
+                <div class="message-content">${content}</div>
+            `;
+            
+            messagesContainer.appendChild(messageElement);
+            
+            // 滚动到底部
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+        
+        // 添加选项按钮
+        function addOptions(options) {
+            const messagesContainer = document.getElementById('messagesContainer');
+            
+            const optionsContainer = document.createElement('div');
+            optionsContainer.className = 'options-container';
+            
+            options.forEach(option => {
+                const button = document.createElement('button');
+                button.className = 'option-button';
+                button.textContent = option;
+                button.onclick = function() {
+                    handleOptionClick(option);
+                };
+                optionsContainer.appendChild(button);
+            });
+            
+            messagesContainer.appendChild(optionsContainer);
+            
+            // 滚动到底部
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+        
+        // 处理选项点击
+        function handleOptionClick(option) {
+            // 移除选项按钮
+            const optionsContainer = document.querySelector('.options-container');
+            if (optionsContainer) {
+                optionsContainer.remove();
+            }
+            
+            // 添加用户选择的消息
+            addMessage('我', option, 'sent');
+            
+            // 根据当前状态处理回复
+            setTimeout(() => {
+                switch(chatState) {
+                    case 0:
+                        // 第一次选择
+                        if (option === '我今天刚好闲下来') {
+                            addMessage('在校生', '在学校主页搜索框搜索学号的base64编码，会弹出保健室和心理咨询室使用记录！还有输入一些日期的64位编码，可以查案到教室使用记录，但这个部分比较随缘', 'received');
+                            addOptions([
+                                '好的我知道了',
+                                '你们没有和老师报告吗？'
+                            ]);
+                            chatState = 1;
+                        } else if (option === '学校的帖子有什么问题？') {
+                            addMessage('在校生', '在学校主页搜索框搜索学号的base64编码，会弹出使用记录！还有输入一些日期的64位编码，可以查案到教室使用记录，但这个部分比较随缘', 'received');
+                            addOptions([
+                                '好的我知道了',
+                                '你们没有和老师报告吗？'
+                            ]);
+                            chatState = 1;
+                        }
+                        break;
+                    case 1:
+                        // 第二次选择
+                        if (option === '好的我知道了') {
+                            addMessage('在校生', '今天发了邮件给老师，老师说在和男校官网合并，估计要6月以后才能正常…我们信息不就在裸奔吗！', 'received');
+                            addOptions([
+                                '我知道了'
+                            ]);
+                            chatState = 2;
+                        } else if (option === '你们没有和老师报告吗？') {
+                            addMessage('在校生', '今天发了邮件给老师，老师说在和男校官网合并，估计要6月以后才能正常…我们信息不就在裸奔吗！', 'received');
+                            addOptions([
+                                '我知道了'
+                            ]);
+                            chatState = 2;
+                        }
+                        break;
+                    case 2:
+                        // 第三次选择
+                        if (option === '我知道了') {
+                            addMessage('在校生', '那我先下线了，学姐再见！', 'received');
+                            chatState = 3;
+                            
+                            // 用户下线
+                            setTimeout(() => {
+                                onlineUsers = 1;
+                                document.getElementById('onlineCount').textContent = '当前在线: 1人';
+                                
+                                // 显示弹窗
+                                document.getElementById('userLeftModal').style.display = 'flex';
+                            }, 1000);
+                        }
+                        break;
+                }
+            }, 1000);
+        }
+        
+        // 发送消息
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            addMessage('我', message, 'sent');
+            input.value = '';
+            
+            // 模拟回复（仅前端演示）
+            setTimeout(() => {
+                addMessage('在校生', '这个问题我也不太清楚，可以问问其他同学', 'received');
+            }, 1000);
+        }
+        
+        // 关闭弹窗
+        function closeModal() {
+            document.getElementById('userLeftModal').style.display = 'none';
+        }
+        
+        // 按Enter发送消息
+        document.getElementById('messageInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+        
+        // 初始化页面
+        document.addEventListener('DOMContentLoaded', () => {
+            initChat();
+        });
+    </script>
+</body>
+</html>

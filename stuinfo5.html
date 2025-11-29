@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>沈心洁 - 珺雾高校</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+        }
+        
+        body {
+            background-color: #8B0000;
+            color: #fff;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 30px;
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+        }
+        
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #600000;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+            border: 3px solid rgba(255,255,255,0.3);
+        }
+        
+        .name {
+            font-size: 32px;
+            margin-bottom: 8px;
+            font-weight: 300;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+        
+        .school-info {
+            font-size: 14px;
+            opacity: 0.7;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .card {
+            background-color: #700000;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .card-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #ffcccc;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 10px;
+        }
+        
+        .info-grid {
+            display: grid;
+            gap: 12px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .info-label {
+            font-weight: bold;
+            color: #ffb3b3;
+            min-width: 80px;
+            margin-right: 15px;
+        }
+        
+        .daily-button {
+            display: block;
+            width: 100%;
+            background-color: #ff4d4d;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .daily-button:hover {
+            background-color: #ff3333;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,0,0,0.3);
+        }
+        
+        .status-item {
+            background-color: #600000;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #ff4d4d;
+        }
+        
+        .status-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #ffb3b3;
+        }
+        
+        .status-date {
+            font-size: 12px;
+            opacity: 0.6;
+            margin-top: 8px;
+        }
+        
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .photo-item {
+            aspect-ratio: 1;
+            background-color: #600000;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.6);
+            font-size: 12px;
+        }
+        
+        .last-login {
+            background-color: rgba(0,0,0,0.2);
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 15px;
+            font-size: 11px;
+        }
+        
+        .quote {
+            font-style: italic;
+            color: #ffcccc;
+            padding: 15px;
+            background-color: rgba(0,0,0,0.2);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 3px solid #ff4d4d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="avatar">沈</div>
+            <h1 class="name">沈 心洁</h1>
+            <div class="subtitle">弓道部部员</div>
+            <div class="school-info">珺雾高校 | 学籍号：27mD13</div>
+        </div>
+        
+        <div class="main-content">
+            <div class="left-column">
+                <div class="card">
+                    <h2 class="card-title">个人信息</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">班级</span>
+                            <span>1年b组</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">学号</span>
+                            <span>13号</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">入学年份</span>
+                            <span>2024年</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">所属社团</span>
+                            <span>弓道部、民俗学研究部</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">宿舍</span>
+                            <span>国际生宿舍 302室</span>
+                        </div>
+                    </div>
+                    
+                    <a href="daiily.html" class="daily-button">📝 查看我的日记</a >
+                </div>
+                
+                <div class="card">
+                    <h2 class="card-title">近期动态</h2>
+                    
+                    <div class="status-item">
+                        <div class="status-title">春假旅行计划</div>
+                        <div>准备和辰一起去淡路岛，听说那里的海镜神社很灵验...</div>
+                        <div class="status-date">发布于 2025-03-24</div>
+                    </div>
+                    
+                    <div class="status-item">
+                        <div class="status-title">民俗学研究进展</div>
+                        <div>发现了关于"神隐"传说的一些新线索，需要进一步调查</div>
+                        <div class="status-date">发布于 2025-03-20</div>
+                    </div>
+                    
+                    <div class="status-item">
+                        <div class="status-title">弓道比赛</div>
+                        <div>今天头很晕，在保健室睡了2节课，眼前总有黑影，它是人形的？可能是我眼花了</div>
+                        <div class="status-date">发布于 2024-11-15</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-column">
+                <div class="card">
+                    <h2 class="card-title">相册回忆</h2>
+                    <div class="photo-gallery">
+                        <div class="photo-item">神社</div>
+                        <div class="photo-item">弓道</div>
+                        <div class="photo-item">校园</div>
+                        <div class="photo-item">朋友</div>
+                        <div class="photo-item">研究</div>
+                        <div class="photo-item">旅行</div>
+                    </div>
+                    
+                    <div class="quote">
+                        "有些传说，越是接近真相，就越是让人不安..."
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="card-title">研究兴趣</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">主要方向</span>
+                            <span>日本民俗传说</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">重点关注</span>
+                            <span>神隐现象研究</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">调查地点</span>
+                            <span>淡路岛地区</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">相关神社</span>
+                            <span>海镜神社</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="card-title">联系方式</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">邮箱</span>
+                            <span>xinjie.shen@junwu.edu.jp</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">紧急联系人</span>
+                            <span>已登记</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>珺雾高校学生个人主页系统</p >
+            <div class="last-login">
+                最后登录时间：2025-03-24 22:18 | 登录IP：133.75.28.109 (神户)
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 添加一些交互效果
+        document.querySelectorAll('.photo-item').forEach(item => {
+            item.addEventListener('mouseover', function() {
+                this.style.backgroundColor = '#800000';
+                this.style.transition = 'background-color 0.3s';
+            });
+            
+            item.addEventListener('mouseout', function() {
+                this.style.backgroundColor = '#600000';
+            });
+        });
+        
+        // 页面加载动画
+        window.addEventListener('load', function() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+        
+        // 点击头像的效果
+        document.querySelector('.avatar').addEventListener('click', function() {
+            this.style.transform = 'scale(1.1)';
+            this.style.transition = 'transform 0.3s ease';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 300);
+        });
+    </script>
+</body>
+</html>

@@ -80,48 +80,6 @@
             color: #e3f2fd;
         }
 
-        /* 搜索区域 */
-        .search-section {
-            background: white;
-            border-radius: 8px;
-            padding: 30px;
-            margin: 30px auto;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            max-width: 800px;
-            text-align: center;
-        }
-
-        .search-section h2 {
-            color: #1a237e;
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
-
-        .search-box {
-            display: flex;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .search-box input {
-            flex: 1;
-            padding: 14px 20px;
-            border: 1px solid #ddd;
-            border-radius: 4px 0 0 4px;
-            font-size: 16px;
-            outline: none;
-        }
-
-        .search-box button {
-            padding: 0 25px;
-            background: #1a237e;
-            color: white;
-            border: none;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
         /* 内容区域 */
         .content-area {
             background: white;
@@ -157,18 +115,97 @@
             margin: 20px 0;
             background: #fafafa;
             min-height: 200px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .editable-section:hover {
+            border-color: #1a237e;
+            background: #f0f4ff;
         }
 
         .editable-section h3 {
             color: #1a237e;
             margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .section-placeholder {
+        .section-content, .section-placeholder {
             color: #999;
             text-align: center;
             padding: 40px;
             font-style: italic;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 跳转链接区域样式 */
+        .link-section {
+            border: 2px solid #1a237e;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 20px 0;
+            background: #f0f4ff;
+            min-height: 200px;
+            transition: all 0.3s;
+        }
+
+        .link-section:hover {
+            background: #e3f2fd;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(26, 35, 126, 0.2);
+        }
+
+        .link-section h3 {
+            color: #1a237e;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .link-content {
+            text-align: center;
+            padding: 40px;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .link-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(26, 35, 126, 0.3);
+        }
+
+        .link-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(26, 35, 126, 0.4);
+            background: linear-gradient(135deg, #283593 0%, #303f9f 100%);
+        }
+
+        .link-button i {
+            margin-right: 10px;
+        }
+
+        .link-description {
+            margin-top: 15px;
+            color: #666;
+            font-size: 14px;
+            max-width: 400px;
         }
 
         /* 学校简介样式 */
@@ -253,6 +290,7 @@
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
             border-left: 4px solid #1a237e;
+            cursor: pointer;
         }
 
         .feature-card:hover {
@@ -317,6 +355,9 @@
             color: #1a237e;
             margin-bottom: 15px;
             font-size: 22px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         /* 底部样式 */
@@ -360,20 +401,6 @@
                 margin: 5px 10px;
             }
             
-            .search-box {
-                flex-direction: column;
-            }
-            
-            .search-box input {
-                border-radius: 4px;
-                margin-bottom: 10px;
-            }
-            
-            .search-box button {
-                border-radius: 4px;
-                padding: 12px;
-            }
-            
             .intro-content {
                 flex-direction: column;
             }
@@ -396,25 +423,14 @@
                 <nav>
                     <ul>
                         <li><a href="index.html">返回主页</a></li>
-                        <li>信息分类</li>
-                        <li>资源下载</li>
-                        <li>帮助中心</li>
+                        <li><a href="#">信息分类</a></li>
+                        <li><a href="#">资源下载</a></li>
+                        <li><a href="#">帮助中心</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </header>
-
-    <!-- 搜索区域 -->
-    <section class="container">
-        <div class="search-section">
-            <h2>搜索学校信息</h2>
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="输入关键词搜索学校相关信息...">
-                <button id="searchButton"><i class="fas fa-search"></i> 搜索</button>
-            </div>
-        </div>
-    </section>
 
     <!-- 学校简介 -->
     <section class="container">
@@ -428,6 +444,7 @@
                 <div class="intro-text">
                     <p>珺霧高校成立于2025年4月，是一所历史悠久、文化底蕴深厚的全日制普通高中。学校坐落于风景秀丽的城市新区，占地面积200余亩，校园环境优美，设施先进。</p>
                     <p>学校秉承"明德、博学、笃行、创新"的校训，立志培养国际型人才。多年来，学校形成了"严谨、求实、团结、进取"的校风，"敬业、爱生、严谨、创新"的教风和"勤学、善思、好问、笃行"的学风。</p>
+                    <p>学校由成立于1889年9月12日的珺武女子高等学院和新兴校-成立于2010年的雾西男子高校合并</p>
                     <p>学校现有教员160余人，在校学生3000余人。在多个国际赛事上获奖</p>
                 </div>
                 <div class="intro-image">
@@ -477,7 +494,7 @@
                     </div>
                     <div class="stat-item">
                         <h3>95%+</h3>
-                        <p>大学進学率</p>
+                        <p>大学升学率</p>
                     </div>
                 </div>
             </div>
@@ -489,7 +506,7 @@
                 </div>
                 <div class="vision">
                     <h3><i class="fas fa-eye"></i> 发展愿景</h3>
-                    <p>成为国内一流、国际知名的现代化中学，建设成为教育理念先进、师资力量雄厚、设施设备完善、教育质量卓越、办学特色鲜明的示范性高中，为国家培养更多优秀人才。</p>
+                    <p>成为国内一流、国际知名的现代化高中，建设成为教育理念先进、师资力量雄厚、设施设备完善、教育质量卓越、办学特色鲜明的示范性高中，为国家培养更多优秀人才。</p>
                 </div>
             </div>
         </div>
@@ -503,14 +520,17 @@
                 <p>在这里您可以添加和管理各类学校信息内容</p>
             </div>
             
-            <!-- 可编辑内容区域1 -->
-            <div class="editable-section">
+            <!-- 跳转链接区域 -->
+            <div class="link-section">
                 <h3><i class="fas fa-info-circle"></i> 基本信息</h3>
-                <div class="section-placeholder">
-                    内容已删除或未公开
+                <div class="link-content">
+                    <a href="sotsu.html" class="link-button">
+                        <i class="fas fa-external-link-alt"></i> 查看毕业生访谈
+                    </a>
+                    <p class="link-description">点击上方按钮查看我校优秀毕业生的访谈记录和成功经验分享</p>
                 </div>
             </div>
-            
+
             <!-- 可编辑内容区域2 -->
             <div class="editable-section">
                 <h3><i class="fas fa-book"></i> 学术信息</h3>
@@ -523,7 +543,7 @@
             <div class="editable-section">
                 <h3><i class="fas fa-calendar"></i> 活动信息</h3>
                 <div class="section-placeholder">
-               内容已删除或未公开     
+                    内容已删除或未公开     
                 </div>
             </div>
             
@@ -540,7 +560,7 @@
     <!-- 底部 -->
     <footer>
         <div class="container">
-            <p>珺霧高校信息中心 &copy; 2023</p>
+            <p>珺霧高校信息中心 &copy; 2023   2/</p>
             <a href="index.html" class="back-to-home">
                 <i class="fas fa-home"></i> 返回学校主页
             </a>
@@ -548,22 +568,6 @@
     </footer>
 
     <script>
-        // 搜索功能
-        document.getElementById('searchButton').addEventListener('click', function() {
-            const query = document.getElementById('searchInput').value.trim();
-            if (query) {
-                alert(`正在搜索: "${query}"\n\n搜索功能已准备就绪，可以添加实际搜索逻辑。`);
-            } else {
-                alert('请输入搜索关键词');
-            }
-        });
-
-        document.getElementById('searchInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                document.getElementById('searchButton').click();
-            }
-        });
-
         // 学校简介交互功能
         document.addEventListener('DOMContentLoaded', function() {
             // 为特色卡片添加点击效果
@@ -609,16 +613,22 @@
                 observer.observe(stat);
             });
             
-            // 可编辑区域的点击事件
+            // 可编辑区域的点击事件（跳转链接区域不再可编辑）
             const editableSections = document.querySelectorAll('.editable-section');
             editableSections.forEach(section => {
                 section.addEventListener('click', function() {
                     const title = this.querySelector('h3').textContent;
-                    const content = prompt(`请输入${title}的内容:`, '这里可以添加详细内容...');
-                    if (content) {
-                        this.querySelector('.section-placeholder').textContent = content;
-                        this.querySelector('.section-placeholder').style.fontStyle = 'normal';
-                        this.querySelector('.section-placeholder').style.color = '#333';
+                    const contentElement = this.querySelector('.section-placeholder') || 
+                                          this.querySelector('.section-content');
+                    
+                    const currentContent = contentElement.textContent;
+                    const content = prompt(`请输入${title}的内容:`, currentContent);
+                    
+                    if (content !== null) {
+                        contentElement.textContent = content;
+                        contentElement.style.fontStyle = 'normal';
+                        contentElement.style.color = '#333';
+                        contentElement.style.textAlign = 'left';
                     }
                 });
             });

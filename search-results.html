@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>珺霧高校 - 搜索页面</title>
+
+<style>
+    body {
+        margin: 0;
+        background: #f5f5f5;
+        font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+    }
+    .container {
+        max-width: 900px;
+        margin: 40px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+    }
+    .school-name {
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    .school-description {
+        color: #666;
+        margin-bottom: 30px;
+    }
+    .search-box {
+        display: flex;
+        gap: 10px;
+    }
+    .search-input {
+        flex: 1;
+        padding: 10px;
+        font-size: 16px;
+    }
+    .search-btn {
+        padding: 10px 20px;
+        background: #3f51b5;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    /* 搜索结果卡片 */
+    .result-item {
+        background: #fafafa;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+    }
+    .result-title {
+        margin: 0 0 15px;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    /* 子结果卡片（多链接标题） */
+    .sub-result-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+    .sub-card {
+        display: block;
+        padding: 12px;
+        background: #ffffff;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        text-decoration: none;
+        color: #3f51b5;
+        font-weight: bold;
+        transition: background 0.2s, border-color 0.2s;
+    }
+    .sub-card:hover {
+        background: #f1f1f1;
+        border-color: #3f51b5;
+    }
+
+    .back-home {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .home-link {
+        color: #3f51b5;
+        text-decoration: none;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+<div class="container">
+    <div class="header">
+        <h1 class="school-name">珺霧高校</h1>
+        <p class="school-description">一所致力于学术卓越与全人教育的现代化学校，位于日本神户市</p>
+    </div>
+
+    <div class="search-section">
+        <h2>搜索学校信息</h2>
+        <div class="search-box">
+            <input type="text" id="searchInput" class="search-input" placeholder="输入关键词搜索学校信息...">
+            <button class="search-btn" onclick="performSearch()">搜索</button>
+        </div>
+    </div>
+
+    <div class="results-section">
+        <h2>搜索结果</h2>
+        <div id="searchResults"></div>
+    </div>
+
+    <div class="back-home">
+        <a href="index.html" class="home-link">返回首页</a>
+    </div>
+</div>
+
+
+<script>
+/* -------------------------
+   URL 参数
+-------------------------- */
+function getQueryParam(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+}
+
+/* -------------------------
+   执行搜索
+-------------------------- */
+function performSearch() {
+    const query = document.getElementById('searchInput').value.trim();
+    if (query) {
+        window.location.href = `?q=${encodeURIComponent(query)}`;
+    }
+}
+
+
+/* -------------------------
+   搜索数据（完整版）
+-------------------------- */
+const searchData = {
+
+    /* 人物 */
+    '沈心洁': {
+        title: '沈心洁 - 学生档案',
+        description: '查看沈心洁同学的详细信息和相关记录',
+        link: 'limit.html'
+    },
+
+    '张辰': {
+        title: '张辰 - 学生档案',
+        description: '查看张辰同学的详细信息和相关记录',
+        link: 'limit.html'
+    },
+
+    '平井进次郎 海镜明神奉献集': {
+        title: '平井进次郎教授',
+        description: '民俗学部教授，研究方向包括融噬仪式等',
+        link: 'hirai.html'
+    },
+    '平井進次郎 海镜明神奉献集': {
+        title: '平井进次郎教授',
+        description: '民俗学部教授，研究方向包括融噬仪式等',
+        link: 'hirai.html'
+    },
+    '平井進次郎': {
+        title: '平井进次郎',
+        description: '前国语教师，现在于海镜神社工作',
+        links: ['hirai.html','news3.html'],
+        subtitles: ['民俗学部主页', '俳句特辑']
+    },
+    '平井进次郎': {
+        title: '平井进次郎',
+        description: '前国语教师，现在于海镜神社工作',
+        links:['hirai.html','news3.html'],
+        subtitles: ['民俗学部主页', '俳句特辑']
+    },
+
+    /* 编码入口 */
+    'MTdtRDEz': {
+        title: '保健室与心理咨询名单',
+        description: '2024年11月-2025年3月保健室记录',
+        link:'hoken.html'
+    },
+
+    '图书馆': {
+        title: '图书馆页面',
+        description: '珺霧高校图书馆网站',
+        link: 'library.html'
+    },
+
+    /* 学生学年 */
+    '毕业生': {
+        title: '毕业生信息',
+        description: '珺霧高校毕业生相关资料',
+        link: 'sotsu.html'
+    },
+    '高一': {
+        title: '高一学年信息',
+        description: '高一学年相关资料和照片',
+        link: 'high1B.html'
+    },
+    '高一学年': {
+        title: '高一学年信息',
+        description: '高一学年相关资料和照片',
+        link: 'high1B.html'
+    },
+
+    /* 校内部门 */
+    '保健室': {
+        title: '保健室介绍',
+        description: '保健室与心理服务',
+        link: 'hoken2.html'
+    },
+    '心理咨询室': {
+        title: '保健室介绍',
+        description: '保健室与心理服务',
+        link: 'hoken2.html'
+    },
+    'MjAyNC0xMS0xNQ==': {
+        title: '资料室11-15使用名单',
+        description: '使用名单',
+        link: 'ziliao.html'
+    },
+
+    '伊藤大輔': {
+        title: '心理咨询师',
+        description: '心理咨询师的个人信息',
+        link: 'kokoro.html'
+    },
+    '伊藤大辅': {
+        title: '心理咨询师',
+        description: '心理咨询师的个人信息',
+        link: 'kokoro.html'
+    },
+
+    /* 民俗学部 */
+    '民俗学部': {
+        title: '民俗学部介绍',
+        description: '了解我校民俗学部的课程设置和研究方向',
+        link: 'minsoku.html'
+    },
+
+    /* ⭐ 支持多个子卡片 */
+    '淡路岛': {
+        title: '淡路岛研究',
+        description: '淡路岛地区的民俗文化研究',
+        links:'minsoku.html'
+    },
+
+    '明石海峡大桥': {
+        title: '明石海峡大桥研究',
+        description: '明石海峡大桥相关的民俗调查',
+        link: 'minsoku.html'
+    },
+  '桥姬舟守物语': {
+        title: '桥姬舟守物语',
+        description: '介绍了桥姬与舟守的传说',
+        link: 'booken.o.html',
+    },
+    '桥姬舟守物语 山田五郎': {
+        title: '节选1',
+        description: '节选',
+        link: 'toshi7.html',
+    },
+    '镜底记': {
+        title: '镜底记',
+        description: '一本年代久远的书。',
+        link: 'booken.1.html',
+    },
+    '镜底记 潮見幽水': {
+        title: '节选2',
+        description: '节选',
+        link: 'toshi.html',
+    },
+    '潮見幽水': {
+        title: '???',
+        description: '潮見幽水个人信息',
+        link: 'admin.html'
+    },
+    '海鏡明神奉献集': {
+        title: '海鏡明神奉献集',
+        description: '一本刚刚被发掘的古书。',
+        link: 'booken.zxsw.html',
+    },
+    '海鏡明神奉献集 ': {
+        title: '节选3',
+        description: '节选',
+        link: 'pass.html',
+    },
+    '海鏡神社秘錄': {
+        title: '海鏡神社秘錄',
+        description: '系统介绍日本传统文化和现代文化，涵盖茶道、花道、武士道等多个方面。',
+        link: 'weixian.html',
+    },
+    '海鏡神社秘錄 平井进次郎': {
+        title: '节选4',
+        description: '节选',
+        link: 'last.html',
+    },
+    '海镜神社': {
+        title: '海镜神社研究',
+        description: '海镜神社的民俗信仰和传统仪式研究',
+        link: 'minsoku.html'
+    },
+    '海镜神社2': {
+        title: '海镜神社深度研究',
+        description: '海镜神社的融噬仪式和影饗现象研究',
+        link: 'minsoku-re.html'
+    },
+
+    /* 学术概念 */
+    '桥姬': {
+        title: '桥姬相关研究',
+        description: '关于桥姬的传说和研究',
+        link: 'toshi9.html'
+    },
+    '舟守': {
+        title: '舟守相关研究',
+        description: '关于舟守的传说和研究',
+        link: 'toshi9.html'
+    },
+    '非永恒': {
+        title: '非永恒概念研究',
+        description: '关于非永恒概念的哲学探讨',
+        link: 'toshi7.html'
+    },
+    '融噬': {
+        title: '融噬研究',
+        description: '关于融噬仪式的学术探讨',
+        link: 'rongshi.html'
+    }
+};
+
+
+/* -------------------------
+   显示结果（含多子链接）
+-------------------------- */
+function displayResults() {
+    const query = getQueryParam('q');
+    const resultsContainer = document.getElementById('searchResults');
+
+    if (!query) {
+        resultsContainer.innerHTML = '<p>请输入搜索关键词</p>';
+        return;
+    }
+
+    const matchedResults = [];
+
+    for (const [keyword, data] of Object.entries(searchData)) {
+        if (query.toLowerCase() === keyword.toLowerCase()) {
+            matchedResults.push(data);
+        }
+    }
+
+    if (matchedResults.length === 0) {
+        resultsContainer.innerHTML = `
+            <p>没有找到与 "<strong>${query}</strong>" 相关的结果</p>`;
+        return;
+    }
+
+    let resultsHTML = `<div>找到 ${matchedResults.length} 个相关结果：</div>`;
+
+    matchedResults.forEach(result => {
+        const links = result.links || [result.link];
+
+        resultsHTML += `
+            <div class="result-item">
+                <h3 class="result-title">${result.title}</h3>
+
+                <div class="sub-result-list">
+                    ${
+                        links.map((url, index) => `
+                            <a class="sub-card" href="${url}" target="_blank">
+                                ${result.subtitles ? result.subtitles[index] : result.title + "（链接 " + (index) + "）"}
+                            </a>
+                        `).join("")
+                    }
+                </div>
+
+                <p class="result-description">${result.description}</p>
+            </div>
+        `;
+    });
+
+    resultsContainer.innerHTML = resultsHTML;
+}
+
+
+/* -------------------------
+   回车触发搜索
+-------------------------- */
+function handleKeyPress(e) {
+    if (e.key === 'Enter') performSearch();
+}
+
+
+/* -------------------------
+   初始化
+-------------------------- */
+document.addEventListener('DOMContentLoaded', () => {
+    displayResults();
+    document.getElementById('searchInput').addEventListener('keypress', handleKeyPress);
+
+    const q = getQueryParam('q');
+    if (q) document.getElementById('searchInput').value = q;
+});
+</script>
+
+</body>
+</html>

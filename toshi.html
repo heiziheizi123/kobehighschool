@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>《镜底记》- 海镜神社古籍文献</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'MS Mincho', 'SimSun', serif;
+        }
+        
+        body {
+            background-color: #f5f2e9;
+            color: #333;
+            line-height: 1.8;
+            padding: 20px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23d4c9a8" stroke-width="0.5" opacity="0.3"/></svg>');
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+            border: 1px solid #d4c9a8;
+            position: relative;
+        }
+        
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(transparent 95%, rgba(212, 201, 168, 0.3) 100%);
+            pointer-events: none;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #8b4513;
+        }
+        
+        .title {
+            font-size: 2.5rem;
+            color: #8b4513;
+            margin-bottom: 10px;
+            letter-spacing: 5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #a0522d;
+            font-style: italic;
+        }
+        
+        .chapter {
+            margin: 40px 0;
+            padding: 25px;
+            background: #faf8f3;
+            border-left: 4px solid #8b4513;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .chapter-title {
+            font-size: 1.5rem;
+            color: #8b4513;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #d4c9a8;
+        }
+        
+        .content {
+            text-align: justify;
+            margin-bottom: 15px;
+            text-indent: 2em;
+        }
+        
+        .ancient-text {
+            background: #f8f6f0;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #d4c9a8;
+            font-family: 'SimSun', serif;
+            font-size: 1.1rem;
+            line-height: 2;
+            color: #5d4037;
+        }
+        
+        .note {
+            background: #e8f4f8;
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 4px solid #4a90a4;
+            font-size: 0.9rem;
+            color: #2c3e50;
+        }
+        
+        .quote {
+            font-style: italic;
+            color: #7d5d3b;
+            margin: 20px 40px;
+            padding-left: 20px;
+            border-left: 3px solid #d4c9a8;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #d4c9a8;
+            color: #8b4513;
+            font-size: 0.9rem;
+        }
+        
+        .seal {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .seal-text {
+            display: inline-block;
+            padding: 10px 30px;
+            border: 2px solid #8b4513;
+            border-radius: 50%;
+            transform: rotate(-5deg);
+            color: #8b4513;
+            font-family: 'SimSun', serif;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">鏡底記</h1>
+            <p class="subtitle">海鏡神社秘伝書 - 承和三年写</p >
+        </div>
+        
+        <div class="seal">
+            <div class="seal-text">海鏡神社<br>秘伝</div>
+        </div>
+        
+        <div class="chapter">
+            <h2 class="chapter-title">卷一 · 神鏡起源</h2>
+            <p class="content">昔、淡路島の漁師、浦島某が嵐の海より古鏡を引き上げる。其の鏡は月明かりを受けて輝き、海底の如き深淵を内に蔵す。里人は之を神鏡と崇め、海鏡明神と称す。</p >
+            
+            <div class="ancient-text">
+                海より現れし鏡は、月の光を集め、夜の海を照らす。其の中に映るは、現世ならぬ別世界の景色なり。漁師浦島が此の鏡を拾い上げし日より、村に不思議なる現象現る。
+            </div>
+            
+            <p class="content">鏡は初めより神社の中心となり、其の周りに社殿が築かれる。然し、此の鏡は単なる祭祀の対象に非ず、海と陸を繋ぐ「境」其の物なりき。</p >
+            
+            <div class="note">
+                【研究ノート】鏡底記の成立は9世紀中期と推定される。海鏡明神信仰の起源を記す最古の文献。写本は現存せず、江戸時代の写しのみ伝わる。
+            </div>
+        </div>
+        
+        <div class="chapter">
+            <h2 class="chapter-title">卷二 · 橋姫舟守</h2>
+            <p class="content">海鏡神社の守護者として「橋姫舟守」が選ばれる。其の役目は、鏡と現世の境界を守り、神鏡の力を正しく導くことにあり。</p >
+            
+            <p class="content">橋姫舟守は一代限りの役目に非ず、其の魂は次の世代へと継がれ、永遠に海鏡神社を守り続ける。然し、此の継承には「融噬」と呼ばれる秘儀が必要なり。</p >
+            
+            <div class="ancient-text">
+                橋は現世と鏡世を繋ぎ、舟は其の境を渡る。橋姫舟守は両方の世界を知りて、其の均衡を保つ。彼女の魂は月睡の夜に鏡に捧げられ、新しき守護者となる。
+            </div>
+            
+            <div class="note">
+                【研究ノート】橋姫舟守の役割は、単なる祭祀を超えた超自然的なもの。その継承儀式「融噬」は、二人の魂を一つに融合させる禁忌の儀式とされる。
+            </div>
+        </div>
+        
+        <div class="chapter">
+            <h2 class="chapter-title">卷三 · 融噬の儀</h2>
+            <p class="content">融噬の儀は、月睡の夜に行わる。新旧の橋姫舟守が鏡の前に立ち、其の魂を鏡に捧ぐ。旧き者は鏡の中に消え、新しき者は其の力を受け継ぐ。</p >
+            
+            <div class="quote">
+                "月睡の夜、鏡は扉となる。捧げられし魂は融け合い、新しき守護者を生む。然して旧き者は鏡の底の住人となる"
+            </div>
+            
+            <p class="content">然し、此の儀式は危険極まりなく、少しでも誤れば、両者の魂は鏡の底に囚われ、永遠に彷徨うこととなる。其の状態を「鏡の囚人」と称す。</p >
+            
+            <div class="ancient-text">
+                融噬の儀、成功せざる時、二人の魂は鏡の中に囚われ、完全なる者ともならず、別れもせず。其れは最も悲惨なる運命なり。鏡の囚人は、鏡面に其の苦悶の表情を浮かべ、永遠に助けを求めて叫ぶ。
+            </div>
+        </div>
+        
+        <div class="chapter">
+            <h2 class="chapter-title">卷四 · 禁忌と戒め</h2>
+            <p class="content">鏡底記は終わりに、幾つかの禁忌を記す。其の中でも最も重要なるは「永遠を軽々に誓うこと勿れ」という戒めなり。</p >
+            
+            <div class="ancient-text">
+                一、月無き夜に海の鏡を見るべからず<br>
+                二、鏡に映る己に非ざる影に語りかけるべからず<br>
+                三、永遠を軽々に誓うべからず<br>
+                四、橋姫舟守の儀式を妨げるべからず<br>
+                五、鏡の底より聞こゆる宴の音に耳を傾けるべからず
+            </div>
+            
+            <p class="content">此の戒めを破る者は、神鏡の怒りに触れ、其の身に災いが降りかかると言われる。特に永遠を軽々に誓うことは、神鏡の力を歪め、予測不能なる結果を招く。</p >
+            
+            <div class="note">
+                【研究ノート】これらの禁忌は、単なる迷信ではなく、実際に起こった事件を元にしている可能性が高い。特に「永遠を軽々に誓うべからず」という戒めは、複数の失踪事件と関連している。
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>珺霧高校民俗学部所蔵 - デジタル化写本</p >
+            <p>原本：承和三年（836年）写 / 此の写本：文化十年（1813年）写</p >
+        </div>
+    </div>
+</body>
+</html>

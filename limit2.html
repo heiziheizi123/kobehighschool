@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Limit </title>
+    
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>访问被拒绝</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #5a0000 0%, #3a0000 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .forbidden-container {
+            max-width: 600px;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(255, 0, 0, 0.2);
+        }
+        
+        .warning-icon {
+            font-size: 80px;
+            color: #ff4444;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #FFFFFF;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            color: #F0F0F0;
+        }
+        
+        .error-code {
+            background: rgba(255, 0, 0, 0.2);
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 15px 0;
+            font-family: monospace;
+            font-size: 16px;
+            border: 1px solid rgba(255, 0, 0, 0.3);
+        }
+        
+        .contact-info {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .contact-info p {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: rgba(255, 0, 0, 0.3);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin: 10px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 0, 0, 0.4);
+        }
+        
+        .btn:hover {
+            background: rgba(255, 0, 0, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .forbidden-container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            p {
+                font-size: 16px;
+            }
+            
+            .warning-icon {
+                font-size: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="forbidden-container">
+        <div class="warning-icon">
+            <i class="fas fa-ban"></i>
+        </div>
+        
+        <h1>此内容禁止被访问</h1>
+        
+        <p>您试图访问的内容受到限制，无法提供访问权限。</p>
+        
+        <div class="error-code">
+            错误代码: 403 - FORBIDDEN
+        </div>
+        
+        <p>这可能是因为：</p>
+        <ul style="list-style: none; margin-bottom: 25px;">
+            <li>• 您没有足够的访问权限</li>
+            <li>• 该内容已被管理员移除</li>
+            <li>• 访问请求被安全策略阻止</li>
+        </ul>
+        
+        <div>
+            <a href="/" class="btn">
+                <i class="fas fa-home"></i> 返回首页
+            </a>
+        </div>
+        
+        <div class="contact-info">
+            <p>如果您认为这是一个错误，请联系系统管理员</p>
+            <p>联系电话: (000) 123-4567</p>
+            <p>电子邮件: limit197507@ac.jp</p>
+        </div>
+    </div>
+</body>
+</html>
+    
+  </body>
+  
+</html>

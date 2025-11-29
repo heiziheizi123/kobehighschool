@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>平井进次郎 - 密码验证</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'MS Mincho', 'SimSun', serif;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            color: #cc3333;
+            line-height: 1.7;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(80, 0, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(80, 0, 0, 0.1) 0%, transparent 50%);
+        }
+        
+        .container {
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            background: rgba(15, 0, 0, 0.7);
+            border: 2px solid #330000;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .header {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #330000;
+        }
+        
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: #ff4444;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+            letter-spacing: 2px;
+        }
+        
+        .header h2 {
+            font-size: 1.5rem;
+            color: #ff6666;
+            margin-bottom: 15px;
+        }
+        
+        .header p {
+            color: #996666;
+            font-size: 1rem;
+        }
+        
+        .password-section {
+            margin: 40px 0 20px 0;
+        }
+        
+        .password-input {
+            width: 100%;
+            max-width: 400px;
+            padding: 15px;
+            font-size: 1.1rem;
+            background: rgba(20, 0, 0, 0.7);
+            border: 1px solid #660000;
+            border-radius: 5px;
+            color: #ff6666;
+            text-align: center;
+            margin: 15px 0;
+        }
+        
+        .password-input:focus {
+            outline: none;
+            border-color: #cc3333;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+        }
+        
+        .submit-btn {
+            background: #660000;
+            color: #ff9999;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .submit-btn:hover {
+            background: #880000;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+        }
+        
+        .message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .error {
+            background: rgba(80, 0, 0, 0.5);
+            color: #ff7777;
+            border: 1px solid #990000;
+        }
+        
+        .success {
+            background: rgba(0, 40, 0, 0.5);
+            color: #77ff77;
+            border: 1px solid #009900;
+        }
+        
+        .hint {
+            color: #cc7777;
+            font-size: 1rem;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(50, 0, 0, 0.3);
+            border-left: 3px solid #cc3333;
+        }
+        
+        .footnote {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #330000;
+            color: #664444;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .header h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>潮見幽水</h1>
+            <h2>资料已封存</h2>
+            <p>資料閲覧認証システム</p >
+        </div>
+        
+        <div class="hint">
+            ヒント：海镜明神の真意
+        </div>
+        
+        <div class="password-section">
+            <p style="color: #cc7777; margin-bottom: 15px;">6文字を入力してください：</p >
+            <input type="password" id="passwordInput" class="password-input" placeholder="パスワード">
+            <br>
+            <button class="submit-btn" onclick="checkPassword()">認証</button>
+            
+            <div id="message" class="message"></div>
+        </div>
+        
+        <div class="footnote">
+            <p>※ 本システムは@**#&￥&のみが利用できます</p >
+        </div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const passwordInput = document.getElementById('passwordInput');
+            const message = document.getElementById('message');
+            const userInput = passwordInput.value.trim();
+            
+            // 正确答案是：海に神り真波
+            const correctPassword = '海に神り真波';
+            
+            if (userInput === correctPassword) {
+                message.textContent = '認証成功！資料閲覧ページへ移動します...';
+                message.className = 'message success';
+                message.style.display = 'block';
+                
+                // 2秒后跳转
+                setTimeout(function() {
+                    window.location.href = 'himitsu.html';
+                }, 2000);
+            } else {
+                message.textContent = '認証失敗。パスワードが正しくありません。';
+                message.className = 'message error';
+                message.style.display = 'block';
+                
+                // 清空输入框
+                passwordInput.value = '';
+            }
+        }
+        
+        // 支持按Enter键提交
+        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+</html>

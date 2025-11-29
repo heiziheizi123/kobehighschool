@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>【结局】最后的留言</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #000000;
+            color: #E0E0E0;
+            font-family: 'SimSun', 'STSong', 'Times New Roman', serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        /* === 上半部分：聊天框 === */
+        .chat-section {
+            background-color: #1a1a1a;
+            border-bottom: 3px solid #CC0000;
+            padding: 30px 0;
+            flex-grow: 1; /* 占据尽可能多的空间 */
+        }
+        
+        .chat-window {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #0d0d0d;
+            border: 1px solid #333;
+            box-shadow: 0 0 15px rgba(204, 0, 0, 0.4);
+        }
+
+        .message {
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border-radius: 15px;
+            max-width: 75%;
+            word-wrap: break-word;
+            line-height: 1.5;
+        }
+
+        /* 张阳 (左侧，红色/灰色) */
+        .zhang-yang {
+            background-color: #331a1a;
+            color: #FF7F7F;
+            border: 1px solid #CC0000;
+            text-align: left;
+            margin-right: auto;
+        }
+
+        /* 玩家/你 (右侧，白色/黄色) */
+        .player {
+            background-color: #222222;
+            color: #FFD700;
+            text-align: right;
+            margin-left: auto;
+        }
+        
+        /* 精神失常文本 */
+        .insanity {
+            color: #FF0000;
+            font-weight: bold;
+            font-size: 1.1em;
+            text-shadow: 0 0 5px #FF0000;
+            animation: tremor 0.1s infinite alternate; /* 模拟屏幕抖动 */
+        }
+        @keyframes tremor {
+            0% { transform: translate(1px, 1px); }
+            100% { transform: translate(-1px, -1px); }
+        }
+
+        /* === 下半部分：鸣谢 === */
+        .credits-section {
+            background-color: #000000;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .credits-section h2 {
+            color: #CC0000;
+            font-size: 30px;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .social-icons img {
+            width: 80px;
+            height: 80px;
+            border: 3px solid #AAAAAA;
+            object-fit: cover;
+            transition: border-color 0.3s;
+        }
+
+        .social-icons img:hover {
+            border-color: #FFD700;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="chat-section">
+        <div class="chat-window">
+            
+            <div class="message zhang-yang">
+                <strong>张阳：</strong>调查的怎么样了？你看到什么了？
+            </div>
+
+            <div class="message player">
+                我已经知道了。沈心洁和张辰死了，是被平井进次郎献祭了。他们融合成了怪物，然后坠海...这都是仪式的一部分。
+            </div>
+
+            <div class="message zhang-yang">
+                <strong>张阳：</strong>你在说什么鬼话？！自杀？献祭？你是不是被吓疯了？尸体扭曲是自然腐烂，这都是巧合！
+            </div>
+
+            <div class="message player">
+                不，我看到了平井升天了。你看看新闻。
+            </div>
+            
+            <div class="message zhang-yang insanity">
+                <strong>张阳：</strong>融合...融合...八只手...他们在找我...我是第四块石头...别过来！别靠近海边！别过来！
+            </div>
+            
+            <div class="message player">
+                张阳？你在哪？
+            </div>
+
+            <div class="message zhang-yang insanity" style="margin-bottom: 0;">
+                <span style="font-size: 0.8em; opacity: 0.6;">[连接已断开。]</span>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="credits-section">
+        <h2>感谢游玩！</h2>
+        
+        <p style="color: #CCCCCC; margin-bottom: 40px;">希望您享受了这段由档案、数字和古老献祭构成的旅程。愿海镜明神保佑你。</p>
+
+        <p style="color: #FFD700; font-weight: bold; margin-bottom: 20px;">通过以下方式找到作者：</p>
+
+        <div class="social-icons">
+            <div>
+                <img src="xiaohongshu.jpg" alt="小红书二维码或头像">
+                <p style="color: #999;">小红书</p>
+            </div>
+            <div>
+                <img src="wechat.jpg" alt="微信二维码或头像">
+                <p style="color: #999;">微信</p>
+            </div>
+        </div>
+        
+    </div>
+
+</body>
+</html>
