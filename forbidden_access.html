@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>【最终认证】海鏡循环终结密码</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 核心样式 */
+        body {
+            background-color: #000000;
+            color: #E0E0E0;
+            font-family: 'SimSun', 'STSong', 'Times New Roman', serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            line-height: 1.6;
+        }
+
+        h1 {
+            color: #CC0000;
+            font-size: 36px;
+            margin-bottom: 5px;
+            letter-spacing: 3px;
+            text-shadow: 0 0 8px rgba(204, 0, 0, 0.7);
+        }
+
+        .subtitle {
+            color: #8B0000;
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        /* 密码输入容器 */
+        .lock-container {
+            background-color: #0a0a0a;
+            border: 2px solid #CC0000;
+            padding: 40px 60px;
+            box-shadow: 0 0 15px rgba(204, 0, 0, 0.6);
+            max-width: 450px;
+            width: 90%;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            color: #FF7F7F; /* 浅红色提示 */
+            font-size: 16px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        /* 输入框样式 */
+        input[type="text"] {
+            padding: 12px;
+            width: 100%;
+            background-color: #000000;
+            color: #FFD700; /* 金黄色输入文字 */
+            border: 1px solid #444;
+            border-bottom: 2px solid #8B0000;
+            font-size: 20px;
+            letter-spacing: 2px;
+            box-sizing: border-box; /* 确保 padding 不增加总宽度 */
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-bottom: 2px solid #CC0000;
+        }
+
+        /* 按钮样式 */
+        #submit-button {
+            background-color: #8B0000;
+            color: #FFFFFF;
+            border: none;
+            padding: 15px 30px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+            width: 100%;
+        }
+
+        #submit-button:hover {
+            background-color: #CC0000;
+            transform: scale(1.02);
+        }
+
+        #message {
+            margin-top: 30px;
+            color: #FF7F7F;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="lock-container">
+        
+        <h1>最终认证序列</h1>
+        <p class="subtitle">请确认**仪式的日期**与**关键献祭者的身份**。</p>
+
+        <div class="input-group">
+            <label for="date-input">第一序列：8位数字日期 (YYYYMMDD)</label>
+            <input type="text" id="date-input" placeholder="请输入8位数字日期" maxlength="8">
+        </div>
+        
+        <div class="input-group">
+            <label for="name-input">第二序列：名字的拼音 (小写，连续)</label>
+            <input type="text" id="name-input" placeholder="请输入名字的拼音" maxlength="15">
+        </div>
+        
+        <button id="submit-button" onclick="checkFinalPassword()">执行认证</button>
+        
+        <div id="message"></div>
+    </div>
+
+    <script>
+        // 最终答案
+        const FINAL_DATE = '20250326';
+        const FINAL_NAME = 'shenxinjie'; // 沈心洁
+
+        function checkFinalPassword() {
+            const dateInput = document.getElementById('date-input').value.trim();
+            const nameInput = document.getElementById('name-input').value.trim().toLowerCase();
+            const messageElement = document.getElementById('message');
+            
+            // 确保日期是纯数字
+            if (!/^\d{8}$/.test(dateInput)) {
+                messageElement.style.color = '#FF7F7F';
+                messageElement.textContent = '【认证失败】日期格式错误，必须是8位数字。';
+                return;
+            }
+
+            // 检查密码
+            if (dateInput === FINAL_DATE && nameInput === FINAL_NAME) {
+                messageElement.style.color = '#28a745'; 
+                messageElement.textContent = '【认证成功】。';
+                
+                // 成功后跳转到最终结论页
+                setTimeout(() => {
+                    window.location.href = 'conclusion.html'; 
+                }, 2000);
+
+            } else {
+                messageElement.style.color = '#FF7F7F';
+                messageElement.textContent = '【认证失败】序列不匹配。请确认日期或献祭者身份。';
+            }
+        }
+    </script>
+
+</body>
+</html>

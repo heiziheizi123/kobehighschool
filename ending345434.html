@@ -2,336 +2,181 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
+    <title>!!! 【终局】循环完成 !!!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>结局 - 海镜神社</title>
     <style>
-        * {
+        /* 核心样式 */
+        body {
+            background-color: #000000;
+            color: #E0E0E0;
+            font-family: 'SimSun', 'STSong', 'Times New Roman', serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'MS Mincho', 'Yu Mincho', 'SimSun', serif;
-        }
-        
-        body {
-            background-color: #0a0a0a;
-            color: #cc3333;
-            line-height: 1.7;
-            min-height: 100vh;
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(80, 0, 0, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(80, 0, 0, 0.1) 0%, transparent 50%);
+            height: 100vh;
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
-            padding: 20px;
-        }
-        
-        .page {
-            max-width: 900px;
-            background: rgba(20, 0, 0, 0.7);
-            padding: 40px;
-            border-radius: 10px;
-            border: 1px solid #330000;
-            box-shadow: 0 0 30px rgba(255, 0, 0, 0.2);
-            margin-bottom: 30px;
-            display: none;
-        }
-        
-        .active {
-            display: block;
-        }
-        
-        .header {
-            margin-bottom: 30px;
             text-align: center;
+            overflow-y: auto; 
+            line-height: 1.9;
         }
-        
-        .header h1 {
-            font-size: 2.5rem;
-            color: #ff4444;
-            text-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
-            letter-spacing: 3px;
-            margin-bottom: 10px;
+
+        .conclusion-container {
+            padding: 60px 40px;
+            max-width: 800px;
+            width: 90%;
+            margin: 50px auto;
+            border: 3px double #CC0000;
+            box-shadow: 0 0 30px rgba(204, 0, 0, 1);
+            background-color: #0a0a0a;
         }
-        
-        .header p {
-            color: #ff6666;
-            font-size: 1.2rem;
-        }
-        
-        .ending-content {
-            margin: 30px 0;
-            padding: 25px;
-            background: rgba(30, 0, 0, 0.5);
-            border-radius: 8px;
-            border: 1px solid #440000;
-        }
-        
-        .ending-content h2 {
-            color: #ff5555;
+
+        /* 标题和信息 */
+        h1 {
+            color: #FFD700; 
+            font-size: 42px;
             margin-bottom: 20px;
-            text-align: center;
-            font-size: 1.8rem;
-            border-bottom: 1px solid #550000;
+            letter-spacing: 5px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+            border-bottom: 2px solid #CC0000;
             padding-bottom: 10px;
         }
-        
-        .ending-content h3 {
-            color: #ff6666;
-            margin: 25px 0 15px;
-            font-size: 1.4rem;
+
+        .metadata {
+            color: #AAAAAA;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        /* 核心叙事文本 */
+        .narrative {
+            color: #CCCCCC;
+            font-size: 18px;
+            text-align: left;
+            margin-bottom: 40px;
+        }
+
+        .highlight-red {
+            color: #CC0000;
+            font-weight: bold;
         }
         
-        .ending-content p {
-            color: #cc6666;
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-        
-        .quote {
-            background: rgba(40, 0, 0, 0.6);
-            padding: 20px;
-            border-left: 4px solid #990000;
-            margin: 20px 0;
+        .crescendo {
+            color: #FFD700;
+            font-size: 20px;
             font-style: italic;
-            color: #dd7777;
-        }
-        
-        .scene-break {
-            text-align: center;
             margin: 30px 0;
-            color: #996666;
-            font-size: 1.1rem;
-            letter-spacing: 3px;
         }
-        
-        /* 神户新闻样式 */
-        .kobe-news {
-            background: white;
-            color: #333;
-            padding: 30px;
-            border-radius: 8px;
-            margin: 25px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
-        }
-        
-        .news-header {
-            text-align: center;
-            border-bottom: 2px solid #cc0000;
-            padding-bottom: 15px;
-            margin-bottom: 25px;
-        }
-        
-        .news-title {
-            font-size: 1.8rem;
-            color: #cc0000;
-            margin-bottom: 10px;
-        }
-        
-        .news-date {
-            color: #666;
-            font-size: 1rem;
-        }
-        
-        .news-content h3 {
-            color: #333;
-            margin: 20px 0 15px;
-            font-size: 1.3rem;
-        }
-        
-        .news-content p {
-            color: #444;
-            margin-bottom: 15px;
-            line-height: 1.8;
-        }
-        
-        .news-footer {
-            margin-top: 25px;
-            padding-top: 15px;
-            border-top: 1px solid #ddd;
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        /* 按钮样式 */
-        .button-container {
-            margin: 40px 0 20px;
-            text-align: center;
-        }
-        
-        .nav-button {
-            background: rgba(60, 0, 0, 0.7);
-            color: #ff7777;
-            border: 2px solid #990000;
-            border-radius: 5px;
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            margin: 0 10px;
-        }
-        
-        .nav-button:hover {
-            background: rgba(80, 0, 0, 0.8);
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
-            transform: translateY(-3px);
-        }
-        
-        .nav-button::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-        
-        .nav-button:hover::after {
-            left: 100%;
-        }
-        
-        .footer {
+
+        .final-cry {
+            color: #FF7F7F;
+            font-size: 24px;
+            font-weight: bold;
             margin-top: 30px;
-            color: #664444;
-            font-size: 0.9rem;
-            text-align: center;
+            border-top: 1px dashed #444;
+            padding-top: 20px;
+        }
+
+        /* 新增：现实报道区域 */
+        .appendix {
+            margin-top: 60px;
+            padding: 20px;
+            border-top: 4px double #444;
+            background-color: #1a1a1a;
+            text-align: left;
+        }
+
+        .appendix h2 {
+            color: #AAAAAA;
+            font-size: 20px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #444;
+            padding-bottom: 5px;
+        }
+
+        .news-report {
+            color: #999999;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+        }
+
+        .news-report strong {
+            color: #FFFFFF;
         }
     </style>
 </head>
 <body>
-    <!-- 结局页面 -->
-    <div class="page active" id="endingPage">
-        <div class="header">
-            <h1>海镜神社</h1>
-            <p>结局 - 影饗的真相</p>
-        </div>
+
+    <div class="conclusion-container">
         
-        <div class="ending-content">
-            <h2>隐藏结局：永恒的缠绕</h2>
-            
-            <div class="scene-break">● 月睡之夜 ●</div>
-            
-            <p>在月睡之夜的最后时刻，平井进次郎站在镜之渊前，面对着被影饗吞噬的沈心洁与张辰的倒影。海面如墨，只有神社的灯笼在远处投下摇曳的血色光芒。</p>
-            
-            <p>"我明白了..."平井低声自语，手中的古卷轴在夜风中微微颤抖，"真正的仪式并非融合，而是分离——将影饗从海镜明神中彻底剥离。"</p>
-            
-            <div class="quote">
-                "以身饲水者，非为融合，而为净化。唯以纯净之魂为祭，方可斩断影之宴席。"
-                <br>—— 海镜古卷·终章
-            </div>
-            
-            <p>随着黎明第一缕光线的到来，平井做出了最终选择。他踏入冰冷的镜之渊，诵念着古老的净化咒文。海水如活物般缠绕着他的身体，抽取着他的生命力。</p>
-            
-            <div class="scene-break">● 神户新闻 ●</div>
-            
-            <div class="kobe-news">
-                <div class="news-header">
-                    <div class="news-title">神户新闻</div>
-                    <div class="news-date">20XX年4月15日 朝刊</div>
-                </div>
-                
-                <div class="news-content">
-                    <h3>淡路島で遺体発見 行方不明の中国人留学生2人</h3>
-                    
-                    <p>14日午前、淡路島北部の海岸で地元漁師により、男女2遺体が発見された。遺体は行方不明となっていた中国人留学生、沈心潔さん（16）と張辰さん（17）と確認された。</p>
-                    
-                    <p>警察の発表によると、遺体は強い腐敗が進んでおり、長期間海に漂流していたとみられる。死因は溺死と判断されたが、遺体には不可解な点が多数確認されている。</p>
-                    
-                    <h3>不可解な遺体の状態</h3>
-                    
-                    <p>関係者によると、2遺体は極めて不自然な状態で絡み合っており、単なる海流によるものではないという。専門家は「このような状態は前例がない」と困惑を隠せない。</p>
-                    
-                    <p>現場近くには「海鏡神社」と呼ばれる古い神社があり、地元では古くから不思議な伝説が語り継がれている。警察は事故の可能性が高いとしているが、一部では神社にまつわる因習との関連を疑う声もある。</p>
-                    
-                    <h3>平井教授も行方不明に</h3>
-                    
-                    <p>また、民俗学の権威である平井進次郎教授（45）が同日から行方不明となっている。平井教授は海鏡神社の研究を長年続けており、関係者は「単なる偶然ではないかもしれない」と懸念を表明している。</p>
-                </div>
-                
-                <div class="news-footer">
-                    続きは2面で
-                </div>
-            </div>
-            
-            <div class="scene-break">● 真実 ●</div>
-            
-            <p>影饗被永远封印，而平井的灵魂则化为了守护镜海的新桥姬舟守。しかし、沈心潔と張辰の肉体は既に神力の歪みで滅び、最も悲惨な形で波に打ち上げられた。</p>
-            
-            <p>彼らの遺体は極めて不自然に絡み合い、骨格レベルで説明のつかない強制的な連結が生じ、一部の肢体は既に分離不可能となっていた。</p>
-            
-            <p>これは神力の"成就"であり、軽率に"永遠"を誓ったことへの究極の罰であった。"永遠に一緒に"という誓いは、最も文字通りの、物理的な方法で実現された。</p>
-        </div>
-        
-        <div class="button-container">
-            <button class="nav-button" onclick="showPage('authorPage')">作者的话</button>
-        </div>
-        
-        <div class="footer">
-            <p>海镜神社档案 - 内部资料</p>
-        </div>
-    </div>
+        <h1>仪式：永恒之冕的献祭</h1>
     
-    <!-- 作者的话页面 -->
-    <div class="page" id="authorPage">
-        <div class="header">
-            <h1>作者的话</h1>
-        </div>
+    <div class="conclusion-container">
         
-        <div class="ending-content">
-            <h2>创作背后的思考</h2>
+        <h1>仪式：永恒之冕的献祭</h1>
+        
+        <p class="metadata">— 仪式完成。代行者日志。—</p>
+
+        <div class="narrative">
+            <p>我无法阻止。在神社的中心，沈心洁和张辰被粗粝的<span class="highlight-red">红绳</span>以一种残酷的姿态捆绑着，无法挣脱。阵阵急促、冰冷的<span class="highlight-red">铃铛声</span>穿透耳膜，压倒了海浪的咆哮。</p>
+
+            <p>我眼睁睁看着，无数穿着各个时代<span class="highlight-red">日本服装的黑影</span>从阴影中浮现，它们像托举圣物一样，将沈心洁和张辰托向空中。在半空中，伴随着令人作呕的皮肉摩擦声，他们二人的身体开始融化、扭曲，然后<span class="highlight-red">重新组合</span>。</p>
             
-            <p>《海镜神社》的故事源于我对日本民俗传说中"人造神"概念的思考。当人类试图创造神明来满足自身需求时，这种行为的后果往往是不可预测的。</p>
-            
-            <div class="quote">
-                感谢游玩！
+            <div class="crescendo">
+                那是一个无法形容的怪物，拥有两颗头颅和八支肢体，带着人类的躯干，却发出野兽般的哀鸣。
             </div>
+
+            <p>平井进次郎，他平静地坐在神社中央，身下冒出耀眼的<span class="highlight-red">血红色光芒</span>。那光芒包裹着他，他像挣脱了重力的束缚，缓缓向着天空上升而去。天空，此刻已彻底化为<span class="highlight-red">血红色</span>，正中央有一个巨大的、不断旋转的<span class="highlight-red">漩涡</span>，那是他永恒的入口。</p>
+
+            <p>我颤抖着站在石阶上。海水拍打在礁石上，发出的不再是水声，而是炸雷般的巨响。</p>
             
-            <h3>影饗的本质</h3>
-            
-            <p>影饗并非传统意义上的恶灵，而是人类欲望与恐惧的具象化。它反映了当我们轻率地许下"永远"的誓言时，可能面临的终极代价。</p>
-            
-            <p>沈心洁与张辰的结局既是对浪漫化"永恒"概念的解构，也是对超自然力量本质的探索——它不会以我们期望的方式实现愿望，而是以最字面、最物理的形式。</p>
-            
-            <h3>平井进次郎的选择</h3>
-            
-            <p>平井进次郎的选择则体现了牺牲与责任的主题。作为研究者，他最终不得不面对自己研究的后果，并以自己的灵魂为代价来纠正错误。</p>
-            
-            <p>この物語は知識の境界と代償を探求しようとしている——時には、多くを知ることが必ずしも良いとは限らず、真実を追い求めること自体が呪いとなる可能性がある。</p>
-            
-            <h3>感谢游玩！</h3>
-            
-            <p>觉得好玩可以关注作者小红书账号26769118449</p>
-            
-            <p>作者会带来更多续作和有趣的作品，本作品支持一切二创及repo！</p>
+            <p>那只怪物，它的两颗头颅同时望向我。我听见他们破碎的声音，一边哭着，一边徒劳地喊着我的名字——<span class="highlight-red">“我……”</span>。他们想要爬向我，但是新生的肢体完全失控，它们互相纠缠，无法协调。</p>
+
+            <p>最终，那怪物从悬崖边滚了下去，带着两声绝望的尖啸，落入了海中的漩涡，被吞噬得无影无踪。</p>
+
         </div>
         
-        <div class="button-container">
-            <button class="nav-button" onclick="showPage('endingPage')">返回结局</button>
-        </div>
+        <p class="final-cry">狂风裹挟着海水，将我的头发拍在脸上，我久久不能回神，只是站在那里，对着血红色的天空和空无一物的海面，嚎啕大哭。</p>
         
-        <div class="footer">
-            <p>感谢您体验《神户神隐》</p>
+        <div class="appendix">
+            <h2>【附录：现实记录】</h2>
+            <div class="news-report">
+                <p><strong>神户新闻 — 本社讯</strong></p>
+                <p>昨日傍晚，在海岸礁石区发现两具浮尸。经确认，为在当地大学交流的中国留学生：<strong>沈心洁</strong>与**张辰**。</p>
+                <p>警方在打捞尸体时发现，两具尸体以一种**极度不自然的姿态扭曲融合**在一起，肢体与躯干的连接方式完全违背人体构造学。尽管现场勘查结果怪异，但警方最终定性为**集体自杀**案件。</p>
+                <p>另外，死者所在大学的老师，**平井进次郎**，自本月起失踪，校方已向警方报案。</p>
+                <p>调查仍在继续，但目前未发现有他杀嫌疑。</p>
+            </div>
+        </div>
+
+        <div class="next-step">
+            <button onclick="window.location.href='endessddesss.html'">>> 终结档案，面对现实</button>
         </div>
     </div>
 
-    <script>
-        function showPage(pageId) {
-            // 隐藏所有页面
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-            
-            // 显示目标页面
-            document.getElementById(pageId).classList.add('active');
-            
-            // 滚动到顶部
-            window.scrollTo(0, 0);
-        }
-    </script>
+<style>
+    /* Add the button styles to your existing CSS */
+    .next-step {
+        margin-top: 40px;
+        text-align: center;
+    }
+    .next-step button {
+        background-color: #CC0000;
+        color: #FFFFFF;
+        border: none;
+        padding: 15px 30px;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+    .next-step button:hover {
+        background-color: #FF0000;
+        transform: scale(1.05);
+    }
+</style>
 </body>
 </html>

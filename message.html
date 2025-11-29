@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>【重要】新しいセキュリティポリシーに関する確認事項</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 继承主页的深色风格 */
+        body {
+            background-color: #000000;
+            color: #FFFFFF;
+            font-family: 'メイリオ', Meiryo, 'Hiragino Kaku Gothic ProN', '游ゴシック', YuGothic, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+            min-height: 200vh; /* 确保页面足够长，可以向下滚动 */
+        }
+
+        /* 头部：保持一致的靛蓝色 */
+        header {
+            background-color: #4B0082; /* Indigo 靛蓝色 */
+            color: #FFFFFF;
+            padding: 15px 40px;
+            font-size: 20px;
+            font-weight: normal;
+            border-bottom: 3px solid #000000;
+            position: sticky; /* 头部固定 */
+            top: 0;
+            z-index: 10;
+        }
+
+        /* 内容区域 */
+        .container {
+            padding: 20px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #FFD700; /* 亮黄色突出重要性 */
+            font-size: 24px;
+            border-bottom: 2px solid #555555;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .metadata {
+            color: #ADD8E6;
+            font-size: 14px;
+            margin-bottom: 20px;
+            border: 1px solid #333333;
+            padding: 10px;
+        }
+
+        .content p {
+            margin-bottom: 15px;
+        }
+        
+        .contact {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #999999;
+        }
+
+        /* --- 弹窗样式 --- */
+        #chat-popup {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            background-color: #222222;
+            border: 1px solid #4B0082; /* 靛蓝色边框 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 8px;
+            z-index: 100;
+            
+            /* 初始状态：透明且隐藏 */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1.5s ease-in-out; /* 渐变效果 */
+        }
+
+        #chat-popup.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #chat-popup h3 {
+            color: #FFD700;
+            margin-top: 0;
+            font-size: 16px;
+        }
+
+        #chat-popup button {
+            background-color: #4B0082;
+            color: #FFFFFF;
+            border: none;
+            padding: 8px 15px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 100%;
+        }
+        
+        #chat-popup button:hover {
+            background-color: #6A0DAD;
+        }
+        
+        /* 隐藏彩蛋的样式 */
+        .easter-egg {
+            color: #1a1a1a; /* 几乎与背景色一致的深灰色 */
+            font-size: 8px;
+            text-align: right;
+            margin-top: 5px;
+            margin-bottom: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        職員専用ポータルサイト - 詳細通知
+    </header>
+
+    <div class="container">
+        
+        <h1>【重要】新しいセキュリティポリシーに関する確認事項</h1>
+
+        <div class="metadata">
+            発行日：2024年5月28日 | 部署：情報システム管理課 | <a href="index.html" style="color:#ADD8E6; text-decoration: underline;">リストへ戻る</a>
+        </div>
+
+        <div class="content">
+            <p>教職員各位</p>
+            
+            <p>平素より本校の教育活動にご協力いただき、厚く御礼申し上げます。情報システム管理課より、標記の件について重要なお知らせがございます。昨今のサイバーセキュリティ環境の厳しさに鑑み、本校のネットワークにおける安全性を確保するため、セキュリティポリシーを全面的に見直し、更新いたしました。</p>
+
+            <p>これは、生徒および教職員の皆様の個人情報を保護し、学校の運営基盤となるITシステムの信頼性を維持するための不可欠な措置です。つきましては、下記に定める新たなポリシーの主要項目について、速やかにご確認いただき、対応をお願いいたします。</p>
+
+            <h3>1. パスワードの厳格化と定期変更の義務化</h3>
+            <p>全ての教職員アカウントにおいて、パスワードの要件が以下の通り厳格化されます。直ちにパスワードを再設定してください。また、今後は90日ごとの定期的な変更が義務付けられます。（我賭你不會認真讀）</p>
+            <ul>
+                <li>最低文字数：10文字以上</li>
+                <li>構成要素：大文字、小文字、数字、記号のうち3種類以上を含むこと。</li>
+                <li>過去のパスワードの再利用は禁止とします。</li>
+            </ul>
+
+            <h3>2. 二要素認証（MFA）の導入</h3>
+            <p>職員ポータルサイト、および校内グループウェアへのアクセスには、本日より二要素認証（Multi-Factor Authentication, MFA）が義務付けられます。初回ログイン時に認証アプリまたは携帯電話番号を登録してください。MFAの導入により、不正アクセスリスクを大幅に低減します。</p>
+
+            <h3>3. 機密情報の取り扱いに関する指針</h3>
+            <p>生徒の成績、健康情報、人事情報などの「機密情報」は、指定された校内サーバーまたはクラウドストレージ以外での保存を**厳禁**とします。特に、個人所有のPC、USBメモリ、外部サービス（無料メールなど）での保存・共有は、情報漏洩の最大のリスク源となるため、固くお断りいたします。</p>
+            
+            <p>4. **[重要] リモートアクセスの手順変更：** 在宅勤務等で校外からアクセスする際の手順が変更になりました。VPN接続には専用のクライアントソフトウェアが必要です。旧手順は全て無効となります。</p>
+
+            <p>本ポリシーの変更は、皆様の日常業務に多少ご不便をおかけするかもしれませんが、学校全体のセキュリティ水準を向上させるために必要な措置であることをご理解ください。ご不明な点、技術的なサポートが必要な場合は、内線701までご連絡ください。</p>
+            
+            <p class="easter-egg">(我賭你不會認真讀)</p>
+
+        </div>
+        
+        <div class="contact">
+            (内部専用) ご不明な点は内線701（情報システム管理課）までご連絡ください。
+        </div>
+
+        <div style="height: 80vh;"></div>
+
+    </div>
+    
+    <div id="chat-popup">
+        <h3>🚨 新しいチャット申請</h3>
+        <p>「神秘人2333」さんからチャット申請が届いています。</p>
+        <p style="font-size: 12px; color: #999;">接続を許可しますか？</p>
+        <button onclick="location.href='chat2.html'">チャットを開始する</button>
+    </div>
+
+
+    <script>
+        // JavaScript 用于检测滚动并显示弹窗
+        const popup = document.getElementById('chat-popup');
+        const scrollThreshold = 400; // 设置滚动阈值（向下滚动400像素后触发）
+
+        window.addEventListener('scroll', function() {
+            // window.scrollY 是当前垂直滚动的位置
+            if (window.scrollY > scrollThreshold) {
+                // 当滚动超过阈值时，添加 'show' 类，触发CSS渐变
+                popup.classList.add('show');
+            }
+        });
+    </script>
+
+</body>
+</html>

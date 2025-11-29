@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>资料室使用记录 (11月15日)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 页面基础风格 - 白色档案 */
+        body {
+            background-color: #F8F8F8; /* 接近白色的背景 */
+            color: #333333;
+            font-family: 'SimSun', 'Arial', sans-serif;
+            margin: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #555555;
+            font-size: 24px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #DDDDDD;
+            padding-bottom: 5px;
+        }
+
+        /* Excel 样式表格 */
+        .excel-table {
+            border-collapse: collapse;
+            width: 80%;
+            max-width: 800px;
+            background-color: #FFFFFF;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-size: 14px;
+        }
+
+        .excel-table th, .excel-table td {
+            border: 1px solid #CCCCCC; /* 浅灰色边框，模拟 Excel */
+            padding: 10px 15px;
+            text-align: left;
+        }
+
+        /* 表头样式 */
+        .excel-table th {
+            background-color: #EEEEEE; /* 灰色表头 */
+            color: #333333;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* 关键信息高亮 */
+        .highlight-entry {
+            background-color: #FFE0E0; /* 浅红色背景高亮 */
+            font-weight: bold;
+            color: #CC0000; /* 红色字体 */
+        }
+        
+        /* 时间列居中 */
+        .time-col {
+            text-align: center;
+            font-family: 'Consolas', 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>资料室使用名单 - 11月15日</h1>
+
+    <table class="excel-table">
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>时间 (入室)</th>
+                <th>姓名</th>
+                <th>编号/所属</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td class="time-col">10:00</td>
+                <td>田中爱子</td>
+                <td>E2034</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td class="time-col">11:30</td>
+                <td>佐藤美纪</td>
+                <td>A1011</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td class="time-col">13:15</td>
+                <td>伊藤由美</td>
+                <td>D4501</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td class="time-col">15:45</td>
+                <td>李芳</td>
+                <td>留学生</td>
+            </tr>
+            <tr class="highlight-entry">
+                <td>5</td>
+                <td class="time-col">16:20</td>
+                <td>沈心洁</td>
+                <td>留学生</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td class="time-col">17:50</td>
+                <td>山本樱</td>
+                <td>B3005</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td class="time-col">18:40</td>
+                <td>王薇</td>
+                <td>留学生</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td class="time-col">20:00</td>
+                <td>资料室关闭</td>
+                <td>系统记录</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>【图书详情】桥姬舟守物语 - 图书馆系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 继承系列的深色风格 */
+        body {
+            background-color: #000000;
+            color: #FFFFFF;
+            font-family: 'PingFang SC', 'Microsoft YaHei', 'SimHei', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+        }
+
+        /* 头部：保持一致的靛蓝色 */
+        header {
+            background-color: #4B0082; /* Indigo 靛蓝色 */
+            color: #FFFFFF;
+            padding: 15px 40px;
+            font-size: 20px;
+            font-weight: normal;
+            border-bottom: 3px solid #000000;
+        }
+
+        /* 内容区域 */
+        .container {
+            padding: 30px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* 书名 */
+        h1 {
+            color: #FFD700; /* 亮黄色突出书名 */
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+        
+        /* 基础信息块（作者、ID等） */
+        .metadata {
+            color: #ADD8E6; /* 浅蓝色 */
+            font-size: 16px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #333333;
+            padding-bottom: 10px;
+        }
+        
+        /* 介绍区块 */
+        .section-title {
+            color: #FFFFFF;
+            font-size: 20px;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            border-left: 3px solid #8B0000; /* 红色边框，呼应聊天框 */
+            padding-left: 10px;
+        }
+        
+        /* 状态标记 */
+        .status-tag {
+            display: inline-block;
+            padding: 4px 8px;
+            margin-left: 10px;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+        .status-available {
+            background-color: #28a745; /* 绿色 */
+            color: #FFFFFF;
+        }
+        .status-borrowed {
+            background-color: #dc3545; /* 红色 */
+            color: #FFFFFF;
+        }
+        .status-reserved {
+            background-color: #ffc107; /* 黄色 */
+            color: #000000;
+        }
+
+        .info-item {
+            margin-bottom: 8px;
+        }
+        .info-item strong {
+            display: inline-block;
+            width: 80px;
+            color: #ADD8E6;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        图书馆藏书详情 - 内部参考
+    </header>
+
+    <div class="container">
+        
+        <p style="text-align: right;"><a href="index.html" style="color:#ADD8E6; text-decoration: underline;">返回列表</a></p>
+
+        <h1>桥姬舟守物语</h1>
+
+        <div class="metadata">
+            <span class="info-item"><strong>作者:</strong> 山田五郎</span>
+            <span class="info-item"><strong>分类:</strong> 文学/民俗学</span>
+            <span class="info-item"><strong>编号 (ID):</strong> 13770287</span>
+            <span class="info-item">
+                <strong>状态:</strong> 
+                <span class="status-tag status-available">可借阅</span>
+            </span>
+        </div>
+
+        <h2 class="section-title">图书摘要与描述</h2>
+        <div class="content">
+            <p>
+                本书由民俗学家山田五郎教授编撰，全面介绍了古代到现代，关于“桥姬”与“舟守”这两个水边神怪传说的变迁与更迭。
+            </p>
+            <p>
+                **【桥姬】**：传说中是因嫉妒或情怨而化为妖魔的女性，常驻于桥下，将过往的行人拖入水中。山田教授考证，在某些偏远地区，桥姬并非单纯的恶灵，而是掌管水域平衡，**以“交换”为代价**满足许愿者的古老神祇。
+            </p>
+            <p>
+                **【舟守】**：通常是守护渡船、接引灵魂或看守水路的男性角色。本书重点探讨了舟守在传说后期逐渐与桥姬的怨念纠缠，最终形成一种**循环的献祭关系**：舟守负责维持桥姬的“平静”，代价是必须定期“献上”某种珍贵的物品或生命，以确保水路的安全。
+            </p>
+            <p>
+                本书收录了大量手抄本笔记和地方志记录，其中关于“海镜明神”和“古池”的记载尤为详细，揭示了这类水神信仰与地方祭祀活动中，**“水”与“镜”**这两个元素的神秘关联。
+            </p>
+        </div>
+
+        <h2 class="section-title">附加馆藏信息</h2>
+        <div class="content">
+            <p class="info-item"><strong>出版日期:</strong> 1988年（平成元年）初版</p>
+            <p class="info-item"><strong>馆藏位置:</strong> 图书馆三楼，民俗学/古籍参考区 B-12</p>
+            </p>
+        </div>
+        
+    </div>
+
+</body>
+</html>

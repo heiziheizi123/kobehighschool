@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>職員専用ポータル - 秘密のチャット</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 全局样式：黑色背景，白色文字 */
+        body {
+            background-color: #000000;
+            color: #FFFFFF;
+            font-family: 'メイリオ', Meiryo, 'Hiragino Kaku Gothic ProN', '游ゴシック', YuGothic, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* 头部：保持一致的靛蓝色 */
+        header {
+            background-color: #4B0082; /* Indigo 靛蓝色 */
+            color: #FFFFFF;
+            padding: 15px 40px;
+            font-size: 20px;
+            font-weight: normal;
+            flex-shrink: 0;
+            border-bottom: 3px solid #000000;
+        }
+
+        /* 聊天容器 */
+        #chat-window {
+            flex-grow: 1; /* 占据剩余空间 */
+            overflow-y: auto; /* 允许聊天记录滚动 */
+            padding: 20px;
+            background-color: #111111; /* 略微浅一点的黑色作为聊天背景 */
+            scroll-behavior: smooth;
+        }
+
+        /* 聊天消息基础样式 */
+        .message-container {
+            display: flex;
+            margin-bottom: 15px;
+        }
+
+        /* 用户 2333 (对方) 的消息 */
+        .other {
+            justify-content: flex-start;
+        }
+        .other .bubble {
+            background-color: #8B0000; /* 深红色聊天框 */
+            color: #FFFFFF;
+            padding: 10px 15px;
+            border-radius: 15px;
+            max-width: 70%;
+            word-wrap: break-word;
+        }
+
+        /* 您的消息 (您的回答) */
+        .self {
+            justify-content: flex-end;
+        }
+        .self .bubble {
+            background-color: #333333; /* 灰色/深色聊天框 */
+            color: #FFFFFF;
+            padding: 10px 15px;
+            border-radius: 15px;
+            max-width: 70%;
+            word-wrap: break-word;
+        }
+        
+        /* 附件链接样式 */
+        .attachment a {
+            color: #FFD700; /* 亮黄色突出链接 */
+            text-decoration: underline;
+        }
+
+        /* 底部互动区域 */
+        #input-area {
+            flex-shrink: 0;
+            background-color: #222222;
+            padding: 15px 20px;
+            border-top: 1px solid #333333;
+        }
+
+        #question-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        #question-list button, #end-chat-button {
+            background-color: #4B0082; /* 靛蓝色按钮 */
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            font-size: 14px;
+        }
+        
+        #question-list button:hover, #end-chat-button:hover {
+            background-color: #6A0DAD;
+        }
+        
+        #end-chat-button {
+            background-color: #CC0000; /* 红色结束按钮 */
+            display: none; /* 初始隐藏 */
+        }
+
+        /* 消息发送时间/用户名 */
+        .timestamp {
+            font-size: 10px;
+            color: #777777;
+            margin-top: 5px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        秘密のチャットルーム (User: 2333)
+    </header>
+
+    <div id="chat-window">
+        <div class="message-container other">
+            <div class="bubble">
+                找到这里的陌生人你好，我在后台看了你好久了，你也是来找消失的亲人或朋友的吗？
+                <span class="timestamp">2333</span>
+            </div>
+        </div>
+        
+        <div class="message-container self">
+            <div class="bubble">
+                对的，请问你是？
+                <span class="timestamp">あなた</span>
+            </div>
+        </div>
+        
+        <div class="message-container other" id="reply-after-self">
+            <div class="bubble">
+                我的弟弟也消失了，根据两个学校合并的消息我找到了这里，我破解了一部分网站，但是完全不知道发生了什么。。。也许我们可以合作？你可以问我问题。
+                <span class="timestamp">2333</span>
+            </div>
+        </div>
+        
+        </div>
+
+    <div id="input-area">
+        <div id="question-list">
+            </div>
+        <button id="end-chat-button">结束对话</button>
+    </div>
+
+    <script>
+        const chatWindow = document.getElementById('chat-window');
+        const questionListDiv = document.getElementById('question-list');
+        const endChatButton = document.getElementById('end-chat-button');
+        let questionsAsked = 0;
+
+        // 预设问题和答案
+        const conversationData = [
+            { 
+                q: "平井进次郎", 
+                a: "我感觉平井进次郎是幕后黑手，他似乎在整什么奇怪的献祭活动。" 
+            },
+            { 
+                q: "图书馆", 
+                a: "我找到了一部分图书的编码，我觉得你可以从这里下手。搜索书名是介绍，书名+作者才会有关于书的内容。附件：<span class='attachment'><a href='book.html' target='_blank'>文件</a></span>" 
+            },
+            { 
+                q: "民俗学部", 
+                a: "很特别的一个部活动，学校优先修复了他们找到的古书。" 
+            },
+            { 
+                q: "你弟弟是谁", 
+                a: "张辰，在本校旁边的男校上学，你说怎么会忽然合并呢？" 
+            },
+            { 
+                q: "有什么隐藏的网站吗？", 
+                a: "有一个俳句解密的页面，但是我不会日语，还有一些加密的隐藏网站，我找到了漏洞，可以试试学号和年份（2024or2025）/月份/日期的base64编码" 
+            }
+        ];
+
+        // 渲染问题按钮
+        function renderQuestions() {
+            questionListDiv.innerHTML = ''; // 清空现有按钮
+            
+            conversationData.forEach((item, index) => {
+                const button = document.createElement('button');
+                button.textContent = `问题 ${index + 1}: ${item.q}`;
+                button.setAttribute('data-index', index);
+                button.onclick = handleQuestionClick;
+                questionListDiv.appendChild(button);
+            });
+            
+            // 如果所有问题都问完了，显示结束按钮
+            if (conversationData.length === 0) {
+                questionListDiv.style.display = 'none';
+                endChatButton.style.display = 'block';
+            } else {
+                questionListDiv.style.display = 'flex';
+                endChatButton.style.display = 'none';
+            }
+        }
+
+        // 处理问题点击事件
+        function handleQuestionClick(event) {
+            const index = parseInt(event.target.getAttribute('data-index'));
+            const data = conversationData[index];
+
+            // 1. 添加您的消息 (问题)
+            addMessage('self', data.q);
+
+            // 2. 添加对方的消息 (回答)
+            addMessage('other', data.a);
+
+            // 3. 从列表中移除已问的问题
+            conversationData.splice(index, 1);
+            
+            // 4. 重新渲染按钮列表
+            renderQuestions();
+        }
+
+        // 添加消息到聊天窗口
+        function addMessage(type, content) {
+            const msgContainer = document.createElement('div');
+            msgContainer.className = `message-container ${type}`;
+
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.innerHTML = content;
+            
+            const timestamp = document.createElement('span');
+            timestamp.className = 'timestamp';
+            timestamp.textContent = type === 'self' ? 'あなた' : '2333';
+            
+            bubble.appendChild(timestamp);
+
+            msgContainer.appendChild(bubble);
+            chatWindow.appendChild(msgContainer);
+
+            // 自动滚动到底部
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+
+        // 结束对话处理
+        endChatButton.onclick = function() {
+            addMessage('other', "谢谢你提供的信息。祝你好运，希望我们都能找到真相。");
+            endChatButton.disabled = true;
+            endChatButton.textContent = "对话结束";
+        };
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', renderQuestions);
+    </script>
+
+</body>
+</html>

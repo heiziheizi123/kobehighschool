@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>仪式：引动潮汐</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 核心样式 */
+        body {
+            background-color: #000000;
+            color: #E0E0E0;
+            font-family: 'SimSun', 'STSong', 'Times New Roman', serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: #CC0000;
+            font-size: 36px;
+            margin-bottom: 50px; 
+            letter-spacing: 3px;
+            text-shadow: 0 0 8px rgba(204, 0, 0, 0.7);
+        }
+
+        /* 波浪容器 */
+        .wave-container {
+            display: flex;
+            gap: 25px; 
+            margin-bottom: 50px;
+        }
+
+        /* 单个波浪元素 */
+        .wave {
+            width: 100px; 
+            height: 100px; 
+            background-color: #000000;
+            border-radius: 50%;
+            border: 4px solid #004d40; 
+            box-shadow: 0 0 20px rgba(0, 77, 64, 0.7);
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 50px; /* 增大字体以显示清晰的 Emoji */
+            color: transparent; /* 隐藏作为内容的 Emoji 颜色，只用边框/背景显示状态 */
+            user-select: none; 
+            opacity: 0.8;
+        }
+
+        .wave:hover {
+            transform: scale(1.15); 
+            border-color: #00796b;
+            box-shadow: 0 0 30px rgba(0, 121, 107, 1);
+        }
+
+        /* 正确点击后的激活状态 */
+        .wave.active {
+            border-color: #CC0000; 
+            background-color: #8B0000;
+            color: #FFFFFF; /* 激活时可以显示白色 Emoji */
+            box-shadow: 0 0 35px rgba(204, 0, 0, 1);
+            animation: pulse 0.5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1.0); }
+            to { transform: scale(1.08); } 
+        }
+
+        /* 结果显示 */
+        #result {
+            margin-top: 30px;
+            font-size: 28px;
+            color: #FF7F7F;
+            letter-spacing: 3px;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>引动潮汐</h1>
+    
+    <div class="wave-container" id="waveContainer">
+        <div class="wave" data-wave-id="1">🌊</div>
+        <div class="wave" data-wave-id="2">🌊</div>
+        <div class="wave" data-wave-id="3">🌊</div>
+        <div class="wave" data-wave-id="4">🌊</div>
+        <div class="wave" data-wave-id="5">🌊</div>
+    </div>
+    
+    <div id="result"></div>
+    
+    <script>
+        // 核心谜题序列：4, 2, 5, 1, 3
+        const CORRECT_SEQUENCE = ['4', '2', '5', '1', '3']; 
+        let currentSequence = [];
+        const waves = document.querySelectorAll('.wave');
+        const resultElement = document.getElementById('result');
+
+        function handleClick(event) {
+            const clickedWaveId = event.target.getAttribute('data-wave-id');
+            const expectedWaveId = CORRECT_SEQUENCE[currentSequence.length];
+            
+            if (clickedWaveId === expectedWaveId) {
+                currentSequence.push(clickedWaveId);
+                event.target.classList.add('active'); 
+                event.target.style.color = '#FFFFFF'; // 正确点击时显示白色 Emoji
+                event.target.removeEventListener('click', handleClick); 
+                
+                if (currentSequence.length === CORRECT_SEQUENCE.length) {
+                    revealClue();
+                }
+
+            } else {
+                resetPuzzle();
+            }
+        }
+
+        function resetPuzzle() {
+            currentSequence = [];
+            waves.forEach(wave => {
+                wave.classList.remove('active');
+                wave.style.color = 'transparent'; // 重置为透明 Emoji
+                wave.addEventListener('click', handleClick); 
+            });
+            resultElement.style.color = '#FF7F7F';
+            resultElement.textContent = '序列中断。潮汐退去。';
+            resultElement.style.opacity = 1;
+            setTimeout(() => { resultElement.style.opacity = 0; }, 1500); 
+        }
+
+        function revealClue() {
+            resultElement.style.color = '#FFD700';
+            resultElement.textContent = '序列完整。潮汐已达极点。';
+            resultElement.style.opacity = 1;
+            
+            setTimeout(() => { 
+                window.location.href = 'final_conclusion.html'; 
+            }, 2000); 
+        }
+
+        // 初始化
+        waves.forEach(wave => {
+            wave.addEventListener('click', handleClick);
+        });
+
+    </script>
+
+</body>
+</html>

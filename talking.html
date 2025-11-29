@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学校论坛</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #f0f0f0;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .chat-button {
+            padding: 10px 20px;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .chat-button:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .search-box {
+            display: flex;
+            width: 400px;
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            font-size: 14px;
+        }
+        
+        .search-box button {
+            padding: 10px 20px;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-left: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        
+        .date-section {
+            margin-bottom: 30px;
+        }
+        
+        .date-header {
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .posts-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .post {
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .user-name {
+            font-weight: bold;
+        }
+        
+        .user-tag {
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        
+        .graduate {
+            background-color: #e6f7ff;
+            color: #1890ff;
+        }
+        
+        .current {
+            background-color: #f6ffed;
+            color: #52c41a;
+        }
+        
+        .prospective {
+            background-color: #fff7e6;
+            color: #fa8c16;
+        }
+        
+        .post-time {
+            color: #999;
+            font-size: 14px;
+        }
+        
+        .post-content {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .post-footer {
+            display: flex;
+            gap: 15px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .post-footer span {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .post-footer span:hover {
+            color: #333;
+        }
+        
+        .new-post {
+            background-color: #f8f8f8;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .new-post textarea {
+            width: 100%;
+            height: 100px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+            margin-bottom: 10px;
+        }
+        
+        .new-post button {
+            padding: 10px 20px;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .base64-result {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            font-size: 14px;
+            display: none;
+        }
+        
+        .reply-section {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #f0f0f0;
+        }
+        
+        .reply {
+            padding: 10px 0;
+            border-bottom: 1px solid #f9f9f9;
+        }
+        
+        .reply:last-child {
+            border-bottom: none;
+        }
+        
+        .reply-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        .reply-user {
+            font-weight: bold;
+        }
+        
+        .reply-time {
+            color: #999;
+        }
+        
+        .reply-content {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">学校论坛</div>
+            <div class="header-actions">
+                <a href="chat.html" class="chat-button">在线聊天室</a >
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="搜索帖子...">
+                    <button onclick="searchPosts()">搜索</button>
+                </div>
+            </div>
+        </header>
+        
+        <div class="new-post">
+            <textarea id="newPostContent" placeholder="发表新帖子..."></textarea>
+            <button onclick="addNewPost()">发布</button>
+        </div>
+        
+        <div id="postsTimeline">
+            <!-- 帖子将通过JavaScript动态生成 -->
+        </div>
+    </div>
+
+    <script>
+        // 帖子数据
+        const posts = [
+            {
+                id: 1,
+                userType: 'current',
+                userName: '在校生A',
+                time: '十分钟前',
+                date: '今天',
+                content: '学校的网站现在质量怎么这么差，随随便便就可以搜道保健室的使用记录！有没有以前it强一点的学姐来帮？我们学校之前it部可是很强的，现在换成了民俗学部，it部什么时候能回来！',
+                likes: 5,
+                comments: 3,
+                replies: [{
+                        user: '在校生C',
+                        time: '五分钟前',
+                        content: '马上要和男校合并了，估计IT部也要变动吧'
+                    },
+                    {
+                        user: '在校生A',
+                        time: '刚刚',
+                        content: '在线等待一个前辈帮我们解决问题'
+                    }]
+            },
+            {
+                id: 2,
+                userType: 'prospective',
+                userName: '预备生',
+                time: '10:25',
+                date: '2025年1月3日',
+                content: '先辈们，请教一下，第二次的入试是2月几日来着？学校官网登不进',
+                likes: 2,
+                comments: 1,
+                replies: [
+                    {
+                        user: '在校生G',
+                        time: '10:30',
+                        content: '按照惯例一般是2月第一个星期六上午8点。'
+                    },
+                    {
+                        user: '预备生',
+                        time: '10:32',
+                        content: '谢谢前辈！'
+                    }
+                ]
+            },
+            {
+                id: 3,
+                userType: 'current',
+                userName: '在校生D',
+                time: '14:15',
+                date: '2024年12月28日',
+                content: '学校推出的淡路岛套票太坑了吧，坐巴士去山顶就为了看个破房子？末班车下午6点就没了，走到山下很危险，只能骗骗见识少的人了。',
+                likes: 8,
+                comments: 2,
+                replies: [
+                    {
+                        user: '在校生C',
+                        time: '14:20',
+                        content: '对的，而且之前辞职的国语老师还在那里工作，我们学校可以半价求御守…半价的御守效果不会也半价吧'
+                    },
+                    {
+                        user: '在校生F',
+                        time: '14:25',
+                        content: '有总比没有好凸^-^凸'
+                    }
+                ]
+            },
+            {
+                id: 4,
+                userType: 'graduate',
+                userName: '毕业生',
+                time: '09:10',
+                date: '2024年12月15日',
+                content: '看到学弟学妹们讨论学校变化，但是作为女校，我们不能缺少理科的部活！希望学校能重视这个问题。',
+                likes: 12,
+                comments: 5,
+                replies: []
+            }
+        ];
+
+        // 按日期分组帖子
+        function groupPostsByDate() {
+            const grouped = {};
+            
+            posts.forEach(post => {
+                if (!grouped[post.date]) {
+                    grouped[post.date] = [];
+                }
+                grouped[post.date].push(post);
+            });
+            
+            return grouped;
+        }
+
+        // 渲染帖子时间线
+        function renderPostsTimeline() {
+            const container = document.getElementById('postsTimeline');
+            container.innerHTML = '';
+            
+            const groupedPosts = groupPostsByDate();
+            
+            // 按日期排序（最新的在前）
+            const sortedDates = Object.keys(groupedPosts).sort((a, b) => {
+                return new Date(b) - new Date(a);
+            });
+            
+            sortedDates.forEach(date => {
+                const dateSection = document.createElement('div');
+                dateSection.className = 'date-section';
+                
+                const dateHeader = document.createElement('div');
+                dateHeader.className = 'date-header';
+                dateHeader.textContent = date;
+                
+                const postsContainer = document.createElement('div');
+                postsContainer.className = 'posts-container';
+                
+                // 按时间排序（最新的在前）
+                const sortedPosts = groupedPosts[date].sort((a, b) => {
+                    // 处理"刚刚"的情况
+                    if (a.time === '刚刚') return -1;
+                    if (b.time === '刚刚') return 1;
+                    
+                    // 简单的时间比较（实际应用需要更复杂的解析）
+                    return b.time.localeCompare(a.time);
+                });
+                
+                sortedPosts.forEach(post => {
+                    const postElement = document.createElement('div');
+                    postElement.className = 'post';
+                    
+                    let tagClass = '';
+                    let tagText = '';
+                    
+                    switch(post.userType) {
+                        case 'graduate':
+                            tagClass = 'graduate';
+                            tagText = '毕业生';
+                            break;
+                        case 'current':
+                            tagClass = 'current';
+                            tagText = '在校生';
+                            break;
+                        case 'prospective':
+                            tagClass = 'prospective';
+                            tagText = '预备生';
+                            break;
+                    }
+                    
+                    let repliesHTML = '';
+                    if (post.replies && post.replies.length > 0) {
+                        repliesHTML = '<div class="reply-section">';
+                        post.replies.forEach(reply => {
+                            repliesHTML += `
+                                <div class="reply">
+                                    <div class="reply-header">
+                                        <span class="reply-user">${reply.user}</span>
+                                        <span class="reply-time">${reply.time}</span>
+                                    </div>
+                                    <div class="reply-content">${reply.content}</div>
+                                </div>
+                            `;
+                        });
+                        repliesHTML += '</div>';
+                    }
+                    
+                    postElement.innerHTML = `
+                        <div class="post-header">
+                            <div class="user-info">
+                                <span class="user-name">${post.userName}</span>
+                                <span class="user-tag ${tagClass}">${tagText}</span>
+                            </div>
+                            <div class="post-time">${post.time}</div>
+                        </div>
+                        <div class="post-content">${post.content}</div>
+                        <div class="post-footer">
+                            <span>👍 ${post.likes}</span>
+                            <span>💬 ${post.comments}</span>
+                            <span>🔗 分享</span>
+                        </div>
+                        ${repliesHTML}
+                    `;
+                    
+                    postsContainer.appendChild(postElement);
+                });
+                
+                dateSection.appendChild(dateHeader);
+                dateSection.appendChild(postsContainer);
+                container.appendChild(dateSection);
+            });
+        }
+
+
+        // 添加新帖子
+        function addNewPost() {
+            const content = document.getElementById('newPostContent').value;
+            if (!content.trim()) return;
+            
+            const now = new Date();
+            const timeString = '刚刚';
+            const dateString = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日`;
+            
+            const newPost = {
+                id: posts.length + 1,
+                userType: 'graduate',
+                userName: '当前用户',
+                time: timeString,
+                date: dateString,
+                content: content,
+                likes: 0,
+                comments: 0,
+                replies: []
+            };
+            
+            posts.unshift(newPost);
+            document.getElementById('newPostContent').value = '';
+            renderPostsTimeline();
+        }
+
+        // 初始化页面
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPostsTimeline();
+        });
+    </script>
+</body>
+</html>

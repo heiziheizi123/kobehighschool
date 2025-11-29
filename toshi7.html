@@ -264,6 +264,66 @@
                 max-width: 300px;
             }
         }
+        .puzzle-piece-container {
+    position: fixed; /* 固定在视窗中 */
+    bottom: 20px; /* 距离底部 20px */
+    right: 20px; /* 距离右侧 20px */
+    width: 120px; /* 图片框的宽度 */
+    height: 120px; /* 图片框的高度 */
+    border: 1px solid #444; /* 深灰色边框，不那么显眼 */
+    background-color: #1a1a1a; /* 略深的背景色 */
+    padding: 5px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5); /* 柔和阴影 */
+    z-index: 999; /* 确保它在最上层 */
+    overflow: hidden; /* 防止图片溢出 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out; /* 悬停效果过渡 */
+    opacity: 0.7; /* 默认半透明 */
+}
+
+.puzzle-piece-container:hover {
+    opacity: 1; /* 鼠标悬停时完全显示 */
+    border-color: #CC0000; /* 悬停时边框变为红色 */
+    box-shadow: 0 0 15px rgba(204, 0, 0, 0.7); /* 红色光晕 */
+    transform: scale(1.05); /* 稍微放大 */
+}
+
+.puzzle-piece-img {
+    width: 100px; /* 拼图图片实际宽度 */
+    height: 100px; /* 拼图图片实际高度 */
+    object-fit: contain; /* 确保图片完整显示 */
+    display: block;
+    border: 1px solid #333; /* 图片内部边框 */
+}
+
+.piece-label {
+    color: #888; /* 标签文字颜色 */
+    font-size: 10px;
+    margin-top: 5px;
+    text-align: center;
+    font-family: 'SimSun', serif; /* 硬朗字体 */
+}
+
+/* 针对手机等小屏幕设备的调整 */
+@media (max-width: 768px) {
+    .puzzle-piece-container {
+        width: 80px;
+        height: 80px;
+        bottom: 10px;
+        right: 10px;
+        padding: 3px;
+    }
+    .puzzle-piece-img {
+        width: 70px;
+        height: 70px;
+    }
+    .piece-label {
+        font-size: 8px;
+    }
+}
     </style>
 </head>
 <body>
@@ -315,6 +375,10 @@
             <p>『禁術秘録・第七巻』ヨリ、著者不詳、海鏡神社奥院ニ一巻ノミ伝ワル</p >
         </div>
     </div>
+    <div class="puzzle-piece-container">
+    <img src="puzzle1.jpg" alt="拼图碎片 1" class="puzzle-piece-img" data-piece-number="[X]">
+    <div class="piece-label">碎片编号: 1</div>
+</div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

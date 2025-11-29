@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>保健室与心理咨询室-珺雾高校</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Yu Gothic', 'Hiragino Sans', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(to bottom, #e6f7ff, #f0f9ff);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: #1a6ca9;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #4a7fa6;
+            font-weight: 300;
+        }
+        
+        .intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            width: 100%;
+            max-width: 480px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .card-header {
+            background: linear-gradient(to right, #4a90e2, #5aa8f2);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .card-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .info-section {
+            margin-bottom: 25px;
+        }
+        
+        .info-section h3 {
+            color: #2c6aa8;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e0f0ff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-section h3 i {
+            color: #4a90e2;
+        }
+        
+        .info-section p {
+            margin-bottom: 10px;
+            color: #555;
+        }
+        
+        .hours {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .hour-item {
+            background-color: #f0f9ff;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #2c6aa8;
+            border: 1px solid #c2e4ff;
+        }
+        
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .service-item {
+            background-color: #f0f9ff;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #2c6aa8;
+            border: 1px solid #c2e4ff;
+        }
+        
+        .notice {
+            background-color: #fff9e6;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #555;
+        }
+        
+        .contact-item i {
+            color: #4a90e2;
+            width: 20px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #6b93b5;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .cards-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .card {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>保健室とカウンセリングルーム</h1>
+            <p class="subtitle">保健室与心理咨询室介绍</p >
+        </header>
+        
+        <div class="intro">
+            <p>当校では、生徒の心身の健康をサポートするために、保健室とカウンセリングルームを設置しています。</p >
+            <p>体調不良や悩み事がある場合は、お気軽にご利用ください。</p >
+        </div>
+        
+        <div class="cards-container">
+            <!-- 保健室卡片 -->
+            <div class="card">
+                <div class="card-header">
+                    <h2><i class="fas fa-first-aid"></i> 保健室</h2>
+                    <p>Health Room</p >
+                </div>
+                <div class="card-body">
+                    <div class="info-section">
+                        <h3><i class="fas fa-info-circle"></i> 概要</h3>
+                        <p>保健室は、生徒の健康管理と応急処置を担当しています。体調不良や軽いケガの場合には、まず保健室にお越しください。</p >
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3><i class="fas fa-clock"></i> 利用時間</h3>
+                        <div class="hours">
+                            <div class="hour-item">月曜～金曜: 8:30～17:00</div>
+                            <div class="hour-item">土曜: 8:30～12:30</div>
+                            <div class="hour-item">日曜・祝日: 休室</div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3><i class="fas fa-hand-holding-medical"></i> 主なサービス</h3>
+                        <div class="services">
+                            <div class="service-item">応急処置</div>
+                            <div class="service-item">健康相談</div>
+                            <div class="service-item">体温・血圧測定</div>
+                            <div class="service-item">休養スペース</div>
+                            <div class="service-item">薬の一時預かり</div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3><i class="fas fa-user-nurse"></i> 担当者</h3>
+                        <p>看護師: 平井 健一</p >
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3><i class="fas fa-map-marker-alt"></i> 場所</h3>
+                        <p>本校舎 2階, 職員室隣</p >
+                    </div>
+                    
+                    <div class="notice">
+                        <p><strong>ご注意:</strong> 重症や緊急の場合は、直ちに医療機関を受診してください。</p >
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 心理咨询室卡片 -->
+            <div class="card">
+                <div class="card-header">
+                    <h2><i class="fas fa-heart"></i> カウンセリングルーム(心理咨询）</h2>
+                    <p>Counseling Room</p >
+                </div>
+                <div class="card-body">
+                    <div class="info-section">
+                        <h3><i class="fas fa-info-circle"></i> 概要</h3>
+                        <p>カウンセリングルームは、生徒のメンタルヘルスをサポートする場所です。学校生活や人間関係、進路などについての悩みを専門のカウンセラーがお聞きします。</p >
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3><i class="fas fa-clock"></i> 利用時間</h3>
+                        <div class="hours">
+                            <div class="hour-item">月曜・水曜: 13:00～17:00</div>
+                            <div class="hour-item">金曜: 10:00～15:00</div>
+                            <div class="hour-item">火曜・木曜・土日: 要予約</div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3><i class="fas fa-hand-holding-heart"></i> 主なサービス</h3>
+                        <div class="services">
+                            <div class="service-item">個人カウンセリング</div>
+                            <div class="service-item">ストレスマネジメント</div>
+                            <div class="service-item">進路相談</div>
+                            <div class="service-item">保護者相談</div>
+                            <div class="service-item">グループセッション</div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3><i class="fas fa-user-graduate"></i> 担当者</h3>
+                        <p>スクールカウンセラー: 伊藤 大輔</p >
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3><i class="fas fa-map-marker-alt"></i> 場所</h3>
+                        <p>別館 1階, 図書室向かい</p >
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3><i class="fas fa-calendar-check"></i> 予約方法</h3>
+                        <p>直接カウンセリングルームへお越しいただくか、担任の先生を通じてご予約ください。</p >
+                    </div>
+                    
+                    <div class="notice">
+                        <p><strong>守秘義務:</strong> カウンセリング内容は守秘義務により外部に漏れることはありません。安心してご相談ください。</p >
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2023 珺雾高校 - すべての生徒の健やかな成長をサポートします</p >
+        </footer>
+    </div>
+</body>
+</html>

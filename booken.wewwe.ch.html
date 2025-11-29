@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>档案编号：10870672 - 绝密古籍 (已篡改)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 核心恐怖氛围设定 (沿用之前恐怖版样式) */
+        body {
+            background-color: #000000;
+            color: #E0E0E0;
+            font-family: 'SimSun', 'STSong', 'Times New Roman', serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .container {
+            padding: 60px 50px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #CC0000;
+            font-size: 36px;
+            margin-bottom: 5px;
+            border-bottom: 3px solid #CC0000;
+            padding-bottom: 15px;
+            text-align: left;
+            letter-spacing: 2px;
+        }
+        
+        .metadata, .info-item strong {
+            color: #AAAAAA;
+            font-size: 14px;
+        }
+        
+        .status-tag {
+            background-color: #8B0000;
+            color: #FFFFFF;
+            border: 1px solid #CC0000;
+        }
+
+        /* 打字机效果核心样式 */
+        .typewriter-area {
+            min-height: 300px;
+            margin-top: 40px;
+            border: 1px dashed #333;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #typewriter-text {
+            color: #FF7F7F;
+            font-size: 30px;
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+            border-right: .15em solid #CC0000;
+            animation: 
+                blink-caret .75s step-end infinite;
+            font-weight: bold;
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #CC0000; }
+        }
+
+        /* 隐藏的求救弹窗样式 */
+        #sos-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95); /* 更黑的背景 */
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 2s ease-in-out;
+            opacity: 0;
+        }
+
+        #sos-message {
+            color: #CC0000; 
+            font-size: 60px;
+            text-align: center;
+            text-shadow: 0 0 15px #CC0000; /* 强烈的红光 */
+            min-width: 400px; 
+        }
+        
+        /* 闪烁效果 */
+        .blink-red {
+            animation: blink-red-animation 1s steps(1, start) infinite;
+        }
+        @keyframes blink-red-animation {
+            50% { opacity: 0.1; }
+        }
+        
+        /* 隐藏和显示容器 */
+        .sos-msg-container {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="return-link">
+            <a href="index.html" style="color:#666666; text-decoration: none;">返回档案列表</a>
+        </div>
+
+        <h1>海鏡明神奉献集</h1>
+
+        <div class="metadata">
+            <span class="info-item"><strong>原作者:</strong> 潮見 幽水 (手稿)</span>
+            <span class="info-item"><strong>编纂者:</strong> 中田 隆志 教授</span>
+            <span class="info-item"><strong>编号:</strong> 10870672</span>
+            <span class="info-item">
+                <strong>状态:</strong> 
+                <span class="status-tag">已借出</span>
+            </span>
+        </div>
+
+        <h2 class="section-title">— 档案摘要 (已篡改) —</h2>
+        
+        <div class="typewriter-area">
+            <span id="typewriter-text"></span>
+        </div>
+        
+        <p style="color:#AAAAAA; font-size: 12px; text-align: center; margin-top: 20px;">
+            记录者笔记：内容似乎已被高级别用户远程覆盖，请勿相信。
+        </p>
+
+        <h2 class="section-title">— 借阅记录 —</h2>
+        <div class="content">
+            <p class="info-item"><strong>原稿日期:</strong> 不详 (手抄本/昭和初期)</p>
+            <p class="info-item"><strong>编纂日期:</strong> 2005年</p>
+            <p class="info-item"><strong>馆藏位置:</strong> 暂无 (当前处于**非流通状态**)</p>
+            <p class="info-item"><strong>借阅状态:</strong> 已被**民俗学部**借出。借阅权限极高。</p>
+            <p class="info-item"><strong>编号备注:</strong> 
+                该书的**图书ID（10870672）**据信是潮見幽水根据某种特殊的历法编码而成。
+            </p>
+        </div>
+        
+    </div>
+
+    <div id="sos-overlay">
+        <div id="sos-message">
+            <div id="message-release" class="sos-msg-container blink-red" style="display: block;">助けて！助けて！助けて！助けて！助けて！助けて！助けて！</div>
+            <div id="message-help" class="sos-msg-container blink-red">最新女受害者的名字是？</div>
+        </div>
+    </div>
+
+
+    <script>
+        // 打字机效果脚本
+        const textToType = "至高无上的平井进次郎 至高无上的平井进次郎 至高无上的平井进次郎 至高无上的平井进次郎 ";
+        const typewriterElement = document.getElementById('typewriter-text');
+        let index = 0;
+
+        function typeWriter() {
+            if (index < textToType.length) {
+                typewriterElement.textContent += textToType.charAt(index);
+                index++;
+                if (index === textToType.length) {
+                    index = 0; 
+                    typewriterElement.textContent = ''; 
+                }
+                setTimeout(typeWriter, 80); 
+            }
+        }
+        
+        // SOS 弹窗脚本
+        const sosOverlay = document.getElementById('sos-overlay');
+        const messageRelease = document.getElementById('message-release');
+        const messageHelp = document.getElementById('message-help');
+        let isReleaseVisible = true;
+
+        // 切换消息函数 (每 3 秒调用一次)
+        function toggleSOSMessage() {
+            if (isReleaseVisible) {
+                messageRelease.style.display = 'none';
+                messageHelp.style.display = 'block';
+            } else {
+                messageRelease.style.display = 'block';
+                messageHelp.style.display = 'none';
+            }
+            isReleaseVisible = !isReleaseVisible;
+        }
+
+        function showSOSOverlay() {
+            sosOverlay.style.display = 'flex';
+            
+            // 延迟后，启动淡入动画
+            setTimeout(() => {
+                sosOverlay.style.opacity = '1';
+                // 启动交替闪烁效果
+                setInterval(toggleSOSMessage, 3000); 
+                
+                // === 关键修改：3秒后强制跳转 ===
+                setTimeout(() => {
+                    window.location.href = 'search-results.html';
+                },5000); 
+                // ============================
+                
+            }, 50); 
+            
+            document.body.style.overflow = 'hidden';
+        }
+
+
+        // 页面加载时启动
+        document.addEventListener('DOMContentLoaded', () => {
+            typeWriter(); // 启动打字机效果
+            // 延迟 5 秒后触发 SOS 弹窗
+            setTimeout(showSOSOverlay, 5000); 
+        });
+
+    </script>
+
+</body>
+</html>

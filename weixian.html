@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>【核心档案】45420523 - 正在写入...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 恐怖风格设定 */
+        body {
+            background-color: #000000;
+            color: #E0E0E0;
+            font-family: 'SimSun', 'STSong', 'Times New Roman', serif;
+            margin: 0;
+            padding: 60px 50px;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #CC0000;
+            font-size: 32px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #8B0000;
+            padding-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        
+        .metadata {
+            color: #AAAAAA;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        /* 打字机效果的容器 */
+        #typing-output {
+            min-height: 300px;
+            padding: 20px;
+            border: 1px dashed #444;
+            background-color: #0a0a0a;
+            white-space: pre-wrap; /* 保持换行符和空格 */
+            font-size: 18px;
+            color: #FFFFFF;
+        }
+        
+        /* 红色高亮，用于突出作者和关键信息 */
+        .reveal-red {
+            color: #FF7F7F;
+            font-weight: bold;
+        }
+        
+        /* 闪烁光标 */
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1.2em;
+            background-color: #FFD700;
+            margin-left: 3px;
+            animation: blink 0.8s infinite;
+        }
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+        
+        /* 提示跳转信息 */
+        #redirect-message {
+            margin-top: 30px;
+            color: #FFD700;
+            font-size: 16px;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+
+        /* 拼图图片框样式 (沿用) */
+        .puzzle-piece-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 120px;
+            height: 120px;
+            border: 1px solid #444;
+            background-color: #1a1a1a;
+            padding: 5px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.7;
+        }
+        .puzzle-piece-img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            display: block;
+            border: 1px solid #333;
+        }
+        .piece-label {
+            color: #888;
+            font-size: 10px;
+            margin-top: 5px;
+            text-align: center;
+            font-family: 'SimSun', serif;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <h1>海鏡神社秘錄：核心解读</h1>
+
+        <div class="metadata">
+            档案 ID: 45420523 | 状态: 访问成功 | 警告: 数据可能被篡改
+        </div>
+
+        <div id="typing-output">
+            </div>
+        
+        <p id="redirect-message">**系统发现极高风险数据写入** - 强制断开连接倒计时...</p>
+        
+    </div>
+
+    <div class="puzzle-piece-container">
+        <img src="puzzle2.jpg" alt="拼图碎片 2" class="puzzle-piece-img" data-piece-number="2">
+        <div class="piece-label">碎片编号: 2</div>
+    </div>
+
+
+    <script>
+        const targetText = 
+            ` 海鏡神社秘錄
+            原始作者: 平井 进次郎
+            **重写者/执行者:** <span class="reveal-red">平井 进次郎</span>
+            --- 记录开始 (代号: 永恒墨水) ---
+            
+            秘录的真谛，不在于海镜明神，而在于**循环**。潮见那个老旧的幽灵，他只看到了献祭的代价，却不明白<span class="reveal-red">代价即是永恒的入场券</span>。
+            他记录的 ID 和数据，不过是我用来重写现实的**墨水**。
+            **第一步：** 镜底的七个灵魂必须在潮汐最高点被引渡。当海水收缩，那片被遗忘的沙滩上，只会剩下七块被洗净的石头。
+            **第二步：** 潮见的血脉，将成为最终的钥匙。
+            **第三步：** ... (数据被加密)
+            
+            --- 记录终结 ---`;
+
+        const outputElement = document.getElementById('typing-output');
+        const redirectMessage = document.getElementById('redirect-message');
+        const typingSpeed = 25; // 毫秒
+        let charIndex = 0;
+        let displayedText = '';
+
+        function typeWriter() {
+            if (charIndex < targetText.length) {
+                let char = targetText.charAt(charIndex);
+                
+                // 1. 处理 HTML 标签 (<span class="reveal-red">)
+                if (char === '<') {
+                    const tagEnd = targetText.indexOf('>', charIndex);
+                    if (tagEnd !== -1) {
+                        const tag = targetText.substring(charIndex, tagEnd + 1);
+                        displayedText += tag;
+                        charIndex = tagEnd + 1;
+                        // 标签直接渲染，速度加快
+                        setTimeout(typeWriter, 1); 
+                        return; 
+                    }
+                } 
+                
+                // 2. 处理换行符
+                if (char === '\n') {
+                    displayedText += '<br>';
+                } else if (char === ' ') {
+                    displayedText += '&nbsp;'; // 使用不换行空格保留格式
+                } else {
+                    displayedText += char;
+                }
+
+                // 更新 innerHTML，并在末尾添加光标
+                outputElement.innerHTML = displayedText + '<span class="cursor"></span>';
+                charIndex++;
+                setTimeout(typeWriter, typingSpeed);
+            } else {
+                // 打字结束
+                outputElement.innerHTML = displayedText; // 移除光标
+                initiateRedirect();
+            }
+        }
+
+        function initiateRedirect() {
+            redirectMessage.style.opacity = 1; // 显示跳转信息
+            
+            // 6秒后跳转到禁止页面
+            setTimeout(() => {
+                window.location.href = 'forbidden_access.html'; 
+            }, 4000); 
+        }
+
+        // 开始打字
+        document.addEventListener('DOMContentLoaded', typeWriter);
+    </script>
+
+</body>
+</html>
