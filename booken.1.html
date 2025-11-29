@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>【图书详情】镜底记 - 图书馆系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 继承系列的深色风格 */
+        body {
+            background-color: #000000;
+            color: #FFFFFF;
+            font-family: 'PingFang SC', 'Microsoft YaHei', 'SimHei', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+        }
+
+        /* 头部：保持一致的靛蓝色 */
+        header {
+            background-color: #4B0082; /* Indigo 靛蓝色 */
+            color: #FFFFFF;
+            padding: 15px 40px;
+            font-size: 20px;
+            font-weight: normal;
+            border-bottom: 3px solid #000000;
+        }
+
+        /* 内容区域 */
+        .container {
+            padding: 30px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* 书名 */
+        h1 {
+            color: #FFD700; /* 亮黄色突出书名 */
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+        
+        /* 基础信息块（作者、ID等） */
+        .metadata {
+            color: #ADD8E6; /* 浅蓝色 */
+            font-size: 16px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #333333;
+            padding-bottom: 10px;
+        }
+        
+        /* 介绍区块 */
+        .section-title {
+            color: #FFFFFF;
+            font-size: 20px;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            border-left: 3px solid #8B0000; /* 红色边框，呼应聊天框 */
+            padding-left: 10px;
+        }
+        
+        /* 状态标记 */
+        .status-tag {
+            display: inline-block;
+            padding: 4px 8px;
+            margin-left: 10px;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+        .status-available {
+            background-color: #28a745; /* 绿色 */
+            color: #FFFFFF;
+        }
+        .status-borrowed {
+            background-color: #dc3545; /* 红色 */
+            color: #FFFFFF;
+        }
+        .status-reserved {
+            background-color: #ffc107; /* 黄色 */
+            color: #000000;
+        }
+
+        .info-item {
+            margin-bottom: 8px;
+        }
+        .info-item strong {
+            display: inline-block;
+            width: 80px;
+            color: #ADD8E6;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        图书馆藏书详情 - 内部参考
+    </header>
+
+    <div class="container">
+        
+        <p style="text-align: right;"><a href="index.html" style="color:#ADD8E6; text-decoration: underline;">返回列表</a></p>
+
+        <h1>镜底记</h1>
+
+        <div class="metadata">
+            <span class="info-item"><strong>作者:</strong> 潮見幽水 (推定：明治初期)</span>
+            <span class="info-item"><strong>分类:</strong> 文学/稀有古籍</span>
+            <span class="info-item"><strong>编号 (ID):</strong> 12320356</span>
+            <span class="info-item">
+                <strong>状态:</strong> 
+                <span class="status-tag status-borrowed">已借出</span>
+            </span>
+        </div>
+
+        <h2 class="section-title">图书摘要与描述</h2>
+        <div class="content">
+            <p>
+                一本年代久远的手抄本古籍，装帧简陋，被图书馆在整理合并的旧藏品时重新发现。其内容晦涩难懂，多以诗词、俳句以及未经证实的零碎神话构成。
+            </p>
+            <p>
+                **【主要内容】**：本书的核心是关于“镜子”和“水底”的神秘叙事。它详细描绘了一种名为“海镜”的祭祀仪式，仪式地点似乎位于一处古老的池塘或水库边。记述者多次提到“镜像中的颠倒世界”以及“在水下寻找真相的必要性”。
+            </p>
+            <p>
+                **【疑点】**：书页中夹着许多风干的植物残骸，以及一些用红墨水绘制的奇怪几何图形。民俗学部的专家在研究时发现，其中某些俳句结构与**平井进次郎**早期未公开的诗集有惊人的相似之处。
+            </p>
+            <p>
+                **【重要提示】**：该书在借出前，书脊曾被发现人为损坏，似乎有人试图从中间拆开它。
+            </p>
+        </div>
+
+        <h2 class="section-title">附加馆藏信息</h2>
+        <div class="content">
+            <p class="info-item"><strong>出版日期:</strong> 不详 (推定为手抄本)</p>
+            <p class="info-item"><strong>馆藏位置:</strong> 暂无 (已借出)</p>
+            <p class="info-item"><strong>借阅状态:</strong> 已于 [日期不详] 被**民俗学部**教员借出，至今未归还。</p>
+            </p>
+        </div>
+        
+    </div>
+
+</body>
+</html>
